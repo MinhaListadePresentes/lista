@@ -38,27 +38,6 @@
             color: #888;
         }
 
-        /* CARRINHO */
-        .carrinho-area {
-            display: flex;
-            justify-content: flex-end;
-            padding: 5px 20px 15px;
-        }
-
-        .carrinho {
-            border: 1px solid #eeeeee;
-            background: #fafafa;
-            color: #aaa;
-            padding: 10px 14px;
-            border-radius: 4px;
-            font-size: 13px;
-        }
-
-        .carrinho.ativo {
-            background: #555;
-            color: white;
-            cursor: pointer;
-        }
 
         /* ORDENAR */
         .ordenacao {
@@ -540,9 +519,6 @@
 
     <script>
 
-        let presentesSelecionados = [];
-
-
         function presentear(botao, nome, preco) {
 
             const card = botao.closest(".presente");
@@ -578,80 +554,9 @@
             }
 
 
-            atualizarCarrinho();
-
         }
 
 
-        function atualizarCarrinho() {
-
-            const contador =
-                document.getElementById("contador");
-
-            const carrinho =
-                document.getElementById("carrinho");
-
-
-            contador.innerText =
-                "(" + presentesSelecionados.length + ")";
-
-
-            if (presentesSelecionados.length > 0) {
-
-                carrinho.classList.add("ativo");
-
-            } else {
-
-                carrinho.classList.remove("ativo");
-
-            }
-
-        }
-
-
-        function abrirCarrinho() {
-
-            if (presentesSelecionados.length === 0) {
-
-                alert("Você ainda não escolheu nenhum presente.");
-
-                return;
-
-            }
-
-
-            let mensagem =
-                "Presentes escolhidos:\\n\\n";
-
-            let total = 0;
-
-
-            presentesSelecionados.forEach(
-                presente => {
-
-                    mensagem +=
-                        "🎁 " +
-                        presente.nome +
-                        " - R$ " +
-                        presente.preco
-                            .toFixed(2)
-                            .replace(".", ",") +
-                        "\\n";
-
-                    total += presente.preco;
-
-                }
-            );
-
-
-            mensagem +=
-                "\\nTotal: R$ " +
-                total.toFixed(2).replace(".", ",");
-
-
-            alert(mensagem);
-
-        }
 
 
         function ordenarLista() {
