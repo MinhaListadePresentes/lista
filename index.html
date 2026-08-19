@@ -1,359 +1,829 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lista de Presentes | Gabi & Tom</title>
+    <title>Gabi & Tom | Lista de Presentes</title>
+
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
+
+        /* =====================================================
+           CONFIGURAÇÕES GERAIS
+        ===================================================== */
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #555;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* TOPO */
-        .topo {
-            width: 100%;
-            padding: 18px 20px 10px;
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #faf8f4;
+            color: #5f5b54;
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           CORES
+        ===================================================== */
+
+        :root {
+            --verde: #6d8971;
+            --verde-escuro: #536b57;
+            --verde-claro: #e8eee8;
+
+            --dourado: #c8ad7f;
+            --dourado-claro: #dfcfad;
+
+            --creme: #faf8f4;
+            --creme-escuro: #f1ece3;
+
+            --texto: #5f5b54;
+            --texto-claro: #8b867d;
+
+            --branco: #ffffff;
+
+            --borda: #e7e0d5;
+        }
+
+
+        /* =====================================================
+           TOPO / HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
             text-align: center;
+            padding: 55px 20px 35px;
+            overflow: hidden;
+        }
+
+        /* detalhes decorativos */
+
+        .hero::before {
+            content: "❧";
+            position: absolute;
+            left: 10%;
+            top: 25px;
+            font-size: 52px;
+            color: var(--dourado-claro);
+            opacity: 0.55;
+            transform: rotate(-20deg);
+        }
+
+        .hero::after {
+            content: "❧";
+            position: absolute;
+            right: 10%;
+            top: 25px;
+            font-size: 52px;
+            color: var(--dourado-claro);
+            opacity: 0.55;
+            transform: rotate(20deg) scaleX(-1);
+        }
+
+        .pequeno-texto {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--texto-claro);
+            margin-bottom: 12px;
         }
 
         .nomes {
-            font-family: Georgia, serif;
-            font-size: 45px;
-            color: #477e54;
-            margin-bottom: 5px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(54px, 10vw, 82px);
+            line-height: 0.95;
+            font-weight: 500;
+            color: var(--verde);
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .data-casamento {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 21px;
+            letter-spacing: 3px;
+            color: var(--dourado);
+            margin-bottom: 16px;
+        }
+
+        .linha-decorativa {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 15px auto;
+        }
+
+        .linha-decorativa span {
+            width: 55px;
+            height: 1px;
+            background: var(--dourado-claro);
+        }
+
+        .linha-decorativa i {
+            font-style: normal;
+            color: var(--dourado);
+            font-size: 14px;
         }
 
         .subtitulo {
-            font-size: 13px;
-            color: #888;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: var(--texto-claro);
         }
 
 
-        /* ORDENAR */
-        .ordenacao {
+        /* =====================================================
+           INTRODUÇÃO
+        ===================================================== */
+
+        .introducao {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 10px 25px 25px;
             text-align: center;
-            padding: 10px 0 25px;
+        }
+
+        .introducao h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 30px;
+            font-weight: 500;
+            color: var(--verde-escuro);
+            margin-bottom: 12px;
+        }
+
+        .introducao p {
             font-size: 13px;
-            color: #666;
+            line-height: 23px;
+            color: var(--texto-claro);
+        }
+
+
+        /* =====================================================
+           CONTAGEM REGRESSIVA
+        ===================================================== */
+
+        .contagem-container {
+            max-width: 680px;
+            margin: 5px auto 35px;
+            padding: 28px 20px 30px;
+
+            background: var(--branco);
+
+            border: 1px solid var(--borda);
+            border-radius: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 35px rgba(90, 80, 60, 0.06);
+        }
+
+        .contagem-titulo {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--verde-escuro);
+            margin-bottom: 20px;
+        }
+
+        .contagem {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .tempo {
+            width: 72px;
+            min-height: 76px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background: var(--creme);
+            border: 1px solid var(--dourado-claro);
+            border-radius: 12px;
+
+            color: var(--verde-escuro);
+        }
+
+        .tempo span {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 29px;
+            font-weight: 600;
+            line-height: 30px;
+        }
+
+        .tempo small {
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--texto-claro);
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           TÍTULO DA LISTA
+        ===================================================== */
+
+        .titulo-lista {
+            text-align: center;
+            padding: 10px 20px 18px;
+        }
+
+        .titulo-lista h1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 34px;
+            font-weight: 500;
+            color: var(--verde-escuro);
+            margin-bottom: 7px;
+        }
+
+        .titulo-lista p {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--texto-claro);
+        }
+
+
+        /* =====================================================
+           ORDENAÇÃO
+        ===================================================== */
+
+        .ordenacao {
+            max-width: 700px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 5px;
+
+            padding: 0 14px;
+
+            font-size: 10px;
+            letter-spacing: 0.8px;
+            color: var(--texto-claro);
         }
 
         .ordenacao select {
             border: none;
             background: transparent;
-            color: #666;
-            font-size: 13px;
+
+            color: var(--verde-escuro);
+
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 10px;
+
             outline: none;
             cursor: pointer;
         }
 
-        /* LISTA */
+
+        /* =====================================================
+           LISTA
+        ===================================================== */
+
         .lista {
             width: 100%;
             max-width: 700px;
+
             margin: auto;
-            padding: 0 12px 30px;
+            padding: 0 12px 45px;
 
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            gap: 18px;
         }
 
-        /* CARD */
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
         .presente {
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
-            padding: 7px;
-            background: white;
+            position: relative;
+
+            border: 1px solid var(--borda);
+            border-radius: 15px;
+
+            padding: 8px;
+
+            background: var(--branco);
+
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+
+            box-shadow:
+                0 4px 18px rgba(90, 80, 60, 0.055);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
         }
+
+        .presente:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 12px 28px rgba(90, 80, 60, 0.10);
+        }
+
+
+        /* =====================================================
+           IMAGEM
+        ===================================================== */
 
         .imagem {
             width: 100%;
             aspect-ratio: 1 / 1;
+
             object-fit: cover;
-            border-radius: 7px;
+
+            border-radius: 11px;
+
             display: block;
+
+            transition: transform 0.35s ease;
         }
 
+        .presente:hover .imagem {
+            transform: scale(1.015);
+        }
+
+
+        /* =====================================================
+           NOME DO PRESENTE
+        ===================================================== */
+
         .nome-presente {
-            min-height: 45px;
+            min-height: 55px;
+
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 13px;
-            line-height: 18px;
-            color: #555;
-            padding: 8px 4px 2px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+
+            font-size: 19px;
+            line-height: 20px;
+
+            color: var(--verde-escuro);
+
+            padding: 10px 5px 2px;
         }
 
+
+        /* =====================================================
+           PREÇO
+        ===================================================== */
+
         .preco {
-            font-size: 14px;
-            color: #555;
-            margin: 5px 0 10px;
+            font-size: 13px;
+            font-weight: 500;
+
+            color: var(--dourado);
+
+            margin: 5px 0 12px;
         }
+
+
+        /* =====================================================
+           BOTÃO
+        ===================================================== */
 
         .botao {
             width: 100%;
-            border: none;
-            background: #dbc9a7;
-            color: white;
 
-            padding: 9px 5px;
-            border-radius: 7px;
+            border: 1px solid var(--dourado);
 
-            font-size: 14px;
-            font-weight: bold;
+            background: transparent;
+
+            color: var(--verde-escuro);
+
+            padding: 10px 5px;
+
+            border-radius: 8px;
+
+            font-family: 'Montserrat', Arial, sans-serif;
+
+            font-size: 10px;
+            font-weight: 600;
+
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
 
             cursor: pointer;
-            transition: 0.2s;
+
+            transition: all 0.25s ease;
         }
 
         .botao:hover {
-            background: #cdbb99;
+            background: var(--dourado);
+            color: white;
         }
 
         .botao:active {
             transform: scale(0.98);
         }
 
-        /* PRESENTE ESCOLHIDO */
+
+        /* =====================================================
+           PRESENTE ESCOLHIDO
+        ===================================================== */
+
         .presente.escolhido {
-            opacity: 0.65;
+            opacity: 0.75;
         }
 
         .presente.escolhido .botao {
-            background: #777;
+            background: var(--verde);
+            border-color: var(--verde);
+            color: white;
         }
 
-        /* RODAPÉ */
+
+        /* =====================================================
+           RODAPÉ
+        ===================================================== */
+
         .rodape {
             text-align: center;
-            padding: 25px 15px 35px;
-            font-size: 12px;
-            color: #aaa;
+
+            padding: 45px 20px 55px;
+
+            background: var(--creme-escuro);
+
+            border-top: 1px solid var(--borda);
+
+            color: var(--texto-claro);
+
+            font-size: 11px;
+            line-height: 22px;
+
+            letter-spacing: 0.8px;
         }
 
-        /* BOTÃO VOLTAR AO TOPO */
+        .rodape .coracao {
+            display: block;
+
+            color: var(--dourado);
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+        .rodape strong {
+            display: block;
+
+            font-family: 'Cormorant Garamond', Georgia, serif;
+
+            font-size: 28px;
+
+            font-weight: 500;
+
+            color: var(--verde-escuro);
+
+            margin-top: 4px;
+        }
+
+        .rodape .data {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--dourado);
+        }
+
+
+        /* =====================================================
+           BOTÃO VOLTAR AO TOPO
+        ===================================================== */
+
         .topo-btn {
             position: fixed;
-            right: 15px;
+
+            right: 18px;
             bottom: 20px;
 
             width: 42px;
             height: 42px;
 
-            border: none;
+            border: 1px solid rgba(255,255,255,0.5);
+
             border-radius: 50%;
 
-            background: #aaa;
+            background: rgba(109, 137, 113, 0.9);
+
             color: white;
 
-            font-size: 20px;
+            font-size: 17px;
+
             cursor: pointer;
+
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+
+            transition: 0.25s;
+
+            z-index: 100;
         }
 
-        /* CELULAR MUITO PEQUENO */
-        @media (max-width: 360px) {
+        .topo-btn:hover {
+            transform: translateY(-3px);
+            background: var(--verde-escuro);
+        }
+
+
+        /* =====================================================
+           POPUP PIX
+        ===================================================== */
+
+        .popup-overlay {
+            display: none;
+
+            position: fixed;
+
+            z-index: 9999;
+
+            inset: 0;
+
+            background: rgba(50, 45, 38, 0.48);
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            backdrop-filter: blur(4px);
+        }
+
+        .popup-overlay.ativo {
+            display: flex;
+        }
+
+        .popup {
+            position: relative;
+
+            width: 100%;
+            max-width: 390px;
+
+            background: #fcfaf6;
+
+            border: 1px solid var(--dourado-claro);
+
+            border-radius: 18px;
+
+            padding: 34px 25px 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.22);
+
+            animation: aparecerPopup 0.3s ease;
+        }
+
+        @keyframes aparecerPopup {
+
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        .popup-icone {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: var(--creme-escuro);
+
+            color: var(--dourado);
+
+            font-size: 26px;
+        }
+
+        .popup-titulo {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+
+            font-size: 29px;
+
+            font-weight: 500;
+
+            color: var(--verde-escuro);
+
+            margin-bottom: 12px;
+        }
+
+        .popup-mensagem {
+            font-size: 12px;
+
+            line-height: 21px;
+
+            color: var(--texto-claro);
+
+            margin-bottom: 23px;
+        }
+
+        .popup-detalhe {
+            width: 45px;
+            height: 1px;
+
+            background: var(--dourado-claro);
+
+            margin: 0 auto 18px;
+        }
+
+        .popup-fechar {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 12px;
+
+            background: var(--verde);
+
+            color: white;
+
+            font-family: 'Montserrat', Arial, sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .popup-fechar:hover {
+            background: var(--verde-escuro);
+        }
+
+        .popup-fechar:active {
+            transform: scale(0.98);
+        }
+
+
+        /* =====================================================
+           RESPONSIVIDADE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .hero::before {
+                left: 2%;
+                top: 25px;
+            }
+
+            .hero::after {
+                right: 2%;
+                top: 25px;
+            }
+
+            .introducao {
+                padding-left: 28px;
+                padding-right: 28px;
+            }
+
+            .contagem-container {
+                margin-left: 12px;
+                margin-right: 12px;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .nomes {
+                font-size: 50px;
+            }
+
+            .data-casamento {
+                font-size: 18px;
+            }
+
+            .contagem {
+                gap: 6px;
+            }
+
+            .tempo {
+                width: 62px;
+                min-height: 70px;
+            }
+
+            .tempo span {
+                font-size: 25px;
+            }
+
+            .nome-presente {
+                font-size: 17px;
+                line-height: 18px;
+            }
+
+            .preco {
+                font-size: 12px;
+            }
+
+            .botao {
+                font-size: 9px;
+                padding: 9px 3px;
+            }
+
+        }
+
+
+        @media (max-width: 330px) {
 
             .lista {
-                gap: 9px;
+                gap: 10px;
                 padding-left: 8px;
                 padding-right: 8px;
             }
 
-            .nome-presente {
-                font-size: 12px;
-            }
-
-            .preco {
-                font-size: 13px;
-            }
-
-            .botao {
-                font-size: 13px;
-            }
-        }
-
-
-        /* CONTAGEM REGRESSIVA */
-        
-        .contagem-container {
-            text-align: center;
-            padding: 20px 15px 25px;
-        }
-        
-        .contagem-titulo {
-            font-family: Georgia, serif;
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 15px;
-        }
-        
-        .contagem {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .tempo {
-            width: 65px;
-            height: 70px;
-        
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        
-            background: #dbc9a7;
-            color: white;
-        
-            border-radius: 8px;
-        }
-        
-        .tempo span {
-            font-size: 22px;
-            font-weight: bold;
-            line-height: 25px;
-        }
-        
-        .tempo small {
-            font-size: 10px;
-            margin-top: 3px;
-        }
-        
-        /* CELULAR */
-        @media (max-width: 360px) {
-        
-            .contagem {
-                gap: 6px;
-            }
-        
             .tempo {
-                width: 58px;
-                height: 65px;
+                width: 56px;
             }
-        
+
             .tempo span {
-                font-size: 20px;
+                font-size: 22px;
             }
-        
+
+            .tempo small {
+                font-size: 7px;
+            }
+
         }
 
-        /* POPUP PIX */
-.popup-overlay {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.35);
-
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-}
-
-.popup-overlay.ativo {
-    display: flex;
-}
-
-.popup {
-    width: 100%;
-    max-width: 380px;
-
-    background: #f5eddf;
-    border: 1px solid #e2d2b8;
-    border-radius: 14px;
-
-    padding: 28px 22px 22px;
-
-    text-align: center;
-
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
-
-    animation: aparecerPopup 0.25s ease;
-}
-
-@keyframes aparecerPopup {
-    from {
-        opacity: 0;
-        transform: translateY(15px) scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.popup-icone {
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-
-.popup-titulo {
-    font-family: Georgia, serif;
-    font-size: 22px;
-    color: #6f604d;
-    margin-bottom: 12px;
-}
-
-.popup-mensagem {
-    font-size: 14px;
-    line-height: 21px;
-    color: #6d665d;
-    margin-bottom: 22px;
-}
-
-.popup-fechar {
-    width: 100%;
-
-    border: none;
-    border-radius: 8px;
-
-    padding: 11px;
-
-    background: #dbc9a7;
-    color: white;
-
-    font-size: 14px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.popup-fechar:hover {
-    background: #cdbb99;
-}
-
-.popup-fechar:active {
-    transform: scale(0.98);
-}
     </style>
 </head>
 
+
 <body>
 
-    <!-- TOPO -->
-    <header class="topo">
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <header class="hero">
+
+        <div class="pequeno-texto">
+            Nosso casamento
+        </div>
 
         <div class="nomes">
             Gabi & Tom
+        </div>
+
+        <div class="data-casamento">
+            07 · 11 · 2026
+        </div>
+
+        <div class="linha-decorativa">
+            <span></span>
+            <i>♡</i>
+            <span></span>
         </div>
 
         <div class="subtitulo">
@@ -362,77 +832,124 @@
 
     </header>
 
-    <!-- CONTAGEM REGRESSIVA -->
-<div class="contagem-container">
 
-    <div class="contagem-titulo">
-        Nosso grande dia está chegando! ❤️
-    </div>
+    <!-- =====================================================
+         INTRODUÇÃO
+    ====================================================== -->
 
-    <div id="contagem-regressiva" class="contagem">
+    <section class="introducao">
 
-        <div class="tempo">
-            <span id="dias">00</span>
-            <small>Dias</small>
+        <h2>
+            Nosso grande dia está chegando
+        </h2>
+
+        <p>
+            Estamos muito felizes em compartilhar esse momento
+            tão especial com vocês. A presença de cada pessoa
+            querida já é o nosso maior presente.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTAGEM REGRESSIVA
+    ====================================================== -->
+
+    <section class="contagem-container">
+
+        <div class="contagem-titulo">
+            Contando os dias para o nosso "sim"
         </div>
 
-        <div class="tempo">
-            <span id="horas">00</span>
-            <small>Horas</small>
+        <div id="contagem-regressiva" class="contagem">
+
+            <div class="tempo">
+                <span id="dias">00</span>
+                <small>Dias</small>
+            </div>
+
+            <div class="tempo">
+                <span id="horas">00</span>
+                <small>Horas</small>
+            </div>
+
+            <div class="tempo">
+                <span id="minutos">00</span>
+                <small>Minutos</small>
+            </div>
+
+            <div class="tempo">
+                <span id="segundos">00</span>
+                <small>Segundos</small>
+            </div>
+
         </div>
 
-        <div class="tempo">
-            <span id="minutos">00</span>
-            <small>Minutos</small>
-        </div>
+    </section>
 
-        <div class="tempo">
-            <span id="segundos">00</span>
-            <small>Segundos</small>
-        </div>
 
-    </div>
+    <!-- =====================================================
+         TÍTULO DA LISTA
+    ====================================================== -->
 
-</div>
+    <section class="titulo-lista">
 
-    <!-- ORDENAÇÃO -->
+        <h1>
+            Nossa lista de presentes
+        </h1>
+
+        <p>
+            ESCOLHA UM PRESENTE E FAÇA PARTE DA NOSSA HISTÓRIA
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         ORDENAÇÃO
+    ====================================================== -->
+
     <div class="ordenacao">
 
-        <div>Ordenar lista</div>
+        <span>Ordenar por:</span>
 
-        <div>
-            por:
+        <select id="ordenacao" onchange="ordenarLista()">
 
-            <select id="ordenacao" onchange="ordenarLista()">
+            <option value="menor">
+                Menor preço
+            </option>
 
-                <option value="menor">
-                    Menor preço
-                </option>
+            <option value="maior">
+                Maior preço
+            </option>
 
-                <option value="maior">
-                    Maior preço
-                </option>
+            <option value="nome">
+                Nome
+            </option>
 
-                <option value="nome">
-                    Nome
-                </option>
-
-            </select>
-        </div>
+        </select>
 
     </div>
 
 
-    <!-- LISTA DE PRESENTES -->
+    <!-- =====================================================
+         LISTA DE PRESENTES
+    ====================================================== -->
+
     <main class="lista" id="lista">
 
 
         <!-- PRESENTE 1 -->
-        <div class="presente" data-preco="29.90" data-nome="Café da manhã dos noivos">
+
+        <div
+            class="presente"
+            data-preco="80.00"
+            data-nome="Café da manhã dos noivos">
 
             <img
                 class="imagem"
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500"
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700"
                 alt="Café da manhã">
 
             <div class="nome-presente">
@@ -443,22 +960,27 @@
                 R$ 80,00
             </div>
 
-           <button
+            <button
                 class="botao"
                 onclick="presentear(this, 'Café da manhã especial para os noivos', 80.00)">
 
                 Presentear
-           </button>
+
+            </button>
 
         </div>
 
 
         <!-- PRESENTE 2 -->
-        <div class="presente" data-preco="45.00" data-nome="Jantar romântico">
+
+        <div
+            class="presente"
+            data-preco="45.00"
+            data-nome="Jantar romântico">
 
             <img
                 class="imagem"
-                src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?w=500"
+                src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?w=700"
                 alt="Jantar romântico">
 
             <div class="nome-presente">
@@ -481,12 +1003,16 @@
 
 
         <!-- PRESENTE 3 -->
-        <div class="presente" data-preco="59.90" data-nome="Filme e pipoca">
+
+        <div
+            class="presente"
+            data-preco="59.90"
+            data-nome="Filme e pipoca">
 
             <img
                 class="imagem"
-                src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=500"
-                alt="Pipoca">
+                src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=700"
+                alt="Cinema com pipoca">
 
             <div class="nome-presente">
                 Sessão de cinema com pipoca para o casal
@@ -508,12 +1034,16 @@
 
 
         <!-- PRESENTE 4 -->
-        <div class="presente" data-preco="75.00" data-nome="Cesta de café">
+
+        <div
+            class="presente"
+            data-preco="75.00"
+            data-nome="Cesta de café">
 
             <img
                 class="imagem"
-                src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500"
-                alt="Café da manhã">
+                src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=700"
+                alt="Cesta de café da manhã">
 
             <div class="nome-presente">
                 Cesta de café da manhã dos recém-casados
@@ -535,12 +1065,16 @@
 
 
         <!-- PRESENTE 5 -->
-        <div class="presente" data-preco="100.00" data-nome="Jantar especial">
+
+        <div
+            class="presente"
+            data-preco="100.00"
+            data-nome="Jantar especial">
 
             <img
                 class="imagem"
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500"
-                alt="Jantar">
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700"
+                alt="Jantar especial">
 
             <div class="nome-presente">
                 Jantar especial de comemoração
@@ -562,11 +1096,15 @@
 
 
         <!-- PRESENTE 6 -->
-        <div class="presente" data-preco="150.00" data-nome="Noite de hotel">
+
+        <div
+            class="presente"
+            data-preco="150.00"
+            data-nome="Noite de hotel">
 
             <img
                 class="imagem"
-                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500"
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700"
                 alt="Hotel">
 
             <div class="nome-presente">
@@ -591,127 +1129,204 @@
     </main>
 
 
-    <!-- RODAPÉ -->
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
+
     <footer class="rodape">
 
-        Com carinho,<br>
+        <span class="coracao">
+            ♡
+        </span>
 
-        <strong>Gabi & Tom ❤️</strong>
+        Com carinho,
+
+        <strong>
+            Gabi & Tom
+        </strong>
+
+        <div class="data">
+            07 · 11 · 2026
+        </div>
 
     </footer>
 
 
-    <!-- BOTÃO TOPO -->
+    <!-- =====================================================
+         BOTÃO VOLTAR AO TOPO
+    ====================================================== -->
+
     <button
         class="topo-btn"
-        onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        aria-label="Voltar ao topo">
 
         ↑
 
     </button>
 
-<!-- POPUP PIX -->
-<div id="popupPix" class="popup-overlay">
 
-    <div class="popup">
+    <!-- =====================================================
+         POPUP PIX
+    ====================================================== -->
 
-        <div class="popup-icone">
-            💛
+    <div
+        id="popupPix"
+        class="popup-overlay">
+
+        <div class="popup">
+
+            <div class="popup-icone">
+                ♡
+            </div>
+
+            <div class="popup-titulo">
+                Presente escolhido!
+            </div>
+
+            <div class="popup-detalhe"></div>
+
+            <div class="popup-mensagem">
+
+                A chave PIX foi copiada para sua área de transferência.
+
+                <br><br>
+
+                Basta abrir o aplicativo do seu banco,
+                escolher a opção PIX e colar a chave para
+                realizar a transferência.
+
+                <br><br>
+
+                <strong>
+                    Muito obrigado por fazer parte desse momento! ♡
+                </strong>
+
+            </div>
+
+            <button
+                class="popup-fechar"
+                onclick="fecharPopup()">
+
+                Entendi
+
+            </button>
+
         </div>
-
-        <div class="popup-titulo">
-            Presente escolhido!
-        </div>
-
-        <div class="popup-mensagem">
-            Chave PIX copiada!<br><br>
-            Cole no banco desejado e efetue a transferência.
-        </div>
-
-        <button
-            class="popup-fechar"
-            onclick="fecharPopup()">
-
-            Entendi
-
-        </button>
 
     </div>
 
-</div>
-    
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
     <script>
 
-function abrirPopup() {
 
-    document
-        .getElementById("popupPix")
-        .classList.add("ativo");
+        /* =====================================================
+           POPUP
+        ===================================================== */
 
-}
+        function abrirPopup() {
 
+            document
+                .getElementById("popupPix")
+                .classList.add("ativo");
 
-function fecharPopup() {
-
-    document
-        .getElementById("popupPix")
-        .classList.remove("ativo");
-
-}
-
-        
-
-       function presentear(botao, nome, preco) {
-
-    const card = botao.closest(".presente");
-
-    const jaEscolhido =
-        card.classList.contains("escolhido");
+        }
 
 
-    if (jaEscolhido) {
+        function fecharPopup() {
 
-        card.classList.remove("escolhido");
+            document
+                .getElementById("popupPix")
+                .classList.remove("ativo");
 
-        botao.innerText = "Presentear";
-
-        return;
-
-    }
+        }
 
 
-    card.classList.add("escolhido");
+        /* Fecha clicando fora do popup */
 
-    botao.innerText = "✓ Escolhido";
+        document
+            .getElementById("popupPix")
+            .addEventListener("click", function(event) {
 
+                if (event.target === this) {
 
-    // CHAVE PIX
-    const chavePix =
-        "00020126580014BR.GOV.BCB.PIX013686933381-05e3-4d95-ac04-d0d383e3d327520400005303986540580.005802BR5924Erivelton Oliveira Matos6009SAO PAULO61080540900062240520cCeyF4VJxJayRR0dwn3i63047322";
+                    fecharPopup();
 
+                }
 
-    // COPIAR CHAVE PIX
-    navigator.clipboard.writeText(chavePix)
-        .then(() => {
-
-            abrirPopup();
-
-        })
-        .catch(() => {
-
-            abrirPopup();
-
-        });
-
-}
+            });
 
 
+        /* =====================================================
+           PRESENTEAR
+        ===================================================== */
 
+        function presentear(botao, nome, preco) {
+
+            const card =
+                botao.closest(".presente");
+
+
+            const jaEscolhido =
+                card.classList.contains("escolhido");
+
+
+            if (jaEscolhido) {
+
+                card.classList.remove("escolhido");
+
+                botao.innerText =
+                    "Presentear";
+
+                return;
+
+            }
+
+
+            card.classList.add("escolhido");
+
+            botao.innerText =
+                "✓ Escolhido";
+
+
+            /* CHAVE PIX */
+
+            const chavePix =
+                "00020126580014BR.GOV.BCB.PIX013686933381-05e3-4d95-ac04-d0d383e3d327520400005303986540580.005802BR5924Erivelton Oliveira Matos6009SAO PAULO61080540900062240520cCeyF4VJxJayRR0dwn3i63047322";
+
+
+            /* COPIAR PIX */
+
+            navigator.clipboard.writeText(chavePix)
+
+                .then(() => {
+
+                    abrirPopup();
+
+                })
+
+                .catch(() => {
+
+                    abrirPopup();
+
+                });
+
+        }
+
+
+        /* =====================================================
+           ORDENAÇÃO
+        ===================================================== */
 
         function ordenarLista() {
 
             const lista =
                 document.getElementById("lista");
+
 
             const cards =
                 Array.from(
@@ -724,6 +1339,7 @@ function fecharPopup() {
 
 
             cards.sort((a, b) => {
+
 
                 if (ordem === "menor") {
 
@@ -753,6 +1369,7 @@ function fecharPopup() {
 
                 }
 
+
             });
 
 
@@ -764,77 +1381,124 @@ function fecharPopup() {
 
         }
 
- 
 
-    // DATA DO CASAMENTO
-    const dataCasamento = new Date("2026-11-07T00:00:00-03:00").getTime();
+        /* =====================================================
+           CONTAGEM REGRESSIVA
+        ===================================================== */
 
-
-    function atualizarContagem() {
-
-        const agora = new Date().getTime();
-
-        const diferenca = dataCasamento - agora;
+        const dataCasamento =
+            new Date(
+                "2026-11-07T00:00:00-03:00"
+            ).getTime();
 
 
-        // Quando chegar o dia
-        if (diferenca <= 0) {
+        function atualizarContagem() {
 
-            document.getElementById("contagem-regressiva").innerHTML =
-                "<div style='font-size: 20px; color: #c98299; font-weight: bold;'>❤️ Chegou o grande dia! ❤️</div>";
+            const agora =
+                new Date().getTime();
 
-            return;
+
+            const diferenca =
+                dataCasamento - agora;
+
+
+            /* CHEGOU O GRANDE DIA */
+
+            if (diferenca <= 0) {
+
+                document
+                    .getElementById("contagem-regressiva")
+                    .innerHTML = `
+
+                        <div style="
+                            font-family: 'Cormorant Garamond', Georgia, serif;
+                            font-size: 26px;
+                            color: #536b57;
+                            font-weight: 500;
+                            width: 100%;
+                        ">
+                            ♡ Chegou o grande dia! ♡
+                        </div>
+
+                    `;
+
+                return;
+
+            }
+
+
+            /* CÁLCULOS */
+
+            const dias =
+                Math.floor(
+                    diferenca /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            const horas =
+                Math.floor(
+                    (diferenca %
+                    (1000 * 60 * 60 * 24)) /
+                    (1000 * 60 * 60)
+                );
+
+
+            const minutos =
+                Math.floor(
+                    (diferenca %
+                    (1000 * 60 * 60)) /
+                    (1000 * 60)
+                );
+
+
+            const segundos =
+                Math.floor(
+                    (diferenca %
+                    (1000 * 60)) /
+                    1000
+                );
+
+
+            /* MOSTRAR */
+
+            document.getElementById("dias")
+                .innerText =
+                String(dias).padStart(2, "0");
+
+
+            document.getElementById("horas")
+                .innerText =
+                String(horas).padStart(2, "0");
+
+
+            document.getElementById("minutos")
+                .innerText =
+                String(minutos).padStart(2, "0");
+
+
+            document.getElementById("segundos")
+                .innerText =
+                String(segundos).padStart(2, "0");
 
         }
 
 
-        // Cálculos
-        const dias = Math.floor(
-            diferenca / (1000 * 60 * 60 * 24)
-        );
+        /* =====================================================
+           INICIAR CONTAGEM
+        ===================================================== */
 
-        const horas = Math.floor(
-            (diferenca % (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
-        );
+        atualizarContagem();
 
-        const minutos = Math.floor(
-            (diferenca % (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
-
-        const segundos = Math.floor(
-            (diferenca % (1000 * 60)) /
+        setInterval(
+            atualizarContagem,
             1000
         );
 
 
-        // Mostrar na tela
-        document.getElementById("dias").innerText =
-            String(dias).padStart(2, "0");
-
-        document.getElementById("horas").innerText =
-            String(horas).padStart(2, "0");
-
-        document.getElementById("minutos").innerText =
-            String(minutos).padStart(2, "0");
-
-        document.getElementById("segundos").innerText =
-            String(segundos).padStart(2, "0");
-
-    }
-
-
-    // Atualiza imediatamente
-    atualizarContagem();
-
-
-    // Atualiza a cada segundo
-    setInterval(atualizarContagem, 1000);
-
-
-        
     </script>
+
 
 </body>
 </html>
+```
