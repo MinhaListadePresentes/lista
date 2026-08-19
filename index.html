@@ -250,6 +250,100 @@
             }
         
         }
+
+        /* POPUP PIX */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.popup-overlay.ativo {
+    display: flex;
+}
+
+.popup {
+    width: 100%;
+    max-width: 380px;
+
+    background: #f5eddf;
+    border: 1px solid #e2d2b8;
+    border-radius: 14px;
+
+    padding: 28px 22px 22px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
+
+    animation: aparecerPopup 0.25s ease;
+}
+
+@keyframes aparecerPopup {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.popup-icone {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.popup-titulo {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: #6f604d;
+    margin-bottom: 12px;
+}
+
+.popup-mensagem {
+    font-size: 14px;
+    line-height: 21px;
+    color: #6d665d;
+    margin-bottom: 22px;
+}
+
+.popup-fechar {
+    width: 100%;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 11px;
+
+    background: #dbc9a7;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.popup-fechar:hover {
+    background: #cdbb99;
+}
+
+.popup-fechar:active {
+    transform: scale(0.98);
+}
     </style>
 </head>
 
@@ -516,45 +610,100 @@
 
     </button>
 
+<!-- POPUP PIX -->
+<div id="popupPix" class="popup-overlay">
 
+    <div class="popup">
+
+        <div class="popup-icone">
+            💛
+        </div>
+
+        <div class="popup-titulo">
+            Presente escolhido!
+        </div>
+
+        <div class="popup-mensagem">
+            Chave PIX copiada!<br><br>
+            Cole no banco desejado e efetue a transferência.
+        </div>
+
+        <button
+            class="popup-fechar"
+            onclick="fecharPopup()">
+
+            Entendi
+
+        </button>
+
+    </div>
+
+</div>
+    
     <script>
 
-        function presentear(botao, nome, preco) {
+function abrirPopup() {
 
-            const card = botao.closest(".presente");
+    document
+        .getElementById("popupPix")
+        .classList.add("ativo");
 
-            const jaSelecionado =
-                presentesSelecionados.find(
-                    presente => presente.nome === nome
-                );
-
-
-            if (jaSelecionado) {
-
-                presentesSelecionados =
-                    presentesSelecionados.filter(
-                        presente => presente.nome !== nome
-                    );
-
-                card.classList.remove("escolhido");
-
-                botao.innerText = "Presentear";
-
-            } else {
-
-                presentesSelecionados.push({
-                    nome: nome,
-                    preco: preco
-                });
-
-                card.classList.add("escolhido");
-
-                botao.innerText = "✓ Escolhido";
-
-            }
+}
 
 
-        }
+function fecharPopup() {
+
+    document
+        .getElementById("popupPix")
+        .classList.remove("ativo");
+
+}
+
+        
+
+       function presentear(botao, nome, preco) {
+
+    const card = botao.closest(".presente");
+
+    const jaEscolhido =
+        card.classList.contains("escolhido");
+
+
+    if (jaEscolhido) {
+
+        card.classList.remove("escolhido");
+
+        botao.innerText = "Presentear";
+
+        return;
+
+    }
+
+
+    card.classList.add("escolhido");
+
+    botao.innerText = "✓ Escolhido";
+
+
+    // CHAVE PIX
+    const chavePix =
+        "00020126580014BR.GOV.BCB.PIX013686933381-05e3-4d95-ac04-d0d383e3d327520400005303986540580.005802BR5924Erivelton Oliveira Matos6009SAO PAULO61080540900062240520cCeyF4VJxJayRR0dwn3i63047322";
+
+
+    // COPIAR CHAVE PIX
+    navigator.clipboard.writeText(chavePix)
+        .then(() => {
+
+            abrirPopup();
+
+        })
+        .catch(() => {
+
+            abrirPopup();
+
+        });
+
+}
 
 
 
