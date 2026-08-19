@@ -274,8 +274,7 @@
             </div>
 
             <button
-                class="botao"
-                onclick="presentear(this, 'Café da manhã especial', 29.90)">
+                class="botao" id="copiarBtn">
 
                 Presentear
 
@@ -613,7 +612,20 @@
             });
 
         }
+        
+        document.getElementById("copiarBtn").addEventListener("click", function () {
+            const texto = "https://google.com";
 
+            navigator.clipboard.writeText(texto).then(() => {
+                this.textContent = "Copiado!";
+
+                setTimeout(() => {
+                    this.textContent = "Clique para copiar";
+                }, 2000);
+            });
+        });
+
+        
     </script>
 
 </body>
