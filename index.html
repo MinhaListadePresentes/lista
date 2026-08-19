@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Botão Copiar</title>
+</head>
+<body>
+
+    <button id="copiarBtn">Clique para copiar</button>
+
+    <script>
+        document.getElementById("copiarBtn").addEventListener("click", function () {
+            const texto = "https://google.com";
+
+            navigator.clipboard.writeText(texto).then(() => {
+                this.textContent = "Copiado!";
+
+                setTimeout(() => {
+                    this.textContent = "Clique para copiar";
+                }, 2000);
+            });
+        });
+    </script>
+
+</body>
+</html>
