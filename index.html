@@ -2,24 +2,634 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Botão Copiar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lista de Presentes | João & Maria</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #555;
+        }
+
+        /* TOPO */
+        .topo {
+            width: 100%;
+            padding: 18px 20px 10px;
+            text-align: center;
+        }
+
+        .nomes {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* CARRINHO */
+        .carrinho-area {
+            display: flex;
+            justify-content: flex-end;
+            padding: 5px 20px 15px;
+        }
+
+        .carrinho {
+            border: 1px solid #eeeeee;
+            background: #fafafa;
+            color: #aaa;
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .carrinho.ativo {
+            background: #555;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ORDENAR */
+        .ordenacao {
+            text-align: center;
+            padding: 10px 0 25px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .ordenacao select {
+            border: none;
+            background: transparent;
+            color: #666;
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* LISTA */
+        .lista {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            padding: 0 12px 30px;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        /* CARD */
+        .presente {
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 7px;
+            background: white;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .imagem {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 7px;
+            display: block;
+        }
+
+        .nome-presente {
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+            line-height: 18px;
+            color: #555;
+            padding: 8px 4px 2px;
+        }
+
+        .preco {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0 10px;
+        }
+
+        .botao {
+            width: 100%;
+            border: none;
+            background: #c98299;
+            color: white;
+
+            padding: 9px 5px;
+            border-radius: 7px;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .botao:hover {
+            background: #b86f86;
+        }
+
+        .botao:active {
+            transform: scale(0.98);
+        }
+
+        /* PRESENTE ESCOLHIDO */
+        .presente.escolhido {
+            opacity: 0.65;
+        }
+
+        .presente.escolhido .botao {
+            background: #777;
+        }
+
+        /* RODAPÉ */
+        .rodape {
+            text-align: center;
+            padding: 25px 15px 35px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* BOTÃO VOLTAR AO TOPO */
+        .topo-btn {
+            position: fixed;
+            right: 15px;
+            bottom: 20px;
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #aaa;
+            color: white;
+
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* CELULAR MUITO PEQUENO */
+        @media (max-width: 360px) {
+
+            .lista {
+                gap: 9px;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .nome-presente {
+                font-size: 12px;
+            }
+
+            .preco {
+                font-size: 13px;
+            }
+
+            .botao {
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <button id="copiarBtn">Clique para copiar</button>
+    <!-- TOPO -->
+    <header class="topo">
+
+        <div class="nomes">
+            João & Maria
+        </div>
+
+        <div class="subtitulo">
+            Nossa lista de presentes
+        </div>
+
+    </header>
+
+
+    <!-- CARRINHO -->
+    <div class="carrinho-area">
+
+        <button
+            id="carrinho"
+            class="carrinho"
+            onclick="abrirCarrinho()">
+
+            🛒 Carrinho
+            <span id="contador">(0)</span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ORDENAÇÃO -->
+    <div class="ordenacao">
+
+        <div>Ordenar lista</div>
+
+        <div>
+            por:
+
+            <select id="ordenacao" onchange="ordenarLista()">
+
+                <option value="menor">
+                    Menor preço
+                </option>
+
+                <option value="maior">
+                    Maior preço
+                </option>
+
+                <option value="nome">
+                    Nome
+                </option>
+
+            </select>
+        </div>
+
+    </div>
+
+
+    <!-- LISTA DE PRESENTES -->
+    <main class="lista" id="lista">
+
+
+        <!-- PRESENTE 1 -->
+        <div class="presente" data-preco="29.90" data-nome="Café da manhã dos noivos">
+
+            <img
+                class="imagem"
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500"
+                alt="Café da manhã">
+
+            <div class="nome-presente">
+                Café da manhã especial para os noivos
+            </div>
+
+            <div class="preco">
+                R$ 29,90
+            </div>
+
+            <button
+                class="botao"
+                onclick="presentear(this, 'Café da manhã especial', 29.90)">
+
+                Presentear
+
+            </button>
+
+        </div>
+
+
+        <!-- PRESENTE 2 -->
+        <div class="presente" data-preco="45.00" data-nome="Jantar romântico">
+
+            <img
+                class="imagem"
+                src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?w=500"
+                alt="Jantar romântico">
+
+            <div class="nome-presente">
+                Jantar romântico para o casal
+            </div>
+
+            <div class="preco">
+                R$ 45,00
+            </div>
+
+            <button
+                class="botao"
+                onclick="presentear(this, 'Jantar romântico', 45.00)">
+
+                Presentear
+
+            </button>
+
+        </div>
+
+
+        <!-- PRESENTE 3 -->
+        <div class="presente" data-preco="59.90" data-nome="Filme e pipoca">
+
+            <img
+                class="imagem"
+                src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=500"
+                alt="Pipoca">
+
+            <div class="nome-presente">
+                Sessão de cinema com pipoca para o casal
+            </div>
+
+            <div class="preco">
+                R$ 59,90
+            </div>
+
+            <button
+                class="botao"
+                onclick="presentear(this, 'Cinema com pipoca', 59.90)">
+
+                Presentear
+
+            </button>
+
+        </div>
+
+
+        <!-- PRESENTE 4 -->
+        <div class="presente" data-preco="75.00" data-nome="Cesta de café">
+
+            <img
+                class="imagem"
+                src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500"
+                alt="Café da manhã">
+
+            <div class="nome-presente">
+                Cesta de café da manhã dos recém-casados
+            </div>
+
+            <div class="preco">
+                R$ 75,00
+            </div>
+
+            <button
+                class="botao"
+                onclick="presentear(this, 'Cesta de café da manhã', 75.00)">
+
+                Presentear
+
+            </button>
+
+        </div>
+
+
+        <!-- PRESENTE 5 -->
+        <div class="presente" data-preco="100.00" data-nome="Jantar especial">
+
+            <img
+                class="imagem"
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500"
+                alt="Jantar">
+
+            <div class="nome-presente">
+                Jantar especial de comemoração
+            </div>
+
+            <div class="preco">
+                R$ 100,00
+            </div>
+
+            <button
+                class="botao"
+                onclick="presentear(this, 'Jantar especial', 100.00)">
+
+                Presentear
+
+            </button>
+
+        </div>
+
+
+        <!-- PRESENTE 6 -->
+        <div class="presente" data-preco="150.00" data-nome="Noite de hotel">
+
+            <img
+                class="imagem"
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500"
+                alt="Hotel">
+
+            <div class="nome-presente">
+                Uma noite especial em um hotel
+            </div>
+
+            <div class="preco">
+                R$ 150,00
+            </div>
+
+            <button
+                class="botao"
+                onclick="presentear(this, 'Noite especial no hotel', 150.00)">
+
+                Presentear
+
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+
+        Com carinho,<br>
+
+        <strong>João & Maria ❤️</strong>
+
+    </footer>
+
+
+    <!-- BOTÃO TOPO -->
+    <button
+        class="topo-btn"
+        onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+
+        ↑
+
+    </button>
+
 
     <script>
-        document.getElementById("copiarBtn").addEventListener("click", function () {
-            const texto = "https://google.com";
 
-            navigator.clipboard.writeText(texto).then(() => {
-                this.textContent = "Copiado!";
+        let presentesSelecionados = [];
 
-                setTimeout(() => {
-                    this.textContent = "Clique para copiar";
-                }, 2000);
+
+        function presentear(botao, nome, preco) {
+
+            const card = botao.closest(".presente");
+
+            const jaSelecionado =
+                presentesSelecionados.find(
+                    presente => presente.nome === nome
+                );
+
+
+            if (jaSelecionado) {
+
+                presentesSelecionados =
+                    presentesSelecionados.filter(
+                        presente => presente.nome !== nome
+                    );
+
+                card.classList.remove("escolhido");
+
+                botao.innerText = "Presentear";
+
+            } else {
+
+                presentesSelecionados.push({
+                    nome: nome,
+                    preco: preco
+                });
+
+                card.classList.add("escolhido");
+
+                botao.innerText = "✓ Escolhido";
+
+            }
+
+
+            atualizarCarrinho();
+
+        }
+
+
+        function atualizarCarrinho() {
+
+            const contador =
+                document.getElementById("contador");
+
+            const carrinho =
+                document.getElementById("carrinho");
+
+
+            contador.innerText =
+                "(" + presentesSelecionados.length + ")";
+
+
+            if (presentesSelecionados.length > 0) {
+
+                carrinho.classList.add("ativo");
+
+            } else {
+
+                carrinho.classList.remove("ativo");
+
+            }
+
+        }
+
+
+        function abrirCarrinho() {
+
+            if (presentesSelecionados.length === 0) {
+
+                alert("Você ainda não escolheu nenhum presente.");
+
+                return;
+
+            }
+
+
+            let mensagem =
+                "Presentes escolhidos:\\n\\n";
+
+            let total = 0;
+
+
+            presentesSelecionados.forEach(
+                presente => {
+
+                    mensagem +=
+                        "🎁 " +
+                        presente.nome +
+                        " - R$ " +
+                        presente.preco
+                            .toFixed(2)
+                            .replace(".", ",") +
+                        "\\n";
+
+                    total += presente.preco;
+
+                }
+            );
+
+
+            mensagem +=
+                "\\nTotal: R$ " +
+                total.toFixed(2).replace(".", ",");
+
+
+            alert(mensagem);
+
+        }
+
+
+        function ordenarLista() {
+
+            const lista =
+                document.getElementById("lista");
+
+            const cards =
+                Array.from(
+                    lista.querySelectorAll(".presente")
+                );
+
+
+            const ordem =
+                document.getElementById("ordenacao").value;
+
+
+            cards.sort((a, b) => {
+
+                if (ordem === "menor") {
+
+                    return (
+                        parseFloat(a.dataset.preco) -
+                        parseFloat(b.dataset.preco)
+                    );
+
+                }
+
+
+                if (ordem === "maior") {
+
+                    return (
+                        parseFloat(b.dataset.preco) -
+                        parseFloat(a.dataset.preco)
+                    );
+
+                }
+
+
+                if (ordem === "nome") {
+
+                    return a.dataset.nome.localeCompare(
+                        b.dataset.nome
+                    );
+
+                }
+
             });
-        });
+
+
+            cards.forEach(card => {
+
+                lista.appendChild(card);
+
+            });
+
+        }
+
     </script>
 
 </body>
