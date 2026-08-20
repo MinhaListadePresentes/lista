@@ -520,13 +520,15 @@
         .lista {
             width: 100%;
             max-width: 700px;
-
+        
             margin: auto;
             padding: 0 12px 45px;
-
+        
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 18px;
+        
+            align-items: stretch;
         }
 
 
@@ -536,22 +538,27 @@
 
         .presente {
             position: relative;
-
+        
             border: 1px solid var(--borda);
             border-radius: 15px;
-
-            padding: 8px;
-
+        
+            padding: 8px 8px 12px;
+        
             background: var(--branco);
-
+        
             text-align: center;
-
+        
             box-shadow:
                 0 4px 18px rgba(90, 80, 60, 0.055);
-
+        
             transition:
                 transform 0.25s ease,
                 box-shadow 0.25s ease;
+        
+            display: flex;
+            flex-direction: column;
+        
+            height: 100%;
         }
 
         .presente:hover {
@@ -714,27 +721,29 @@
 
         .botao {
             width: 100%;
-
+        
+            margin-top: auto;
+        
             border: 1px solid var(--dourado);
-
+        
             background: transparent;
-
+        
             color: var(--verde-escuro);
-
+        
             padding: 10px 5px;
-
+        
             border-radius: 8px;
-
+        
             font-family: 'Montserrat', Arial, sans-serif;
-
+        
             font-size: 10px;
             font-weight: 600;
-
+        
             letter-spacing: 1.3px;
             text-transform: uppercase;
-
+        
             cursor: pointer;
-
+        
             transition: all 0.25s ease;
         }
 
@@ -981,15 +990,54 @@
         
                 min-width: 0;
             }
-            .frase-presente {
-            height: 62px;
-    
-            font-size: 13px;
-            line-height: 16px;
-    
-            padding-left: 5px;
-            padding-right: 5px;
-            }
+
+             .presente {
+                    display: flex;
+                    flex-direction: column;
+                }
+            
+                .categoria-presente {
+                    min-height: 22px;
+            
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            
+                .nome-presente {
+                    min-height: 48px;
+            
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            
+                .frase-presente {
+                    height: 62px;
+                    min-height: 62px;
+            
+                    flex: none;
+            
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+            
+                    padding: 5px 6px;
+            
+                    font-size: 13px;
+                    line-height: 16px;
+                }
+            
+                .preco {
+                    height: 22px;
+                    min-height: 22px;
+            
+                    margin: 7px 0 12px;
+                }
+            
+                .botao {
+                    margin-top: auto;
+                }
             
         }
         
@@ -1314,18 +1362,20 @@
             }
 
             .preco {
-            height: 20px;
-        
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        
-            font-size: 13px;
-            font-weight: 600;
-        
-            color: var(--dourado);
-        
-            margin: 7px 0 12px;
+                height: 22px;
+            
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            
+                flex-shrink: 0;
+            
+                font-size: 13px;
+                font-weight: 600;
+            
+                color: var(--dourado);
+            
+                margin: 7px 0 12px;
             }
 
             .botao {
