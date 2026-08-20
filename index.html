@@ -1214,6 +1214,165 @@
                 }
             
 }
+
+                /* =====================================================
+                   TELA DE ENTRADA
+                ===================================================== */
+                
+                .tela-entrada {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 99999;
+                
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                
+                    padding: 25px;
+                
+                    background: #faf8f4;
+                
+                    text-align: center;
+                
+                    transition:
+                        opacity 0.8s ease,
+                        visibility 0.8s ease;
+                }
+                
+                .tela-entrada.saindo {
+                    opacity: 0;
+                    visibility: hidden;
+                    pointer-events: none;
+                }
+                
+                .entrada-conteudo {
+                    width: 100%;
+                    max-width: 500px;
+                
+                    padding: 45px 30px;
+                }
+                
+                .entrada-detalhe {
+                    color: var(--dourado);
+                    font-size: 25px;
+                    margin-bottom: 20px;
+                }
+                
+                .entrada-pequeno {
+                    font-size: 10px;
+                    letter-spacing: 4px;
+                    text-transform: uppercase;
+                    color: var(--texto-claro);
+                
+                    margin-bottom: 15px;
+                }
+                
+                .entrada-nomes {
+                    font-family: 'Cormorant Garamond', Georgia, serif;
+                
+                    font-size: clamp(58px, 12vw, 90px);
+                
+                    line-height: 0.9;
+                
+                    font-weight: 500;
+                
+                    color: var(--verde);
+                
+                    margin-bottom: 18px;
+                }
+                
+                .entrada-data {
+                    font-family: 'Cormorant Garamond', Georgia, serif;
+                
+                    font-size: 20px;
+                
+                    letter-spacing: 4px;
+                
+                    color: var(--dourado);
+                
+                    margin-bottom: 25px;
+                }
+                
+                .entrada-frase {
+                    font-size: 11px;
+                
+                    line-height: 20px;
+                
+                    color: var(--texto-claro);
+                
+                    max-width: 340px;
+                
+                    margin: 0 auto 30px;
+                }
+                
+                .entrada-linha {
+                    display: flex;
+                
+                    align-items: center;
+                
+                    justify-content: center;
+                
+                    gap: 12px;
+                
+                    margin-bottom: 30px;
+                }
+                
+                .entrada-linha span {
+                    width: 60px;
+                
+                    height: 1px;
+                
+                    background: var(--dourado-claro);
+                }
+                
+                .entrada-linha i {
+                    font-style: normal;
+                
+                    color: var(--dourado);
+                
+                    font-size: 15px;
+                }
+                
+                .botao-entrar {
+                    border: 1px solid var(--dourado);
+                
+                    background: transparent;
+                
+                    color: var(--verde-escuro);
+                
+                    padding: 13px 38px;
+                
+                    border-radius: 8px;
+                
+                    font-family: 'Montserrat', Arial, sans-serif;
+                
+                    font-size: 10px;
+                
+                    font-weight: 600;
+                
+                    letter-spacing: 2px;
+                
+                    text-transform: uppercase;
+                
+                    cursor: pointer;
+                
+                    transition:
+                        background 0.25s ease,
+                        color 0.25s ease,
+                        transform 0.25s ease;
+                }
+                
+                .botao-entrar:hover {
+                    background: var(--dourado);
+                
+                    color: white;
+                
+                    transform: translateY(-2px);
+                }
+                
+                .botao-entrar:active {
+                    transform: scale(0.97);
+                }
         
     </style>
 </head>
@@ -1221,6 +1380,53 @@
 
 <body>
 
+              <!-- =====================================================
+         TELA DE ENTRADA
+    ===================================================== -->
+    
+    <div class="tela-entrada" id="telaEntrada">
+    
+        <div class="entrada-conteudo">
+    
+            <div class="entrada-detalhe">
+                ♡
+            </div>
+    
+            <div class="entrada-pequeno">
+                Nosso casamento
+            </div>
+    
+            <div class="entrada-nomes">
+                Gabi & Tom
+            </div>
+    
+            <div class="entrada-data">
+                07 · 11 · 2026
+            </div>
+    
+            <div class="entrada-frase">
+                Estamos muito felizes em compartilhar
+                esse momento tão especial com vocês.
+            </div>
+    
+            <div class="entrada-linha">
+                <span></span>
+                <i>♡</i>
+                <span></span>
+            </div>
+    
+            <button
+                class="botao-entrar"
+                id="botaoEntrar"
+                onclick="entrarNoSite()">
+    
+                Entrar
+    
+            </button>
+    
+        </div>
+    
+    </div>
 
     <!-- =====================================================
          HERO
@@ -2051,6 +2257,57 @@
    MÚSICA DE FUNDO
 ===================================================== */
 
+/* =====================================================
+   ENTRAR NO SITE
+===================================================== */
+
+function entrarNoSite() {
+
+    /* Tenta iniciar a música imediatamente
+       após o clique do usuário */
+
+    musica.volume = 0.35;
+
+    musica.play()
+        .then(function() {
+
+            musicaTocando();
+
+        })
+        .catch(function(erro) {
+
+            console.log(
+                "Não foi possível iniciar a música:",
+                erro
+            );
+
+        });
+
+
+    /* Fecha a tela de entrada */
+
+    const telaEntrada =
+        document.getElementById("telaEntrada");
+
+    telaEntrada.classList.add("saindo");
+
+
+    /* Libera o scroll */
+
+    document.body.style.overflow = "";
+
+
+    /* Remove a tela depois da animação */
+
+    setTimeout(function() {
+
+        telaEntrada.remove();
+
+    }, 850);
+
+}
+        
+
 const musica = document.getElementById("musicaCasamento");
 const botaoMusica = document.getElementById("botaoMusica");
 const playerMusica = document.getElementById("playerMusica");
@@ -2149,37 +2406,6 @@ musica.addEventListener("pause", function() {
 musica.addEventListener("play", function() {
 
     musicaTocando();
-
-});
-
-
-/* =====================================================
-   TENTAR AUTOPLAY
-===================================================== */
-
-window.addEventListener("load", function() {
-
-    musica.volume = 0.35;
-
-    musica.play()
-        .then(function() {
-
-            musicaTocando();
-
-        })
-        .catch(function() {
-
-            /*
-             * O navegador pode bloquear
-             * autoplay com som.
-             *
-             * Nesse caso, o botão ▶
-             * continuará disponível.
-             */
-
-            musicaPausada();
-
-        });
 
 });
 
