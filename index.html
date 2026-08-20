@@ -584,6 +584,22 @@
         }
 
 
+     /* =====================================================
+           CATEGORIA DO PRESENTE
+        ===================================================== */
+        
+        .categoria-presente {
+            margin-top: 10px;
+        
+            font-size: 9px;
+            font-weight: 600;
+        
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        
+            color: var(--dourado);
+        }
+
         /* =====================================================
            NOME DO PRESENTE
         ===================================================== */
@@ -607,6 +623,52 @@
 
 
         /* =====================================================
+           FRASE DO PRESENTE
+        ===================================================== */
+        
+        .frase-presente {
+            min-height: 48px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            padding: 8px 10px 4px;
+        
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        
+            font-size: 14px;
+            line-height: 18px;
+        
+            font-style: italic;
+        
+            color: var(--texto-claro);
+        }
+        
+        
+        /* ASPAS DECORATIVAS */
+        
+        .frase-presente::before {
+            content: "“";
+            
+            color: var(--dourado);
+        
+            font-size: 20px;
+        
+            margin-right: 3px;
+        }
+        
+        .frase-presente::after {
+            content: "”";
+            
+            color: var(--dourado);
+        
+            font-size: 20px;
+        
+            margin-left: 3px;
+        }
+
+        /* =====================================================
            PREÇO
         ===================================================== */
 
@@ -619,6 +681,29 @@
             margin: 5px 0 12px;
         }
 
+        /* =====================================================
+           AJUSTE DO CARD
+        ===================================================== */
+        
+        .presente {
+            position: relative;
+        
+            border: 1px solid var(--borda);
+            border-radius: 15px;
+        
+            padding: 8px 8px 12px;
+        
+            background: var(--branco);
+        
+            text-align: center;
+        
+            box-shadow:
+                0 4px 18px rgba(90, 80, 60, 0.055);
+        
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
 
         /* =====================================================
            BOTÃO
@@ -2217,33 +2302,41 @@
 
         <!-- PRESENTE 1 -->
 
-        <div
-            class="presente"
-            data-preco="80.00"
-            data-nome="Café da manhã dos noivos">
-
-            <img
-                class="imagem"
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700"
-                alt="Café da manhã">
-
-            <div class="nome-presente">
-                Café da manhã especial para os noivos
-            </div>
-
-            <div class="preco">
-                R$ 80,00
-            </div>
-
-            <button
-                class="botao"
-                onclick="presentear(this, 'Café da manhã especial para os noivos', 80.00)">
-
-                Presentear
-
-            </button>
-
+          <div
+        class="presente"
+        data-preco="80.00"
+        data-nome="Café da manhã especial para os noivos">
+    
+        <img
+            class="imagem"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700"
+            alt="Café da manhã">
+    
+        <div class="categoria-presente">
+            ☕ Momentos a dois
         </div>
+    
+        <div class="nome-presente">
+            Café da manhã especial para os noivos
+        </div>
+    
+        <div class="frase-presente">
+            Para começar um dia de casados com muito carinho.
+        </div>
+    
+        <div class="preco">
+            R$ 80,00
+        </div>
+    
+        <button
+            class="botao"
+            onclick="presentear(this, 'Café da manhã especial para os noivos', 80.00)">
+    
+            Presentear
+    
+        </button>
+    
+    </div>
 
 
         <!-- PRESENTE 2 -->
