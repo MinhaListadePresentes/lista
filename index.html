@@ -100,15 +100,102 @@
             margin-bottom: 12px;
         }
 
+        /* =====================================================
+   MONOGRAMA G | E
+===================================================== */
+
         .nomes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+        
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(54px, 10vw, 82px);
-            line-height: 0.95;
-            font-weight: 500;
+        
             color: var(--verde);
-            letter-spacing: -1px;
-            margin-bottom: 12px;
+        
+            margin: 2px 0 14px;
+        
+            line-height: 1;
         }
+        
+        /* Letras G e E */
+        
+        .monograma-letra {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        
+            font-size: clamp(68px, 13vw, 92px);
+        
+            font-weight: 500;
+        
+            color: var(--verde);
+        
+            line-height: 0.85;
+        }
+        
+        /* Elemento central */
+        
+        .monograma-centro {
+            position: relative;
+        
+            display: flex;
+            flex-direction: column;
+        
+            align-items: center;
+            justify-content: center;
+        
+            width: 35px;
+        
+            color: var(--dourado);
+        }
+        
+        /* coração */
+        
+        .monograma-coracao {
+            font-family: Georgia, serif;
+        
+            font-size: 17px;
+        
+            line-height: 1;
+        
+            margin-bottom: 5px;
+        
+            color: var(--dourado);
+        }
+        
+        /* linha vertical */
+        
+        .monograma-linha {
+            width: 1px;
+            height: 30px;
+        
+            background: var(--dourado-claro);
+        }
+        
+        /* pequenos detalhes laterais */
+        
+        .monograma-detalhe {
+            position: absolute;
+        
+            width: 5px;
+            height: 5px;
+        
+            border: 1px solid var(--dourado);
+        
+            transform: rotate(45deg);
+        
+            opacity: 0.8;
+        }
+        
+        .monograma-detalhe.esquerda {
+            left: -2px;
+            top: 5px;
+        }
+        
+        .monograma-detalhe.direita {
+            right: -2px;
+            top: 5px;
+}    
 
         .data-casamento {
             font-family: 'Cormorant Garamond', Georgia, serif;
@@ -1072,8 +1159,29 @@
             Nosso casamento
         </div>
 
-        <div class="nomes">
-            Gabi & Tom
+         <div class="nomes">
+        
+            <span class="monograma-letra">
+                G
+            </span>
+        
+            <span class="monograma-centro">
+        
+                <span class="monograma-coracao">
+                    ♡
+                </span>
+        
+                <span class="monograma-linha"></span>
+        
+                <span class="monograma-detalhe esquerda"></span>
+                <span class="monograma-detalhe direita"></span>
+        
+            </span>
+        
+            <span class="monograma-letra">
+                E
+            </span>
+        
         </div>
 
         <div class="data-casamento">
@@ -1203,7 +1311,7 @@
                     </div>
 
                     <div class="evento-valor">
-                        Cerimônia & Festa
+                    Festa
                     </div>
 
                     <div class="evento-endereco">
