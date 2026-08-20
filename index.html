@@ -621,24 +621,23 @@
             padding: 10px 5px 2px;
         }
 
-
         /* =====================================================
            FRASE DO PRESENTE
         ===================================================== */
         
         .frase-presente {
-            min-height: 48px;
+            height: 58px;
         
             display: flex;
             align-items: center;
             justify-content: center;
         
-            padding: 8px 10px 4px;
+            padding: 6px 8px;
         
             font-family: 'Cormorant Garamond', Georgia, serif;
         
             font-size: 14px;
-            line-height: 18px;
+            line-height: 17px;
         
             font-style: italic;
         
@@ -650,25 +649,29 @@
         
         .frase-presente::before {
             content: "“";
-            
+        
             color: var(--dourado);
         
             font-size: 20px;
         
             margin-right: 3px;
+        
+            flex-shrink: 0;
         }
         
         .frase-presente::after {
             content: "”";
-            
+        
             color: var(--dourado);
         
             font-size: 20px;
         
             margin-left: 3px;
+        
+            flex-shrink: 0;
         }
 
-        /* =====================================================
+         /* =====================================================
            PREÇO
         ===================================================== */
 
@@ -978,7 +981,16 @@
         
                 min-width: 0;
             }
-        
+            .frase-presente {
+            height: 62px;
+    
+            font-size: 13px;
+            line-height: 16px;
+    
+            padding-left: 5px;
+            padding-right: 5px;
+            }
+            
         }
         
 
@@ -1302,7 +1314,18 @@
             }
 
             .preco {
-                font-size: 12px;
+            height: 20px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            font-size: 13px;
+            font-weight: 600;
+        
+            color: var(--dourado);
+        
+            margin: 7px 0 12px;
             }
 
             .botao {
