@@ -1053,6 +1053,168 @@
 
         }
 
+            /* =====================================================
+               PLAYER DE MÚSICA
+            ===================================================== */
+            
+            .player-musica {
+                position: fixed;
+            
+                right: 18px;
+                bottom: 75px;
+            
+                z-index: 999;
+            
+                display: flex;
+                align-items: center;
+            
+                gap: 8px;
+            
+                padding: 8px 10px;
+            
+                background: rgba(250, 248, 244, 0.96);
+            
+                border: 1px solid var(--dourado-claro);
+            
+                border-radius: 30px;
+            
+                box-shadow:
+                    0 6px 25px rgba(70, 60, 45, 0.12);
+            
+                backdrop-filter: blur(8px);
+            }
+            
+            
+            /* BOTÃO PLAY / PAUSE */
+            
+            .controle-musica {
+                width: 38px;
+                height: 38px;
+            
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            
+                border: none;
+            
+                border-radius: 50%;
+            
+                background: var(--verde);
+            
+                color: white;
+            
+                font-size: 15px;
+            
+                cursor: pointer;
+            
+                transition: 0.25s;
+            }
+            
+            .controle-musica:hover {
+                background: var(--verde-escuro);
+            
+                transform: scale(1.05);
+            }
+            
+            
+            /* ÍCONE DA MÚSICA */
+            
+            .icone-musica {
+                color: var(--dourado);
+            
+                font-size: 16px;
+            
+                animation: musicaPulse 2s infinite;
+            
+                animation-play-state: paused;
+            }
+            
+            
+            /* QUANDO ESTIVER TOCANDO */
+            
+            .player-musica.tocando .icone-musica {
+                animation-play-state: running;
+            }
+            
+            
+            @keyframes musicaPulse {
+            
+                0%, 100% {
+                    transform: scale(1);
+                }
+            
+                50% {
+                    transform: scale(1.15);
+                }
+            
+            }
+            
+            
+            /* CONTROLE DE VOLUME */
+            
+            .volume-musica {
+                width: 75px;
+            
+                accent-color: var(--verde);
+            
+                cursor: pointer;
+            }
+            
+            
+            /* TEXTO */
+            
+            .texto-musica {
+                font-family: 'Montserrat', Arial, sans-serif;
+            
+                font-size: 9px;
+            
+                letter-spacing: 0.8px;
+            
+                color: var(--texto-claro);
+            
+                white-space: nowrap;
+            }
+            
+            
+            /* =====================================================
+               CELULAR
+            ===================================================== */
+            
+            @media (max-width: 600px) {
+            
+                .player-musica {
+            
+                    right: 12px;
+            
+                    bottom: 73px;
+            
+                    padding: 7px 8px;
+            
+                }
+            
+                .controle-musica {
+            
+                    width: 36px;
+                    height: 36px;
+            
+                    font-size: 14px;
+            
+                }
+            
+                .volume-musica {
+            
+                    width: 60px;
+            
+                }
+            
+                .texto-musica {
+            
+                    display: none;
+            
+                }
+            
+}
+        
     </style>
 </head>
 
@@ -1838,9 +2000,174 @@
         );
 
 
+        /* =====================================================
+   MÚSICA DE FUNDO
+===================================================== */
+
+const musica =
+    document.getElementById("musicaCasamento");
+
+const botaoMusica =
+    document.getElementById("botaoMusica");
+
+const playerMusica =
+    document.getElementById("playerMusica");
+
+const volumeMusica =
+    document.getElementById("volumeMusica");
+
+
+/* VOLUME INICIAL */
+
+musica.volume = 0.35;
+
+
+/* =====================================================
+   ATUALIZA VISUAL DO PLAYER
+===================================================== */
+
+function musicaTocando() {
+
+    botaoMusica.innerHTML = "❚❚";
+
+    playerMusica.classList.add("tocando");
+
+}
+
+
+function musicaPausada() {
+
+    botaoMusica.innerHTML = "▶";
+
+    playerMusica.classList.remove("tocando");
+
+}
+
+
+/* =====================================================
+   PLAY / PAUSE
+===================================================== */
+
+function alternarMusica() {
+
+    if (musica.paused) {
+
+        musica.play()
+            .then(() => {
+
+                musicaTocando();
+
+            })
+            .catch(() => {
+
+                console.log(
+                    "O navegador bloqueou a reprodução automática."
+                );
+
+            });
+
+    } else {
+
+        musica.pause();
+
+        musicaPausada();
+
+    }
+
+}
+
+
+/* =====================================================
+   CONTROLE DE VOLUME
+===================================================== */
+
+volumeMusica.addEventListener(
+    "input",
+    function() {
+
+        musica.volume = this.value;
+
+    }
+);
+
+
+/* =====================================================
+   TENTAR TOCAR AUTOMATICAMENTE
+===================================================== */
+
+window.addEventListener("load", function() {
+
+    musica.play()
+        .then(() => {
+
+            musicaTocando();
+
+        })
+        .catch(() => {
+
+            /*
+             O navegador bloqueou o autoplay.
+             A música poderá ser iniciada pelo
+             botão ▶.
+            */
+
+            musicaPausada();
+
+        });
+
+});
+
+
     </script>
 
 
+<!-- =====================================================
+     PLAYER DE MÚSICA
+===================================================== -->
+
+<audio id="musicaCasamento" loop>
+
+    <source
+        src="musica.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<div
+    class="player-musica"
+    id="playerMusica">
+
+    <span class="icone-musica">
+        ♪
+    </span>
+
+    <span class="texto-musica">
+        Nossa música
+    </span>
+
+    <button
+        class="controle-musica"
+        id="botaoMusica"
+        onclick="alternarMusica()"
+        aria-label="Reproduzir música">
+
+        ▶
+
+    </button>
+
+    <input
+        class="volume-musica"
+        id="volumeMusica"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.35"
+        aria-label="Volume">
+
+</div>
+    
 </body>
 </html>
 
