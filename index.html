@@ -2859,6 +2859,51 @@ musica.addEventListener("play", function() {
 
 });
 
+        /* =====================================================
+   PARAR MÚSICA AO SAIR DA PÁGINA / SEGUNDO PLANO
+===================================================== */
+
+/* Quando o usuário troca de aba, aplicativo,
+   bloqueia a tela ou deixa o navegador em segundo plano */
+
+document.addEventListener("visibilitychange", function() {
+
+    if (document.hidden) {
+
+        if (!musica.paused) {
+
+            musica.pause();
+
+            musicaPausada();
+
+        }
+
+    }
+
+});
+
+
+/* Quando a página é ocultada/descarregada */
+
+window.addEventListener("pagehide", function() {
+
+    musica.pause();
+
+    musica.currentTime = 0;
+
+    musicaPausada();
+
+});
+
+
+/* Também tenta interromper ao sair da página */
+
+window.addEventListener("beforeunload", function() {
+
+    musica.pause();
+
+});
+
 
     </script>
     
