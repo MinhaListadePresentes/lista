@@ -70,8 +70,6 @@
             overflow: hidden;
         }
 
-        /* detalhes decorativos */
-
         .hero::before {
             content: "❧";
             position: absolute;
@@ -236,6 +234,226 @@
             text-transform: uppercase;
             color: var(--texto-claro);
             margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           NOVA SEÇÃO - CERIMÔNIA E FESTA
+        ===================================================== */
+
+        .evento {
+            max-width: 680px;
+            margin: 0 auto 42px;
+            padding: 0 15px;
+            text-align: center;
+        }
+
+        .evento-card {
+            background: var(--branco);
+
+            border: 1px solid var(--borda);
+            border-radius: 18px;
+
+            padding: 30px 25px 28px;
+
+            box-shadow:
+                0 10px 35px rgba(90, 80, 60, 0.06);
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .evento-card::before {
+            content: "❧";
+
+            position: absolute;
+
+            left: -5px;
+            top: 5px;
+
+            font-family: Georgia, serif;
+            font-size: 55px;
+
+            color: var(--verde-claro);
+
+            opacity: 0.8;
+
+            transform: rotate(-25deg);
+        }
+
+        .evento-card::after {
+            content: "❧";
+
+            position: absolute;
+
+            right: -5px;
+            bottom: -5px;
+
+            font-family: Georgia, serif;
+            font-size: 55px;
+
+            color: var(--verde-claro);
+
+            opacity: 0.8;
+
+            transform: rotate(155deg);
+        }
+
+        .evento-titulo {
+            position: relative;
+            z-index: 1;
+
+            font-family: 'Cormorant Garamond', Georgia, serif;
+
+            font-size: 32px;
+
+            font-weight: 500;
+
+            color: var(--verde-escuro);
+
+            margin-bottom: 5px;
+        }
+
+        .evento-data {
+            position: relative;
+            z-index: 1;
+
+            font-family: 'Cormorant Garamond', Georgia, serif;
+
+            font-size: 18px;
+
+            color: var(--dourado);
+
+            letter-spacing: 2px;
+
+            margin-bottom: 24px;
+        }
+
+        .evento-info {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 25px;
+
+            margin-bottom: 25px;
+        }
+
+        .evento-item {
+            flex: 1;
+
+            max-width: 270px;
+
+            padding: 5px 10px;
+        }
+
+        .evento-icone {
+            width: 44px;
+            height: 44px;
+
+            margin: 0 auto 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--creme-escuro);
+
+            color: var(--dourado);
+
+            font-size: 20px;
+
+            border: 1px solid var(--dourado-claro);
+        }
+
+        .evento-label {
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: var(--texto-claro);
+
+            margin-bottom: 5px;
+        }
+
+        .evento-valor {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+
+            font-size: 20px;
+
+            color: var(--verde-escuro);
+
+            line-height: 22px;
+        }
+
+        .evento-endereco {
+            font-family: 'Montserrat', Arial, sans-serif;
+
+            font-size: 11px;
+
+            line-height: 18px;
+
+            color: var(--texto-claro);
+
+            margin-top: 3px;
+        }
+
+        .evento-divisor {
+            width: 1px;
+
+            background: var(--borda);
+
+            align-self: stretch;
+        }
+
+        .botao-mapa {
+            position: relative;
+            z-index: 1;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            text-decoration: none;
+
+            border: 1px solid var(--dourado);
+
+            background: transparent;
+
+            color: var(--verde-escuro);
+
+            padding: 11px 25px;
+
+            border-radius: 8px;
+
+            font-family: 'Montserrat', Arial, sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+
+            transition: all 0.25s ease;
+        }
+
+        .botao-mapa:hover {
+            background: var(--dourado);
+
+            color: white;
         }
 
 
@@ -729,6 +947,24 @@
                 margin-right: 12px;
             }
 
+            /* NOVA SEÇÃO */
+
+            .evento {
+                padding: 0 12px;
+            }
+
+            .evento-card {
+                padding: 27px 18px 25px;
+            }
+
+            .evento-info {
+                gap: 8px;
+            }
+
+            .evento-item {
+                padding: 5px 3px;
+            }
+
         }
 
 
@@ -767,6 +1003,31 @@
             .botao {
                 font-size: 9px;
                 padding: 9px 3px;
+            }
+
+            /* NOVA SEÇÃO */
+
+            .evento-titulo {
+                font-size: 29px;
+            }
+
+            .evento-data {
+                font-size: 16px;
+            }
+
+            .evento-valor {
+                font-size: 18px;
+            }
+
+            .evento-endereco {
+                font-size: 10px;
+                line-height: 16px;
+            }
+
+            .evento-icone {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
 
         }
@@ -882,6 +1143,90 @@
                 <span id="segundos">00</span>
                 <small>Segundos</small>
             </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CERIMÔNIA E FESTA
+    ====================================================== -->
+
+    <section class="evento">
+
+        <div class="evento-card">
+
+            <div class="evento-titulo">
+                Nosso grande dia
+            </div>
+
+            <div class="evento-data">
+                07 · 11 · 2026
+            </div>
+
+
+            <div class="evento-info">
+
+                <!-- HORÁRIO -->
+
+                <div class="evento-item">
+
+                    <div class="evento-icone">
+                        ♡
+                    </div>
+
+                    <div class="evento-label">
+                        Horário
+                    </div>
+
+                    <div class="evento-valor">
+                        12:00
+                    </div>
+
+                </div>
+
+
+                <div class="evento-divisor"></div>
+
+
+                <!-- LOCAL -->
+
+                <div class="evento-item">
+
+                    <div class="evento-icone">
+                        ⌖
+                    </div>
+
+                    <div class="evento-label">
+                        Local
+                    </div>
+
+                    <div class="evento-valor">
+                        Cerimônia & Festa
+                    </div>
+
+                    <div class="evento-endereco">
+                        Rua Caputira, nº 494<br>
+                        Parque Iracema
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTÃO GOOGLE MAPS -->
+
+            <a
+                class="botao-mapa"
+                href="https://www.google.com/maps/search/?api=1&query=Rua+Caputira+494+Parque+Iracema"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                📍 Como chegar
+
+            </a>
 
         </div>
 
@@ -1500,4 +1845,4 @@
 
 </body>
 </html>
-```
+
