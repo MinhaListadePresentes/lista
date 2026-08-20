@@ -25,56 +25,106 @@
         
             z-index: 5000;
         
-            display: flex;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 7px;
         
-            padding: 10px 16px;
+            padding: 9px 15px;
         
-            background: rgba(250, 248, 244, 0.96);
+            background: rgba(250, 248, 244, 0.88);
         
-            border: 1px solid var(--dourado);
+            border: 1px solid var(--dourado-claro);
         
-            border-radius: 25px;
+            border-radius: 30px;
         
             color: var(--verde-escuro);
         
             font-family: 'Montserrat', Arial, sans-serif;
         
             font-size: 9px;
-            font-weight: 600;
+            font-weight: 500;
         
-            letter-spacing: 1px;
+            letter-spacing: 1.1px;
             text-transform: uppercase;
         
             text-decoration: none;
         
             box-shadow:
-                0 5px 20px rgba(70, 60, 45, 0.10);
+                0 4px 18px rgba(70, 60, 45, 0.07);
         
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         
             transition:
-                all 0.3s ease;
+                background 0.35s ease,
+                border-color 0.35s ease,
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        
+            animation: aparecerConfirmacao 1s ease 1s both;
         }
         
-        .botao-confirmar:hover {
-            background: var(--dourado);
         
-            color: white;
+        /* CORAÇÃO */
+        
+        .icone-confirmar {
+            font-size: 13px;
+        
+            color: var(--dourado);
+        
+            transition:
+                transform 0.35s ease;
+        }
+        
+        
+        /* AO PASSAR O MOUSE */
+        
+        .botao-confirmar:hover {
+        
+            background: rgba(200, 173, 127, 0.12);
+        
+            border-color: var(--dourado);
+        
+            color: var(--verde-escuro);
         
             transform: translateY(-2px);
         
             box-shadow:
-                0 8px 25px rgba(70, 60, 45, 0.16);
+                0 7px 22px rgba(70, 60, 45, 0.10);
         }
+        
+        
+        .botao-confirmar:hover .icone-confirmar {
+        
+            transform: scale(1.15);
+        
+        }
+        
+        
+        /* CLIQUE */
         
         .botao-confirmar:active {
+        
             transform: scale(0.97);
+        
         }
         
-        .icone-confirmar {
-            font-size: 14px;
+        
+        /* APARIÇÃO SUAVE */
+        
+        @keyframes aparecerConfirmacao {
+        
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+        
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        
         }
         
         
@@ -89,19 +139,22 @@
                 top: 12px;
                 right: 12px;
         
-                padding: 9px 12px;
+                padding: 8px 11px;
         
                 font-size: 8px;
         
                 letter-spacing: 0.8px;
+        
             }
         
             .icone-confirmar {
-                font-size: 13px;
+        
+                font-size: 12px;
+        
             }
         
         }
-        
+                
 
         /* =====================================================
            CONFIGURAÇÕES GERAIS
