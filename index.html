@@ -14,149 +14,6 @@
     <style>
 
         /* =====================================================
-           BOTÃO CONFIRMAR PRESENÇA
-        ===================================================== */
-        
-        .botao-confirmar {
-            position: fixed;
-        
-            top: 18px;
-            right: 18px;
-        
-            z-index: 5000;
-        
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-        
-            padding: 9px 15px;
-        
-            background: rgba(250, 248, 244, 0.88);
-        
-            border: 1px solid var(--dourado-claro);
-        
-            border-radius: 30px;
-        
-            color: var(--verde-escuro);
-        
-            font-family: 'Montserrat', Arial, sans-serif;
-        
-            font-size: 9px;
-            font-weight: 500;
-        
-            letter-spacing: 1.1px;
-            text-transform: uppercase;
-        
-            text-decoration: none;
-        
-            box-shadow:
-                0 4px 18px rgba(70, 60, 45, 0.07);
-        
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        
-            transition:
-                background 0.35s ease,
-                border-color 0.35s ease,
-                transform 0.35s ease,
-                box-shadow 0.35s ease;
-        
-            animation: aparecerConfirmacao 1s ease 1s both;
-        }
-        
-        
-        /* CORAÇÃO */
-        
-        .icone-confirmar {
-            font-size: 13px;
-        
-            color: var(--dourado);
-        
-            transition:
-                transform 0.35s ease;
-        }
-        
-        
-        /* AO PASSAR O MOUSE */
-        
-        .botao-confirmar:hover {
-        
-            background: rgba(200, 173, 127, 0.12);
-        
-            border-color: var(--dourado);
-        
-            color: var(--verde-escuro);
-        
-            transform: translateY(-2px);
-        
-            box-shadow:
-                0 7px 22px rgba(70, 60, 45, 0.10);
-        }
-        
-        
-        .botao-confirmar:hover .icone-confirmar {
-        
-            transform: scale(1.15);
-        
-        }
-        
-        
-        /* CLIQUE */
-        
-        .botao-confirmar:active {
-        
-            transform: scale(0.97);
-        
-        }
-        
-        
-        /* APARIÇÃO SUAVE */
-        
-        @keyframes aparecerConfirmacao {
-        
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-        
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        
-        }
-        
-        
-        /* =====================================================
-           CELULAR
-        ===================================================== */
-        
-        @media (max-width: 600px) {
-        
-            .botao-confirmar {
-        
-                top: 12px;
-                right: 12px;
-        
-                padding: 8px 11px;
-        
-                font-size: 8px;
-        
-                letter-spacing: 0.8px;
-        
-            }
-        
-            .icone-confirmar {
-        
-                font-size: 12px;
-        
-            }
-        
-        }
-                
-
-        /* =====================================================
            CONFIGURAÇÕES GERAIS
         ===================================================== */
 
@@ -817,6 +674,228 @@
             color: white;
         }
 
+        /* =====================================================
+           CONFIRMAÇÃO DE PRESENÇA
+        ===================================================== */
+        
+        .confirmacao-presenca {
+            max-width: 650px;
+        
+            margin: 5px auto 20px;
+        
+            padding: 10px 25px 45px;
+        
+            text-align: center;
+        }
+        
+        
+        /* =====================================================
+           LINHAS DECORATIVAS
+        ===================================================== */
+        
+        .confirmacao-linha {
+            display: flex;
+        
+            align-items: center;
+            justify-content: center;
+        
+            gap: 12px;
+        
+            margin: 0 auto 22px;
+        }
+        
+        .confirmacao-linha span {
+            width: 55px;
+            height: 1px;
+        
+            background: var(--dourado-claro);
+        }
+        
+        .confirmacao-linha i {
+            font-style: normal;
+        
+            color: var(--dourado);
+        
+            font-size: 14px;
+        }
+        
+        
+        /* =====================================================
+           ÍCONE
+        ===================================================== */
+        
+        .confirmacao-icone {
+            width: 48px;
+            height: 48px;
+        
+            margin: 0 auto 14px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            border-radius: 50%;
+        
+            background: var(--creme-escuro);
+        
+            border: 1px solid var(--dourado-claro);
+        
+            color: var(--dourado);
+        
+            font-size: 20px;
+        
+            box-shadow:
+                0 5px 18px rgba(90, 80, 60, 0.06);
+        }
+        
+        
+        /* =====================================================
+           TÍTULO
+        ===================================================== */
+        
+        .confirmacao-presenca h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        
+            font-size: 30px;
+        
+            font-weight: 500;
+        
+            color: var(--verde-escuro);
+        
+            margin-bottom: 6px;
+        }
+        
+        
+        /* =====================================================
+           TEXTO
+        ===================================================== */
+        
+        .confirmacao-presenca p {
+            font-size: 12px;
+        
+            line-height: 20px;
+        
+            color: var(--texto-claro);
+        
+            margin-bottom: 20px;
+        }
+        
+        
+        /* =====================================================
+           BOTÃO
+        ===================================================== */
+        
+        .botao-confirmacao {
+            display: inline-flex;
+        
+            align-items: center;
+            justify-content: center;
+        
+            gap: 8px;
+        
+            min-width: 220px;
+        
+            padding: 12px 25px;
+        
+            border: 1px solid var(--dourado);
+        
+            border-radius: 8px;
+        
+            background: transparent;
+        
+            color: var(--verde-escuro);
+        
+            font-family: 'Montserrat', Arial, sans-serif;
+        
+            font-size: 10px;
+        
+            font-weight: 600;
+        
+            letter-spacing: 1.4px;
+        
+            text-transform: uppercase;
+        
+            text-decoration: none;
+        
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+        
+        
+        /* CORAÇÃO DO BOTÃO */
+        
+        .botao-confirmacao span {
+            color: var(--dourado);
+        
+            font-size: 14px;
+        
+            transition:
+                transform 0.3s ease,
+                color 0.3s ease;
+        }
+        
+        
+        /* HOVER */
+        
+        .botao-confirmacao:hover {
+            background: var(--dourado);
+        
+            color: white;
+        
+            transform: translateY(-2px);
+        
+            box-shadow:
+                0 8px 22px rgba(90, 80, 60, 0.12);
+        }
+        
+        .botao-confirmacao:hover span {
+            color: white;
+        
+            transform: scale(1.15);
+        }
+        
+        
+        /* CLIQUE */
+        
+        .botao-confirmacao:active {
+            transform: scale(0.97);
+        }
+        
+        
+        /* =====================================================
+           CELULAR
+        ===================================================== */
+        
+        @media (max-width: 600px) {
+        
+            .confirmacao-presenca {
+                padding-left: 20px;
+                padding-right: 20px;
+        
+                padding-bottom: 40px;
+            }
+        
+            .confirmacao-presenca h2 {
+                font-size: 28px;
+            }
+        
+            .confirmacao-presenca p {
+                font-size: 11px;
+            }
+        
+            .botao-confirmacao {
+                width: 100%;
+        
+                max-width: 280px;
+        
+                min-width: 0;
+            }
+        
+        }
+        
 
         /* =====================================================
            RODAPÉ
@@ -1914,23 +1993,6 @@
     
     </div>
 
-     <!-- =====================================================
-            BOTÃO CONFIRMAR PRESENÇA
-     ===================================================== -->
-        
-        <a
-            class="botao-confirmar"
-            href="https://wa.me/5517997056873?text=Ol%C3%A1%20Gabi%20e%20Tom!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20voc%C3%AAs.%20%F0%9F%92%9A"
-            target="_blank"
-            rel="noopener noreferrer">
-        
-            <span class="icone-confirmar">♡</span>
-        
-            Confirmar presença
-        
-        </a>
-
-    
     <!-- =====================================================
          HERO
     ====================================================== -->
@@ -2341,7 +2403,51 @@
 
     </main>
 
+<!-- =====================================================
+     CONFIRMAÇÃO DE PRESENÇA
+===================================================== -->
 
+<section class="confirmacao-presenca">
+
+    <div class="confirmacao-linha">
+        <span></span>
+        <i>♡</i>
+        <span></span>
+    </div>
+
+    <div class="confirmacao-icone">
+        ♡
+    </div>
+
+    <h2>
+        Já escolheu seu presente?
+    </h2>
+
+    <p>
+        Agora só falta confirmar sua presença!
+    </p>
+
+    <a
+        class="botao-confirmacao"
+        href="https://wa.me/5517997056873?text=Ol%C3%A1%20Gabi%20e%20Tom!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20voc%C3%AAs.%20%F0%9F%92%9A"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <span>♡</span>
+
+        Confirmar presença
+
+    </a>
+
+    <div class="confirmacao-linha">
+        <span></span>
+        <i>♡</i>
+        <span></span>
+    </div>
+
+</section>
+
+    
     <!-- =====================================================
          RODAPÉ
     ====================================================== -->
