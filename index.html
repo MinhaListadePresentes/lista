@@ -1215,9 +1215,9 @@
             
 }
 
-                /* =====================================================
-                   TELA DE ENTRADA
-                ===================================================== */
+        /* =====================================================
+            TELA DE ENTRADA
+        ===================================================== */
                 
                 .tela-entrada {
                     position: fixed;
@@ -1234,38 +1234,168 @@
                 
                     text-align: center;
                 
+                    overflow: hidden;
+                
                     transition:
-                        opacity 0.8s ease,
-                        visibility 0.8s ease;
+                        opacity 0.9s ease,
+                        visibility 0.9s ease;
                 }
                 
-                .tela-entrada.saindo {
+                
+                /* =====================================================
+                   ORNAMENTOS
+                ===================================================== */
+                
+                .tela-entrada::before,
+                .tela-entrada::after {
+                    content: "❧";
+                
+                    position: absolute;
+                
+                    font-family: Georgia, serif;
+                
+                    font-size: 120px;
+                
+                    color: var(--dourado-claro);
+                
                     opacity: 0;
-                    visibility: hidden;
+                
                     pointer-events: none;
                 }
                 
+                
+                /* FOLHA ESQUERDA */
+                
+                .tela-entrada::before {
+                    left: -18px;
+                    top: 35px;
+                
+                    transform:
+                        rotate(-35deg)
+                        translate(-20px, -10px);
+                
+                    animation: folhaEntradaEsquerda 2s ease forwards;
+                }
+                
+                
+                /* FOLHA DIREITA */
+                
+                .tela-entrada::after {
+                    right: -18px;
+                    bottom: 20px;
+                
+                    transform:
+                        rotate(145deg)
+                        translate(20px, 10px);
+                
+                    animation: folhaEntradaDireita 2s ease forwards;
+                }
+                
+                
+                /* =====================================================
+                   ANIMAÇÃO DAS FOLHAS
+                ===================================================== */
+                
+                @keyframes folhaEntradaEsquerda {
+                
+                    0% {
+                        opacity: 0;
+                        transform:
+                            rotate(-35deg)
+                            translate(-35px, -20px);
+                    }
+                
+                    100% {
+                        opacity: 0.65;
+                        transform:
+                            rotate(-35deg)
+                            translate(0, 0);
+                    }
+                
+                }
+                
+                
+                @keyframes folhaEntradaDireita {
+                
+                    0% {
+                        opacity: 0;
+                        transform:
+                            rotate(145deg)
+                            translate(35px, 20px);
+                    }
+                
+                    100% {
+                        opacity: 0.65;
+                        transform:
+                            rotate(145deg)
+                            translate(0, 0);
+                    }
+                
+                }
+                
+                
+                /* =====================================================
+                   CONTEÚDO
+                ===================================================== */
+                
                 .entrada-conteudo {
+                    position: relative;
+                
+                    z-index: 2;
+                
                     width: 100%;
                     max-width: 500px;
                 
                     padding: 45px 30px;
                 }
                 
+                
+                /* =====================================================
+                   CORAÇÃO
+                ===================================================== */
+                
                 .entrada-detalhe {
                     color: var(--dourado);
+                
                     font-size: 25px;
+                
                     margin-bottom: 20px;
+                
+                    opacity: 0;
+                
+                    animation:
+                        aparecerEntrada 1s ease 0.2s forwards,
+                        pulsarCoracao 2.5s ease-in-out 1.3s infinite;
                 }
+                
+                
+                /* =====================================================
+                   TEXTO PEQUENO
+                ===================================================== */
                 
                 .entrada-pequeno {
                     font-size: 10px;
+                
                     letter-spacing: 4px;
+                
                     text-transform: uppercase;
+                
                     color: var(--texto-claro);
                 
                     margin-bottom: 15px;
+                
+                    opacity: 0;
+                
+                    transform: translateY(10px);
+                
+                    animation:
+                        aparecerTextoEntrada 1s ease 0.35s forwards;
                 }
+                
+                
+                /* =====================================================
+                   NOMES
+                ===================================================== */
                 
                 .entrada-nomes {
                     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -1279,7 +1409,24 @@
                     color: var(--verde);
                 
                     margin-bottom: 18px;
+                
+                    opacity: 0;
+                
+                    transform:
+                        translateY(20px)
+                        scale(0.97);
+                
+                    animation:
+                        aparecerNomesEntrada 1.4s
+                        cubic-bezier(0.22, 1, 0.36, 1)
+                        0.55s
+                        forwards;
                 }
+                
+                
+                /* =====================================================
+                   DATA
+                ===================================================== */
                 
                 .entrada-data {
                     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -1291,7 +1438,19 @@
                     color: var(--dourado);
                 
                     margin-bottom: 25px;
+                
+                    opacity: 0;
+                
+                    transform: translateY(10px);
+                
+                    animation:
+                        aparecerTextoEntrada 1s ease 0.9s forwards;
                 }
+                
+                
+                /* =====================================================
+                   FRASE
+                ===================================================== */
                 
                 .entrada-frase {
                     font-size: 11px;
@@ -1303,7 +1462,19 @@
                     max-width: 340px;
                 
                     margin: 0 auto 30px;
+                
+                    opacity: 0;
+                
+                    transform: translateY(10px);
+                
+                    animation:
+                        aparecerTextoEntrada 1s ease 1.1s forwards;
                 }
+                
+                
+                /* =====================================================
+                   LINHA DECORATIVA
+                ===================================================== */
                 
                 .entrada-linha {
                     display: flex;
@@ -1315,7 +1486,13 @@
                     gap: 12px;
                 
                     margin-bottom: 30px;
+                
+                    opacity: 0;
+                
+                    animation:
+                        aparecerEntrada 1s ease 1.3s forwards;
                 }
+                
                 
                 .entrada-linha span {
                     width: 60px;
@@ -1323,7 +1500,13 @@
                     height: 1px;
                 
                     background: var(--dourado-claro);
+                
+                    transform: scaleX(0);
+                
+                    animation:
+                        expandirLinha 1s ease 1.4s forwards;
                 }
+                
                 
                 .entrada-linha i {
                     font-style: normal;
@@ -1331,7 +1514,15 @@
                     color: var(--dourado);
                 
                     font-size: 15px;
+                
+                    animation:
+                        pulsarCoracao 2.5s ease-in-out 2s infinite;
                 }
+                
+                
+                /* =====================================================
+                   BOTÃO ENTRAR
+                ===================================================== */
                 
                 .botao-entrar {
                     border: 1px solid var(--dourado);
@@ -1356,22 +1547,174 @@
                 
                     cursor: pointer;
                 
+                    opacity: 0;
+                
+                    transform: translateY(12px);
+                
+                    animation:
+                        aparecerBotao 1s ease 1.55s forwards;
+                
                     transition:
-                        background 0.25s ease,
-                        color 0.25s ease,
-                        transform 0.25s ease;
+                        background 0.3s ease,
+                        color 0.3s ease,
+                        transform 0.3s ease,
+                        box-shadow 0.3s ease;
                 }
+                
                 
                 .botao-entrar:hover {
                     background: var(--dourado);
                 
                     color: white;
                 
-                    transform: translateY(-2px);
+                    transform:
+                        translateY(-2px);
+                
+                    box-shadow:
+                        0 8px 25px rgba(90, 80, 60, 0.15);
                 }
+                
                 
                 .botao-entrar:active {
                     transform: scale(0.97);
+                }
+                
+                
+                /* =====================================================
+                   ANIMAÇÕES
+                ===================================================== */
+                
+                @keyframes aparecerEntrada {
+                
+                    from {
+                        opacity: 0;
+                    }
+                
+                    to {
+                        opacity: 1;
+                    }
+                
+                }
+                
+                
+                @keyframes aparecerTextoEntrada {
+                
+                    from {
+                        opacity: 0;
+                        transform: translateY(10px);
+                    }
+                
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                
+                }
+                
+                
+                @keyframes aparecerNomesEntrada {
+                
+                    from {
+                        opacity: 0;
+                        transform:
+                            translateY(20px)
+                            scale(0.97);
+                    }
+                
+                    to {
+                        opacity: 1;
+                        transform:
+                            translateY(0)
+                            scale(1);
+                    }
+                
+                }
+                
+                
+                @keyframes aparecerBotao {
+                
+                    from {
+                        opacity: 0;
+                        transform: translateY(12px);
+                    }
+                
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                
+                }
+                
+                
+                @keyframes expandirLinha {
+                
+                    from {
+                        transform: scaleX(0);
+                    }
+                
+                    to {
+                        transform: scaleX(1);
+                    }
+                
+                }
+                
+                
+                @keyframes pulsarCoracao {
+                
+                    0%,
+                    100% {
+                        transform: scale(1);
+                    }
+                
+                    50% {
+                        transform: scale(1.12);
+                    }
+                
+                }
+                
+                
+                /* =====================================================
+                   SAÍDA DA TELA
+                ===================================================== */
+                
+                .tela-entrada.saindo {
+                    opacity: 0;
+                
+                    visibility: hidden;
+                
+                    pointer-events: none;
+                }
+                
+                
+                /* =====================================================
+                   CELULAR
+                ===================================================== */
+                
+                @media (max-width: 600px) {
+                
+                    .entrada-conteudo {
+                        padding: 35px 20px;
+                    }
+                
+                    .tela-entrada::before,
+                    .tela-entrada::after {
+                        font-size: 90px;
+                    }
+                
+                    .tela-entrada::before {
+                        left: -20px;
+                        top: 20px;
+                    }
+                
+                    .tela-entrada::after {
+                        right: -20px;
+                        bottom: 15px;
+                    }
+                
+                    .entrada-nomes {
+                        font-size: 58px;
+                    }
+                
                 }
         
     </style>
