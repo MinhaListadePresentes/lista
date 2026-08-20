@@ -2047,30 +2047,25 @@
         );
 
 
-        /* =====================================================
+             /* =====================================================
    MÚSICA DE FUNDO
 ===================================================== */
 
-const musica =
-    document.getElementById("musicaCasamento");
-
-const botaoMusica =
-    document.getElementById("botaoMusica");
-
-const playerMusica =
-    document.getElementById("playerMusica");
-
-const volumeMusica =
-    document.getElementById("volumeMusica");
+const musica = document.getElementById("musicaCasamento");
+const botaoMusica = document.getElementById("botaoMusica");
+const playerMusica = document.getElementById("playerMusica");
+const volumeMusica = document.getElementById("volumeMusica");
 
 
-/* VOLUME INICIAL */
+/* =====================================================
+   VOLUME INICIAL
+===================================================== */
 
 musica.volume = 0.35;
 
 
 /* =====================================================
-   ATUALIZA VISUAL DO PLAYER
+   ATUALIZAR VISUAL - TOCANDO
 ===================================================== */
 
 function musicaTocando() {
@@ -2081,6 +2076,10 @@ function musicaTocando() {
 
 }
 
+
+/* =====================================================
+   ATUALIZAR VISUAL - PAUSADA
+===================================================== */
 
 function musicaPausada() {
 
@@ -2100,15 +2099,16 @@ function alternarMusica() {
     if (musica.paused) {
 
         musica.play()
-            .then(() => {
+            .then(function() {
 
                 musicaTocando();
 
             })
-            .catch(() => {
+            .catch(function(erro) {
 
                 console.log(
-                    "O navegador bloqueou a reprodução automática."
+                    "Não foi possível reproduzir a música:",
+                    erro
                 );
 
             });
@@ -2128,35 +2128,54 @@ function alternarMusica() {
    CONTROLE DE VOLUME
 ===================================================== */
 
-volumeMusica.addEventListener(
-    "input",
-    function() {
+volumeMusica.addEventListener("input", function() {
 
-        musica.volume = this.value;
+    musica.volume = this.value;
 
-    }
-);
+});
 
 
 /* =====================================================
-   TENTAR TOCAR AUTOMATICAMENTE
+   QUANDO A MÚSICA TERMINAR
+===================================================== */
+
+musica.addEventListener("pause", function() {
+
+    musicaPausada();
+
+});
+
+
+musica.addEventListener("play", function() {
+
+    musicaTocando();
+
+});
+
+
+/* =====================================================
+   TENTAR AUTOPLAY
 ===================================================== */
 
 window.addEventListener("load", function() {
 
+    musica.volume = 0.35;
+
     musica.play()
-        .then(() => {
+        .then(function() {
 
             musicaTocando();
 
         })
-        .catch(() => {
+        .catch(function() {
 
             /*
-             O navegador bloqueou o autoplay.
-             A música poderá ser iniciada pelo
-             botão ▶.
-            */
+             * O navegador pode bloquear
+             * autoplay com som.
+             *
+             * Nesse caso, o botão ▶
+             * continuará disponível.
+             */
 
             musicaPausada();
 
