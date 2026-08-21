@@ -2377,7 +2377,7 @@
 
           <div
         class="presente"
-        data-preco="80.00"
+        data-preco="120.00"
         data-nome="Café da manhã especial para os noivos">
     
         <img
@@ -2398,15 +2398,20 @@
         </div>
     
         <div class="preco">
-            R$ 80,00
+            R$ 120,00
         </div>
     
         <button
             class="botao"
-            onclick="presentear(this, 'Café da manhã especial para os noivos', 80.00)">
-    
+            onclick="presentear(
+                this,
+                'Café da manhã especial para os noivos',
+                120.00,
+                PIX_PRESENTE_01
+            )">
+        
             Presentear
-    
+        
         </button>
     
     </div>
@@ -3068,59 +3073,68 @@
 
 
         /* =====================================================
+           CHAVES PIX DOS PRESENTES
+           Substitua os valores quando tiver as chaves.
+        ===================================================== */
+        
+        const PIX_PRESENTE_01 = "COLOQUE_A_CHAVE_PIX_01_AQUI";
+        const PIX_PRESENTE_02 = "COLOQUE_A_CHAVE_PIX_02_AQUI";
+        const PIX_PRESENTE_03 = "COLOQUE_A_CHAVE_PIX_03_AQUI";
+        const PIX_PRESENTE_04 = "COLOQUE_A_CHAVE_PIX_04_AQUI";
+        const PIX_PRESENTE_05 = "COLOQUE_A_CHAVE_PIX_05_AQUI";
+        const PIX_PRESENTE_06 = "COLOQUE_A_CHAVE_PIX_06_AQUI";
+        const PIX_PRESENTE_07 = "COLOQUE_A_CHAVE_PIX_07_AQUI";
+        const PIX_PRESENTE_08 = "COLOQUE_A_CHAVE_PIX_08_AQUI";
+        const PIX_PRESENTE_09 = "COLOQUE_A_CHAVE_PIX_09_AQUI";
+        const PIX_PRESENTE_10 = "COLOQUE_A_CHAVE_PIX_10_AQUI";
+        const PIX_PRESENTE_11 = "COLOQUE_A_CHAVE_PIX_11_AQUI";
+        const PIX_PRESENTE_12 = "COLOQUE_A_CHAVE_PIX_12_AQUI";
+                
+        /* =====================================================
            PRESENTEAR
         ===================================================== */
 
-        function presentear(botao, nome, preco) {
-
-            const card =
-                botao.closest(".presente");
-
-
+        /* =====================================================
+           PRESENTEAR
+        ===================================================== */
+        
+        function presentear(botao, nome, preco, chavePix) {
+        
+            const card = botao.closest(".presente");
+        
             const jaEscolhido =
                 card.classList.contains("escolhido");
-
-
+        
             if (jaEscolhido) {
-
+        
                 card.classList.remove("escolhido");
-
-                botao.innerText =
-                    "Presentear";
-
+        
+                botao.innerText = "Presentear";
+        
                 return;
-
             }
-
-
+        
             card.classList.add("escolhido");
-
-            botao.innerText =
-                "✓ Escolhido";
-
-
-            /* CHAVE PIX */
-
-            const chavePix =
-                "00020126580014BR.GOV.BCB.PIX013686933381-05e3-4d95-ac04-d0d383e3d327520400005303986540580.005802BR5924Erivelton Oliveira Matos6009SAO PAULO61080540900062240520cCeyF4VJxJayRR0dwn3i63047322";
-
-
-            /* COPIAR PIX */
-
+        
+            botao.innerText = "✓ Escolhido";
+        
+            /* =================================================
+               COPIAR PIX DO PRESENTE
+            ================================================= */
+        
             navigator.clipboard.writeText(chavePix)
-
+        
                 .then(() => {
-
+        
                     abrirPopup();
-
+        
                 })
-
+        
                 .catch(() => {
-
+        
                     abrirPopup();
-
+        
                 });
-
         }
 
 
