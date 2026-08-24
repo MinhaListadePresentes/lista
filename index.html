@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
+
 :root{
   --verde:#718676;
   --verde-profundo:#4f6254;
@@ -28,892 +29,2685 @@
   --branco:#fffdfa;
   --borda:#ded5c9;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Montserrat',Arial,sans-serif;background:var(--creme);color:var(--texto);min-height:100vh;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;background:radial-gradient(circle at 20% 20%,rgba(107,81,69,.06),transparent 25%),radial-gradient(circle at 80% 70%,rgba(113,134,118,.07),transparent 28%);z-index:-1}
-/* entrada */
-.tela-entrada{position:fixed;inset:0;background:linear-gradient(135deg,#F7F3EC 0%,#EEE7DC 52%,#E3E9E2 100%);z-index:9999;display:flex;align-items:center;justify-content:center;color:var(--marrom);transition:opacity .8s,transform .8s}
-.tela-entrada.saindo{opacity:0;transform:scale(1.03);pointer-events:none}
-.entrada-conteudo{width:min(600px,88%);text-align:center;padding:64px 40px;border:1px solid rgba(107,81,69,.18);position:relative;background:rgba(255,255,255,.58);box-shadow:0 25px 70px rgba(80,60,45,.10);border-radius:2px}
-.entrada-conteudo:before,.entrada-conteudo:after{content:"";position:absolute;width:48px;height:48px;border-color:var(--marrom-claro);border-style:solid;opacity:.65}.entrada-conteudo:before{top:16px;left:16px;border-width:1px 0 0 1px}.entrada-conteudo:after{right:16px;bottom:16px;border-width:0 1px 1px 0}
-.entrada-detalhe{font:28px 'Cormorant Garamond',serif;color:var(--dourado);margin-bottom:18px}.entrada-pequeno{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--verde-profundo);margin-bottom:22px}.entrada-nomes{font:500 clamp(55px,12vw,88px)/.82 'Cormorant Garamond',serif;color:var(--marrom);letter-spacing:-2px}.entrada-data{font:18px 'Cormorant Garamond',serif;letter-spacing:4px;color:var(--verde-profundo);margin:24px 0}.entrada-frase{max-width:340px;margin:auto;font-size:12px;line-height:22px;color:var(--texto-claro)}.entrada-linha{display:flex;align-items:center;justify-content:center;gap:12px;margin:28px 0}.entrada-linha span{width:55px;height:1px;background:var(--dourado)}.entrada-linha i{font-style:normal;color:var(--dourado)}.botao-entrar{border:1px solid var(--marrom);background:var(--marrom);color:var(--creme);padding:13px 46px;font:600 10px 'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.3s}.botao-entrar:hover{background:var(--verde-profundo);border-color:var(--verde-profundo);color:var(--creme)}
-/* hero editorial */
-.hero{max-width:1120px;margin:auto;min-height:650px;padding:55px 7%;display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:50px;position:relative}.hero:before{content:"";position:absolute;left:5%;top:15%;bottom:15%;width:1px;background:var(--areia)}.hero:after{content:"♡";position:absolute;right:4%;top:12%;font:90px 'Cormorant Garamond',serif;color:var(--dourado-claro);opacity:.35}.hero .pequeno-texto{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--marrom-claro);margin-bottom:18px}.hero .nomes{font:500 clamp(65px,9vw,120px)/.76 'Cormorant Garamond',serif;color:var(--marrom);letter-spacing:-4px;max-width:600px}.hero .data-casamento{margin-top:30px;font:20px 'Cormorant Garamond',serif;letter-spacing:5px;color:var(--verde-profundo)}.hero .linha-decorativa{display:flex;align-items:center;gap:12px;margin:22px 0}.hero .linha-decorativa span{width:65px;height:1px;background:var(--dourado)}.hero .linha-decorativa i{font-style:normal;color:var(--dourado);font-size:15px}.hero .subtitulo{max-width:420px;font:italic 17px/1.65 'Cormorant Garamond',serif;color:var(--texto-claro)}.hero .subtitulo:before{content:'“';color:var(--dourado);font-size:34px;vertical-align:-10px;margin-right:4px}
-.hero:has(.nomes):after{pointer-events:none}
-/* painel lateral */
-.introducao{margin-left:auto;margin-right:7%;max-width:430px;padding:34px 40px;border-left:3px solid var(--verde);background:var(--branco);box-shadow:0 18px 50px rgba(80,60,45,.06);position:relative}.introducao:after{content:"G + T";position:absolute;right:22px;top:15px;font:22px 'Cormorant Garamond',serif;color:var(--areia)}.introducao h2{font:500 34px/1 'Cormorant Garamond',serif;color:var(--marrom);margin-bottom:14px}.introducao p{font-size:12px;line-height:22px;color:var(--texto-claro)}
-/* countdown */
-.contagem-container{max-width:980px;margin:90px auto;padding:0 35px;display:grid;grid-template-columns:280px 1fr;align-items:center;gap:55px}.contagem-titulo{font:500 36px/1.05 'Cormorant Garamond',serif;color:var(--marrom)}.contagem-titulo:after{content:"";display:block;width:45px;height:2px;background:var(--dourado);margin-top:18px}.contagem{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--areia);border-bottom:1px solid var(--areia)}.tempo{padding:22px 10px;text-align:center;border-right:1px solid var(--areia)}.tempo:last-child{border-right:0}.tempo span{display:block;font:500 clamp(36px,5vw,54px)/1 'Cormorant Garamond',serif;color:var(--verde-profundo)}.tempo small{display:block;margin-top:8px;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-claro)}
-/* evento */
-.evento{padding:85px 5%;background:var(--verde-profundo);color:var(--creme);position:relative;overflow:hidden}.evento:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(216,195,154,.22);border-radius:50%;right:-160px;top:-190px}.evento-card{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center}.evento-titulo{font:500 clamp(42px,6vw,65px)/.9 'Cormorant Garamond',serif;color:var(--creme)}.evento-data{margin-top:22px;font:19px 'Cormorant Garamond',serif;letter-spacing:4px;color:var(--dourado-claro)}.evento-info{display:grid;grid-template-columns:1fr 1fr;gap:25px}.evento-item{padding:20px 0;border-top:1px solid rgba(216,195,154,.35)}.evento-divisor{display:none}.evento-icone{font-size:18px;color:var(--dourado-claro);margin-bottom:12px}.evento-label{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#c9d0c9;margin-bottom:7px}.evento-valor,.evento-endereco{font:22px/1.2 'Cormorant Garamond',serif;color:var(--creme)}.botao-mapa{display:inline-flex;margin-top:25px;padding:12px 22px;border:1px solid var(--dourado-claro);color:var(--creme);text-decoration:none;font-size:9px;font-weight:600;letter-spacing:1.7px;text-transform:uppercase;transition:.3s}.botao-mapa:hover{background:var(--dourado-claro);color:var(--marrom)}
-/* presentes */
-.titulo-lista{max-width:1050px;margin:100px auto 35px;padding:0 30px;display:flex;align-items:end;justify-content:space-between;gap:30px}.titulo-lista h1{font:500 clamp(44px,6vw,68px)/.9 'Cormorant Garamond',serif;color:var(--marrom)}.titulo-lista p{max-width:330px;font-size:9px;line-height:17px;letter-spacing:1.5px;color:var(--texto-claro);text-align:right}.ordenacao{max-width:1050px;margin:0 auto 25px;padding:0 30px;display:flex;justify-content:flex-end;align-items:center;gap:8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--texto-claro)}.ordenacao select{border:0;border-bottom:1px solid var(--areia);padding:7px;background:transparent;color:var(--marrom);font:500 10px 'Montserrat',sans-serif;outline:none}
-.lista{max-width:1050px;margin:auto;padding:0 30px 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.presente{background:var(--branco);border:0;border-top:3px solid var(--verde);padding:0 0 20px;box-shadow:0 15px 40px rgba(80,60,45,.07);display:flex;flex-direction:column;transition:.3s;position:relative}.presente:hover{transform:translateY(-7px);box-shadow:0 24px 55px rgba(80,60,45,.12)}.imagem{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:.4s}.presente:hover .imagem{filter:saturate(.88)}.categoria-presente{margin:18px 22px 0;font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--verde)}.nome-presente{min-height:58px;padding:8px 22px 0;font:500 25px/1 'Cormorant Garamond',serif;color:var(--marrom);display:flex;align-items:center}.frase-presente{min-height:65px;padding:7px 22px;font:italic 15px/1.35 'Cormorant Garamond',serif;color:var(--texto-claro)}.frase-presente:before{content:'“';color:var(--dourado);font-size:24px}.frase-presente:after{content:'”';color:var(--dourado);font-size:24px}.preco{margin:5px 22px 16px;font:500 18px 'Cormorant Garamond',serif;color:var(--verde-profundo)}.botao{margin:auto 22px 0;width:calc(100% - 44px);padding:13px;border:1px solid var(--verde-profundo);background:var(--verde-profundo);color:var(--creme);font:600 9px 'Montserrat',sans-serif;letter-spacing:1.8px;text-transform:uppercase;cursor:pointer;transition:.3s}.botao:hover{background:var(--marrom);border-color:var(--marrom)}.presente.escolhido{opacity:.72}.presente.escolhido .botao{background:var(--marrom);border-color:var(--marrom)}
-/* confirmação */
-.confirmacao-presenca{max-width:1000px;margin:55px auto 100px;padding:72px 40px;text-align:center;background:var(--creme-2);color:var(--texto);position:relative;overflow:hidden;border-top:1px solid var(--areia);border-bottom:1px solid var(--areia)}.confirmacao-presenca:before{content:"♡";position:absolute;left:8%;top:20%;font:100px 'Cormorant Garamond',serif;color:rgba(107,81,69,.07)}.confirmacao-presenca:after{content:"♡";position:absolute;right:8%;bottom:10%;font:100px 'Cormorant Garamond',serif;color:rgba(113,134,118,.08)}.confirmacao-linha{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:25px}.confirmacao-linha span{width:55px;height:1px;background:var(--dourado)}.confirmacao-linha i{font-style:normal;color:var(--dourado-claro)}.confirmacao-icone{font:28px 'Cormorant Garamond',serif;color:var(--dourado-claro);margin-bottom:10px}.confirmacao-presenca h2{font:500 clamp(42px,6vw,62px)/.95 'Cormorant Garamond',serif;margin-bottom:14px;color:var(--marrom)}.confirmacao-presenca p{font-size:12px;line-height:20px;color:var(--texto-claro);margin-bottom:28px}.botao-confirmacao{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;background:var(--marrom);color:var(--creme);text-decoration:none;font-size:9px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;animation:confirmarPulso 2.8s ease-in-out infinite}.botao-confirmacao:hover{background:var(--verde-profundo);transform:scale(1.04);box-shadow:0 10px 28px rgba(79,98,84,.18);animation-play-state:paused}.botao-confirmacao span{font-size:15px}@keyframes confirmarPulso{0%,100%{transform:scale(1);box-shadow:0 4px 14px rgba(107,81,69,.10)}50%{transform:scale(1.045);box-shadow:0 8px 22px rgba(107,81,69,.16)}}.botao-confirmacao span{font-size:15px}
-/* rodapé */
-.rodape{text-align:center;padding:40px 20px 100px;color:var(--texto-claro);font:italic 17px 'Cormorant Garamond',serif}.rodape .coracao{display:block;color:var(--dourado);font-size:25px;margin-bottom:12px}.rodape strong{display:block;margin-top:5px;font-size:34px;font-weight:500;color:var(--marrom)}.rodape .data{margin-top:10px;font-size:13px;letter-spacing:4px;color:var(--verde-profundo)}
-/* topo */
-.topo-btn{position:fixed;right:22px;bottom:25px;width:42px;height:42px;border:1px solid var(--areia);border-radius:50%;background:var(--branco);color:var(--marrom);font-size:17px;cursor:pointer;box-shadow:0 8px 25px rgba(80,60,45,.12);z-index:100}
-/* popup */
-.popup-overlay{position:fixed;inset:0;background:rgba(60,45,38,.62);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.3s;z-index:9998}.popup-overlay.ativo{opacity:1;visibility:visible}.popup{width:min(440px,100%);background:var(--creme);padding:42px 35px;text-align:center;border-top:4px solid var(--dourado);box-shadow:0 25px 80px rgba(0,0,0,.22)}.popup-icone{font:30px 'Cormorant Garamond',serif;color:var(--dourado);margin-bottom:10px}.popup-titulo{font:500 34px 'Cormorant Garamond',serif;color:var(--marrom)}.popup-detalhe{width:45px;height:1px;background:var(--dourado);margin:15px auto}.popup-mensagem{font-size:11px;line-height:21px;color:var(--texto)}.popup-fechar{margin-top:25px;padding:12px 30px;border:0;background:var(--marrom);color:white;font:600 9px 'Montserrat',sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
-/* música */
-.player-musica{position:fixed;right:22px;bottom:22px;display:flex;align-items:center;gap:10px;padding:8px 10px 8px 13px;background:var(--branco);border:1px solid var(--areia);box-shadow:0 10px 30px rgba(80,60,45,.12);z-index:500}.controle-musica{width:34px;height:34px;border:0;border-radius:50%;background:var(--marrom);color:white;cursor:pointer}.icone-musica{color:var(--dourado);font-size:17px}.texto-musica{font-size:9px;letter-spacing:.8px;color:var(--texto-claro);white-space:nowrap}.volume-musica{width:65px;accent-color:var(--marrom);cursor:pointer}.player-musica.tocando .icone-musica{animation:musicPulse 1.6s infinite}@keyframes musicPulse{50%{transform:scale(1.18)}}
-@media(max-width:850px){.hero{grid-template-columns:1fr;min-height:600px;text-align:center;padding:65px 9%}.hero:before{left:8%;top:10%;bottom:10%}.hero .subtitulo{margin:auto}.hero .linha-decorativa{justify-content:center}.introducao{margin:0 8%;max-width:none}.contagem-container{grid-template-columns:1fr;margin:70px auto;padding:0 25px;gap:25px;text-align:center}.contagem-titulo:after{margin:15px auto}.evento-card{grid-template-columns:1fr;gap:30px}.evento-titulo{text-align:center}.evento-data{text-align:center}.titulo-lista{display:block}.titulo-lista p{text-align:left;margin-top:18px}.lista{grid-template-columns:repeat(2,1fr);padding:0 20px 80px}.confirmacao-presenca{margin-left:20px;margin-right:20px}}
-@media(max-width:600px){.entrada-conteudo{padding:50px 22px}.hero{min-height:560px}.hero .nomes{font-size:72px;letter-spacing:-2px}.contagem{grid-template-columns:repeat(2,1fr)}.tempo:nth-child(2){border-right:0}.tempo:nth-child(-n+2){border-bottom:1px solid var(--areia)}.evento{padding:65px 25px}.evento-info{grid-template-columns:1fr 1fr;gap:10px}.lista{grid-template-columns:1fr;padding:0 18px 70px}.titulo-lista{margin-top:75px;padding:0 20px}.ordenacao{padding:0 20px}.nome-presente{font-size:27px}.confirmacao-presenca{padding:65px 25px;margin-bottom:70px}.player-musica{right:12px;bottom:15px}.volume-musica{width:50px}.texto-musica{display:none}.topo-btn{right:15px;bottom:70px}}
-@media(max-width:380px){.hero .nomes{font-size:62px}.evento-info{grid-template-columns:1fr}.contagem-container{padding:0 18px}.tempo span{font-size:38px}}
-</style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0
+}
+
+html{
+    scroll-behavior:smooth
+}
+
+body{
+    font-family:'Montserrat',Arial,sans-serif;
+    background:var(--creme);
+    color:var(--texto);
+    min-height:100vh;
+    overflow-x:hidden
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.25;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(107,81,69,.06),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(113,134,118,.07),
+            transparent 28%
+        );
+    z-index:-1
+}
+
+
+/* =====================================================
+   ENTRADA
+===================================================== */
+
+.tela-entrada{
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(
+            135deg,
+            #F7F3EC 0%,
+            #EEE7DC 52%,
+            #E3E9E2 100%
+        );
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--marrom);
+    transition:opacity .8s,transform .8s
+}
+
+.tela-entrada.saindo{
+    opacity:0;
+    transform:scale(1.03);
+    pointer-events:none
+}
+
+.entrada-conteudo{
+    width:min(600px,88%);
+    text-align:center;
+    padding:64px 40px;
+    border:1px solid rgba(107,81,69,.18);
+    position:relative;
+    background:rgba(255,255,255,.58);
+    box-shadow:0 25px 70px rgba(80,60,45,.10);
+    border-radius:2px
+}
+
+.entrada-conteudo:before,
+.entrada-conteudo:after{
+    content:"";
+    position:absolute;
+    width:48px;
+    height:48px;
+    border-color:var(--marrom-claro);
+    border-style:solid;
+    opacity:.65
+}
+
+.entrada-conteudo:before{
+    top:16px;
+    left:16px;
+    border-width:1px 0 0 1px
+}
+
+.entrada-conteudo:after{
+    right:16px;
+    bottom:16px;
+    border-width:0 1px 1px 0
+}
+
+.entrada-detalhe{
+    font:28px 'Cormorant Garamond',serif;
+    color:var(--dourado);
+    margin-bottom:18px
+}
+
+.entrada-pequeno{
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--verde-profundo);
+    margin-bottom:22px
+}
+
+.entrada-nomes{
+    font:500 clamp(55px,12vw,88px)/.82 'Cormorant Garamond',serif;
+    color:var(--marrom);
+    letter-spacing:-2px
+}
+
+.entrada-data{
+    font:18px 'Cormorant Garamond',serif;
+    letter-spacing:4px;
+    color:var(--verde-profundo);
+    margin:24px 0
+}
+
+.entrada-frase{
+    max-width:340px;
+    margin:auto;
+    font-size:12px;
+    line-height:22px;
+    color:var(--texto-claro)
+}
+
+.entrada-linha{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:28px 0
+}
+
+.entrada-linha span{
+    width:55px;
+    height:1px;
+    background:var(--dourado)
+}
+
+.entrada-linha i{
+    font-style:normal;
+    color:var(--dourado)
+}
+
+.botao-entrar{
+    border:1px solid var(--marrom);
+    background:var(--marrom);
+    color:var(--creme);
+    padding:13px 46px;
+    font:600 10px 'Montserrat',sans-serif;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:.3s
+}
+
+.botao-entrar:hover{
+    background:var(--verde-profundo);
+    border-color:var(--verde-profundo);
+    color:var(--creme)
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    max-width:1120px;
+    margin:auto;
+    min-height:650px;
+    padding:55px 7%;
+    display:grid;
+    grid-template-columns:1fr 1.15fr;
+    align-items:center;
+    gap:50px;
+    position:relative
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    left:5%;
+    top:15%;
+    bottom:15%;
+    width:1px;
+    background:var(--areia)
+}
+
+.hero:after{
+    content:"♡";
+    position:absolute;
+    right:4%;
+    top:12%;
+    font:90px 'Cormorant Garamond',serif;
+    color:var(--dourado-claro);
+    opacity:.35
+}
+
+.hero .pequeno-texto{
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--marrom-claro);
+    margin-bottom:18px
+}
+
+.hero .nomes{
+    font:500 clamp(65px,9vw,120px)/.76 'Cormorant Garamond',serif;
+    color:var(--marrom);
+    letter-spacing:-4px;
+    max-width:600px
+}
+
+.hero .data-casamento{
+    margin-top:30px;
+    font:20px 'Cormorant Garamond',serif;
+    letter-spacing:5px;
+    color:var(--verde-profundo)
+}
+
+.hero .linha-decorativa{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:22px 0
+}
+
+.hero .linha-decorativa span{
+    width:65px;
+    height:1px;
+    background:var(--dourado)
+}
+
+.hero .linha-decorativa i{
+    font-style:normal;
+    color:var(--dourado);
+    font-size:15px
+}
+
+.hero .subtitulo{
+    max-width:420px;
+    font:italic 17px/1.65 'Cormorant Garamond',serif;
+    color:var(--texto-claro)
+}
+
+.hero .subtitulo:before{
+    content:'“';
+    color:var(--dourado);
+    font-size:34px;
+    vertical-align:-10px;
+    margin-right:4px
+}
+
+.hero:has(.nomes):after{
+    pointer-events:none
+}
+
+
+/* =====================================================
+   INTRODUÇÃO
+===================================================== */
+
+.introducao{
+    margin-left:auto;
+    margin-right:7%;
+    max-width:430px;
+    padding:34px 40px;
+    border-left:3px solid var(--verde);
+    background:var(--branco);
+    box-shadow:0 18px 50px rgba(80,60,45,.06);
+    position:relative
+}
+
+.introducao:after{
+    content:"G + T";
+    position:absolute;
+    right:22px;
+    top:15px;
+    font:22px 'Cormorant Garamond',serif;
+    color:var(--areia)
+}
+
+.introducao h2{
+    font:500 34px/1 'Cormorant Garamond',serif;
+    color:var(--marrom);
+    margin-bottom:14px
+}
+
+.introducao p{
+    font-size:12px;
+    line-height:22px;
+    color:var(--texto-claro)
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.contagem-container{
+    max-width:980px;
+    margin:90px auto;
+    padding:0 35px;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    align-items:center;
+    gap:55px
+}
+
+.contagem-titulo{
+    font:500 36px/1.05 'Cormorant Garamond',serif;
+    color:var(--marrom)
+}
+
+.contagem-titulo:after{
+    content:"";
+    display:block;
+    width:45px;
+    height:2px;
+    background:var(--dourado);
+    margin-top:18px
+}
+
+.contagem{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--areia);
+    border-bottom:1px solid var(--areia)
+}
+
+.tempo{
+    padding:22px 10px;
+    text-align:center;
+    border-right:1px solid var(--areia)
+}
+
+.tempo:last-child{
+    border-right:0
+}
+
+.tempo span{
+    display:block;
+    font:500 clamp(36px,5vw,54px)/1 'Cormorant Garamond',serif;
+    color:var(--verde-profundo)
+}
+
+.tempo small{
+    display:block;
+    margin-top:8px;
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--texto-claro)
+}
+
+
+/* =====================================================
+   EVENTO
+===================================================== */
+
+.evento{
+    padding:85px 5%;
+    background:var(--verde-profundo);
+    color:var(--creme);
+    position:relative;
+    overflow:hidden
+}
+
+.evento:before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border:1px solid rgba(216,195,154,.22);
+    border-radius:50%;
+    right:-160px;
+    top:-190px
+}
+
+.evento-card{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:60px;
+    align-items:center
+}
+
+.evento-titulo{
+    font:500 clamp(42px,6vw,65px)/.9 'Cormorant Garamond',serif;
+    color:var(--creme)
+}
+
+.evento-data{
+    margin-top:22px;
+    font:19px 'Cormorant Garamond',serif;
+    letter-spacing:4px;
+    color:var(--dourado-claro)
+}
+
+.evento-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px
+}
+
+.evento-item{
+    padding:20px 0;
+    border-top:1px solid rgba(216,195,154,.35)
+}
+
+.evento-divisor{
+    display:none
+}
+
+.evento-icone{
+    font-size:18px;
+    color:var(--dourado-claro);
+    margin-bottom:12px
+}
+
+.evento-label{
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#c9d0c9;
+    margin-bottom:7px
+}
+
+.evento-valor,
+.evento-endereco{
+    font:22px/1.2 'Cormorant Garamond',serif;
+    color:var(--creme)
+}
+
+.botao-mapa{
+    display:inline-flex;
+    margin-top:25px;
+    padding:12px 22px;
+    border:1px solid var(--dourado-claro);
+    color:var(--creme);
+    text-decoration:none;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    transition:.3s
+}
+
+.botao-mapa:hover{
+    background:var(--dourado-claro);
+    color:var(--marrom)
+}
+
+
+/* =====================================================
+   PRESENTES
+===================================================== */
+
+.titulo-lista{
+    max-width:1050px;
+    margin:100px auto 35px;
+    padding:0 30px;
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:30px
+}
+
+.titulo-lista h1{
+    font:500 clamp(44px,6vw,68px)/.9 'Cormorant Garamond',serif;
+    color:var(--marrom)
+}
+
+.titulo-lista p{
+    max-width:330px;
+    font-size:9px;
+    line-height:17px;
+    letter-spacing:1.5px;
+    color:var(--texto-claro);
+    text-align:right
+}
+
+.ordenacao{
+    max-width:1050px;
+    margin:0 auto 25px;
+    padding:0 30px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:8px;
+    font-size:9px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--texto-claro)
+}
+
+.ordenacao select{
+    border:0;
+    border-bottom:1px solid var(--areia);
+    padding:7px;
+    background:transparent;
+    color:var(--marrom);
+    font:500 10px 'Montserrat',sans-serif;
+    outline:none
+}
+
+.lista{
+    max-width:1050px;
+    margin:auto;
+    padding:0 30px 100px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px
+}
+
+.presente{
+    background:var(--branco);
+    border:0;
+    border-top:3px solid var(--verde);
+    padding:0 0 20px;
+    box-shadow:0 15px 40px rgba(80,60,45,.07);
+    display:flex;
+    flex-direction:column;
+    transition:.3s;
+    position:relative
+}
+
+.presente:hover{
+    transform:translateY(-7px);
+    box-shadow:0 24px 55px rgba(80,60,45,.12)
+}
+
+.imagem{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    display:block;
+    transition:.4s
+}
+
+.presente:hover .imagem{
+    filter:saturate(.88)
+}
+
+.categoria-presente{
+    margin:18px 22px 0;
+    font-size:8px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--verde)
+}
+
+.nome-presente{
+    min-height:58px;
+    padding:8px 22px 0;
+    font:500 25px/1 'Cormorant Garamond',serif;
+    color:var(--marrom);
+    display:flex;
+    align-items:center
+}
+
+.frase-presente{
+    min-height:65px;
+    padding:7px 22px;
+    font:italic 15px/1.35 'Cormorant Garamond',serif;
+    color:var(--texto-claro)
+}
+
+.frase-presente:before{
+    content:'“';
+    color:var(--dourado);
+    font-size:24px
+}
+
+.frase-presente:after{
+    content:'”';
+    color:var(--dourado);
+    font-size:24px
+}
+
+.preco{
+    margin:5px 22px 16px;
+    font:500 18px 'Cormorant Garamond',serif;
+    color:var(--verde-profundo)
+}
+
+.botao{
+    margin:auto 22px 0;
+    width:calc(100% - 44px);
+    padding:13px;
+    border:1px solid var(--verde-profundo);
+    background:var(--verde-profundo);
+    color:var(--creme);
+    font:600 9px 'Montserrat',sans-serif;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:.3s
+}
+
+.botao:hover{
+    background:var(--marrom);
+    border-color:var(--marrom)
+}
+
+.presente.escolhido{
+    opacity:.72
+}
+
+.presente.escolhido .botao{
+    background:var(--marrom);
+    border-color:var(--marrom)
+}
+
+
+/* =====================================================
+   CONFIRMAÇÃO DE PRESENÇA
+===================================================== */
+
+.confirmacao-presenca{
+    max-width:1000px;
+    margin:55px auto 100px;
+    padding:72px 40px;
+    text-align:center;
+    background:var(--creme-2);
+    color:var(--texto);
+    position:relative;
+    overflow:hidden;
+    border-top:1px solid var(--areia);
+    border-bottom:1px solid var(--areia)
+}
+
+.confirmacao-presenca:before{
+    content:"♡";
+    position:absolute;
+    left:8%;
+    top:20%;
+    font:100px 'Cormorant Garamond',serif;
+    color:rgba(107,81,69,.07)
+}
+
+.confirmacao-presenca:after{
+    content:"♡";
+    position:absolute;
+    right:8%;
+    bottom:10%;
+    font:100px 'Cormorant Garamond',serif;
+    color:rgba(113,134,118,.08)
+}
+
+.confirmacao-linha{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:25px
+}
+
+.confirmacao-linha span{
+    width:55px;
+    height:1px;
+    background:var(--dourado)
+}
+
+.confirmacao-linha i{
+    font-style:normal;
+    color:var(--dourado-claro)
+}
+
+.confirmacao-icone{
+    font:28px 'Cormorant Garamond',serif;
+    color:var(--dourado-claro);
+    margin-bottom:10px
+}
+
+.confirmacao-presenca h2{
+    font:500 clamp(42px,6vw,62px)/.95 'Cormorant Garamond',serif;
+    margin-bottom:14px;
+    color:var(--marrom)
+}
+
+.confirmacao-presenca p{
+    font-size:12px;
+    line-height:20px;
+    color:var(--texto-claro);
+    margin-bottom:28px
+}
+
+
+/* BOTÃO */
+
+.botao-confirmacao{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:15px 30px;
+    background:var(--marrom);
+    color:var(--creme);
+    text-decoration:none;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+    animation:confirmarPulso 2.8s ease-in-out infinite
+}
+
+.botao-confirmacao:hover{
+    background:var(--verde-profundo);
+    transform:scale(1.04);
+    box-shadow:0 10px 28px rgba(79,98,84,.18);
+    animation-play-state:paused
+}
+
+.botao-confirmacao span{
+    font-size:15px
+}
+
+@keyframes confirmarPulso{
+
+    0%,100%{
+        transform:scale(1);
+        box-shadow:0 4px 14px rgba(107,81,69,.10)
+    }
+
+    50%{
+        transform:scale(1.045);
+        box-shadow:0 8px 22px rgba(107,81,69,.16)
+    }
+
+}
+
+
+/* =====================================================
+   PRAZO DE CONFIRMAÇÃO
+===================================================== */
+
+.prazo-confirmacao{
+    margin:25px auto 28px;
+    padding:18px 25px;
+    max-width:360px;
+    border-top:1px solid var(--dourado-claro);
+    border-bottom:1px solid var(--dourado-claro);
+    background:rgba(255,255,255,.22);
+    position:relative;
+    z-index:2
+}
+
+.prazo-label{
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--texto-claro);
+    margin-bottom:6px
+}
+
+.prazo-data{
+    font:500 30px/1 'Cormorant Garamond',serif;
+    letter-spacing:4px;
+    color:var(--verde-profundo)
+}
+
+.prazo-legenda{
+    margin-top:7px;
+    font:italic 13px 'Cormorant Garamond',serif;
+    color:var(--texto-claro)
+}
+
+.mensagem-prazo{
+    margin-top:18px;
+    font:italic 14px/1.4 'Cormorant Garamond',serif;
+    color:var(--texto-claro);
+    position:relative;
+    z-index:2
+}
+
+
+/* CONFIRMAÇÃO ENCERRADA */
+
+.botao-confirmacao.encerrado{
+    background:var(--texto-claro);
+    border-color:var(--texto-claro);
+    cursor:not-allowed;
+    animation:none;
+    pointer-events:none;
+    opacity:.75
+}
+
+.prazo-expirado{
+    color:var(--marrom);
+    font-weight:500
+}
+
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
+.rodape{
+    text-align:center;
+    padding:40px 20px 100px;
+    color:var(--texto-claro);
+    font:italic 17px 'Cormorant Garamond',serif
+}
+
+.rodape .coracao{
+    display:block;
+    color:var(--dourado);
+    font-size:25px;
+    margin-bottom:12px
+}
+
+.rodape strong{
+    display:block;
+    margin-top:5px;
+    font-size:34px;
+    font-weight:500;
+    color:var(--marrom)
+}
+
+.rodape .data{
+    margin-top:10px;
+    font-size:13px;
+    letter-spacing:4px;
+    color:var(--verde-profundo)
+}
+
+
+/* =====================================================
+   TOPO
+===================================================== */
+
+.topo-btn{
+    position:fixed;
+    right:22px;
+    bottom:25px;
+    width:42px;
+    height:42px;
+    border:1px solid var(--areia);
+    border-radius:50%;
+    background:var(--branco);
+    color:var(--marrom);
+    font-size:17px;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(80,60,45,.12);
+    z-index:100
+}
+
+
+/* =====================================================
+   POPUP PIX
+===================================================== */
+
+.popup-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(60,45,38,.62);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9998
+}
+
+.popup-overlay.ativo{
+    opacity:1;
+    visibility:visible
+}
+
+.popup{
+    width:min(440px,100%);
+    background:var(--creme);
+    padding:42px 35px;
+    text-align:center;
+    border-top:4px solid var(--dourado);
+    box-shadow:0 25px 80px rgba(0,0,0,.22)
+}
+
+.popup-icone{
+    font:30px 'Cormorant Garamond',serif;
+    color:var(--dourado);
+    margin-bottom:10px
+}
+
+.popup-titulo{
+    font:500 34px 'Cormorant Garamond',serif;
+    color:var(--marrom)
+}
+
+.popup-detalhe{
+    width:45px;
+    height:1px;
+    background:var(--dourado);
+    margin:15px auto
+}
+
+.popup-mensagem{
+    font-size:11px;
+    line-height:21px;
+    color:var(--texto)
+}
+
+.popup-fechar{
+    margin-top:25px;
+    padding:12px 30px;
+    border:0;
+    background:var(--marrom);
+    color:white;
+    font:600 9px 'Montserrat',sans-serif;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    cursor:pointer
+}
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+.player-musica{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 10px 8px 13px;
+    background:var(--branco);
+    border:1px solid var(--areia);
+    box-shadow:0 10px 30px rgba(80,60,45,.12);
+    z-index:500
+}
+
+.controle-musica{
+    width:34px;
+    height:34px;
+    border:0;
+    border-radius:50%;
+    background:var(--marrom);
+    color:white;
+    cursor:pointer
+}
+
+.icone-musica{
+    color:var(--dourado);
+    font-size:17px
+}
+
+.texto-musica{
+    font-size:9px;
+    letter-spacing:.8px;
+    color:var(--texto-claro);
+    white-space:nowrap
+}
+
+.volume-musica{
+    width:65px;
+    accent-color:var(--marrom);
+    cursor:pointer
+}
+
+.player-musica.tocando .icone-musica{
+    animation:musicPulse 1.6s infinite
+}
+
+@keyframes musicPulse{
+    50%{
+        transform:scale(1.18)
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media(max-width:850px){
+
+    .hero{
+        grid-template-columns:1fr;
+        min-height:600px;
+        text-align:center;
+        padding:65px 9%
+    }
+
+    .hero:before{
+        left:8%;
+        top:10%;
+        bottom:10%
+    }
+
+    .hero .subtitulo{
+        margin:auto
+    }
+
+    .hero .linha-decorativa{
+        justify-content:center
+    }
+
+    .introducao{
+        margin:0 8%;
+        max-width:none
+    }
+
+    .contagem-container{
+        grid-template-columns:1fr;
+        margin:70px auto;
+        padding:0 25px;
+        gap:25px;
+        text-align:center
+    }
+
+    .contagem-titulo:after{
+        margin:15px auto
+    }
+
+    .evento-card{
+        grid-template-columns:1fr;
+        gap:30px
+    }
+
+    .evento-titulo{
+        text-align:center
+    }
+
+    .evento-data{
+        text-align:center
+    }
+
+    .titulo-lista{
+        display:block
+    }
+
+    .titulo-lista p{
+        text-align:left;
+        margin-top:18px
+    }
+
+    .lista{
+        grid-template-columns:repeat(2,1fr);
+        padding:0 20px 80px
+    }
+
+    .confirmacao-presenca{
+        margin-left:20px;
+        margin-right:20px
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .entrada-conteudo{
+        padding:50px 22px
+    }
+
+    .hero{
+        min-height:560px
+    }
+
+    .hero .nomes{
+        font-size:72px;
+        letter-spacing:-2px
+    }
+
+    .contagem{
+        grid-template-columns:repeat(2,1fr)
+    }
+
+    .tempo:nth-child(2){
+        border-right:0
+    }
+
+    .tempo:nth-child(-n+2){
+        border-bottom:1px solid var(--areia)
+    }
+
+    .evento{
+        padding:65px 25px
+    }
+
+    .evento-info{
+        grid-template-columns:1fr 1fr;
+        gap:10px
+    }
+
+    .lista{
+        grid-template-columns:1fr;
+        padding:0 18px 70px
+    }
+
+    .titulo-lista{
+        margin-top:75px;
+        padding:0 20px
+    }
+
+    .ordenacao{
+        padding:0 20px
+    }
+
+    .nome-presente{
+        font-size:27px
+    }
+
+    .confirmacao-presenca{
+        padding:65px 25px;
+        margin-bottom:70px
+    }
+
+    .prazo-confirmacao{
+        max-width:100%;
+        padding:17px 15px
+    }
+
+    .prazo-data{
+        font-size:27px;
+        letter-spacing:3px
+    }
+
+    .player-musica{
+        right:12px;
+        bottom:15px
+    }
+
+    .volume-musica{
+        width:50px
+    }
+
+    .texto-musica{
+        display:none
+    }
+
+    .topo-btn{
+        right:15px;
+        bottom:70px
+    }
+
+}
+
+
+@media(max-width:380px){
+
+    .hero .nomes{
+        font-size:62px
+    }
+
+    .evento-info{
+        grid-template-columns:1fr
+    }
+
+    .contagem-container{
+        padding:0 18px
+    }
+
+    .tempo span{
+        font-size:38px
+    }
+
+}
+
+
+    </style>
 </head>
+
 <body>
-<div class="tela-entrada" id="telaEntrada"><div class="entrada-conteudo"><div class="entrada-detalhe">♡</div><div class="entrada-pequeno">Nosso casamento</div><div class="entrada-nomes">Gabi & Tom</div><div class="entrada-data">07 · 11 · 2026</div><div class="entrada-frase">Estamos muito felizes em compartilhar esse momento tão especial com vocês.</div><div class="entrada-linha"><span></span><i>♡</i><span></span></div><button class="botao-entrar" id="botaoEntrar" onclick="entrarNoSite()">Entrar</button></div></div>
-<header class="hero"><div><div class="pequeno-texto">Um dia para guardar no coração</div><div class="nomes">Gabi & Tom</div><div class="data-casamento">07 · 11 · 2026</div></div><div><div class="linha-decorativa"><span></span><i>♡</i><span></span></div><div class="subtitulo">Alegrai-vos com os que se alegram;… (Romanos 12:15a)</div></div></header>
-<section class="introducao"><h2>Nosso grande dia</h2><p>Depois de tantos momentos compartilhados, chegou a hora de celebrar o nosso amor ao lado das pessoas que fazem parte da nossa história. A presença de vocês já é o nosso maior presente.</p></section>
-<section class="contagem-container"><div class="contagem-titulo">Falta pouco para o nosso “sim”</div><div id="contagem-regressiva" class="contagem"><div class="tempo"><span id="dias">00</span><small>Dias</small></div><div class="tempo"><span id="horas">00</span><small>Horas</small></div><div class="tempo"><span id="minutos">00</span><small>Minutos</small></div><div class="tempo"><span id="segundos">00</span><small>Segundos</small></div></div></section>
-<section class="evento"><div class="evento-card"><div><div class="evento-titulo">Onde vamos celebrar</div><div class="evento-data">07 · 11 · 2026</div></div><div><div class="evento-info"><div class="evento-item"><div class="evento-icone">♡</div><div class="evento-label">Horário</div><div class="evento-valor">12:00</div></div><div class="evento-item"><div class="evento-icone">⌖</div><div class="evento-label">Local</div><div class="evento-endereco">Rua Caputira, nº 494<br>Parque Iracema</div></div></div><a class="botao-mapa" href="https://maps.app.goo.gl/5VpeFcGbqfmq9TsL9" target="_blank" rel="noopener noreferrer">📍 Como chegar</a></div></div></section>
-<section class="titulo-lista"><h1>Presentes para a nossa nova história</h1><p>ESCOLHA UM PRESENTE E FAÇA PARTE DESSE MOMENTO COM A GENTE.</p></section>
-<div class="ordenacao"><span>Ordenar por:</span><select id="ordenacao" onchange="ordenarLista()"><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="nome">Nome</option></select></div>
+
+
+<!-- =====================================================
+     TELA DE ENTRADA
+===================================================== -->
+
+<div class="tela-entrada" id="telaEntrada">
+
+    <div class="entrada-conteudo">
+
+        <div class="entrada-detalhe">♡</div>
+
+        <div class="entrada-pequeno">
+            Nosso casamento
+        </div>
+
+        <div class="entrada-nomes">
+            Gabi & Tom
+        </div>
+
+        <div class="entrada-data">
+            07 · 11 · 2026
+        </div>
+
+        <div class="entrada-frase">
+            Estamos muito felizes em compartilhar esse momento tão especial com vocês.
+        </div>
+
+        <div class="entrada-linha">
+            <span></span>
+            <i>♡</i>
+            <span></span>
+        </div>
+
+        <button
+            class="botao-entrar"
+            id="botaoEntrar"
+            onclick="entrarNoSite()"
+        >
+            Entrar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div>
+
+        <div class="pequeno-texto">
+            Um dia para guardar no coração
+        </div>
+
+        <div class="nomes">
+            Gabi & Tom
+        </div>
+
+        <div class="data-casamento">
+            07 · 11 · 2026
+        </div>
+
+    </div>
+
+    <div>
+
+        <div class="linha-decorativa">
+            <span></span>
+            <i>♡</i>
+            <span></span>
+        </div>
+
+        <div class="subtitulo">
+            Alegrai-vos com os que se alegram;… (Romanos 12:15a)
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     INTRODUÇÃO
+===================================================== -->
+
+<section class="introducao">
+
+    <h2>
+        Nosso grande dia
+    </h2>
+
+    <p>
+        Depois de tantos momentos compartilhados,
+        chegou a hora de celebrar o nosso amor ao lado
+        das pessoas que fazem parte da nossa história.
+        A presença de vocês já é o nosso maior presente.
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     CONTAGEM
+===================================================== -->
+
+<section class="contagem-container">
+
+    <div class="contagem-titulo">
+        Falta pouco para o nosso “sim”
+    </div>
+
+    <div
+        id="contagem-regressiva"
+        class="contagem"
+    >
+
+        <div class="tempo">
+            <span id="dias">00</span>
+            <small>Dias</small>
+        </div>
+
+        <div class="tempo">
+            <span id="horas">00</span>
+            <small>Horas</small>
+        </div>
+
+        <div class="tempo">
+            <span id="minutos">00</span>
+            <small>Minutos</small>
+        </div>
+
+        <div class="tempo">
+            <span id="segundos">00</span>
+            <small>Segundos</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EVENTO
+===================================================== -->
+
+<section class="evento">
+
+    <div class="evento-card">
+
+        <div>
+
+            <div class="evento-titulo">
+                Onde vamos celebrar
+            </div>
+
+            <div class="evento-data">
+                07 · 11 · 2026
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="evento-info">
+
+                <div class="evento-item">
+
+                    <div class="evento-icone">
+                        ♡
+                    </div>
+
+                    <div class="evento-label">
+                        Horário
+                    </div>
+
+                    <div class="evento-valor">
+                        12:00
+                    </div>
+
+                </div>
+
+                <div class="evento-item">
+
+                    <div class="evento-icone">
+                        ⌖
+                    </div>
+
+                    <div class="evento-label">
+                        Local
+                    </div>
+
+                    <div class="evento-endereco">
+                        Rua Caputira, nº 494<br>
+                        Parque Iracema
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a
+                class="botao-mapa"
+                href="https://maps.app.goo.gl/5VpeFcGbqfmq9TsL9"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                📍 Como chegar
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TÍTULO PRESENTES
+===================================================== -->
+
+<section class="titulo-lista">
+
+    <h1>
+        Presentes para a nossa nova história
+    </h1>
+
+    <p>
+        ESCOLHA UM PRESENTE E FAÇA PARTE DESSE MOMENTO COM A GENTE.
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     ORDENAÇÃO
+===================================================== -->
+
+<div class="ordenacao">
+
+    <span>
+        Ordenar por:
+    </span>
+
+    <select
+        id="ordenacao"
+        onchange="ordenarLista()"
+    >
+
+        <option value="menor">
+            Menor preço
+        </option>
+
+        <option value="maior">
+            Maior preço
+        </option>
+
+        <option value="nome">
+            Nome
+        </option>
+
+    </select>
+
+</div>
+
+
+<!-- =====================================================
+     LISTA DE PRESENTES
+===================================================== -->
+
 <main class="lista" id="lista">
 
 
-        <!-- PRESENTE 1 -->
+<!-- PRESENTE 1 -->
 
-          <div
-        class="presente"
-        data-preco="120.00"
-        data-nome="Café da manhã especial para os noivos">
-    
-        <img
-            class="imagem"
-            src="https://i.pinimg.com/736x/9d/8f/82/9d8f821e30879f928876273d08632042.jpg"
-            alt="Café da manhã">
-    
-        <div class="categoria-presente">
-            ☕ Momentos a dois
-        </div>
-    
-        <div class="nome-presente">
-            Café da manhã especial para os noivos
-        </div>
-    
-        <div class="frase-presente">
-            Para começar um dia de casados com muito carinho.
-        </div>
-    
-        <div class="preco">
-            R$ 120,00
-        </div>
-    
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Café da manhã especial para os noivos',
-                120.00,
-                PIX_PRESENTE_01
-            )">
-        
-            Presentear
-        
-        </button>
-    
+<div
+    class="presente"
+    data-preco="120.00"
+    data-nome="Café da manhã especial para os noivos"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/9d/8f/82/9d8f821e30879f928876273d08632042.jpg"
+        alt="Café da manhã"
+    >
+
+    <div class="categoria-presente">
+        ☕ Momentos a dois
+    </div>
+
+    <div class="nome-presente">
+        Café da manhã especial para os noivos
+    </div>
+
+    <div class="frase-presente">
+        Para começar um dia de casados com muito carinho.
+    </div>
+
+    <div class="preco">
+        R$ 120,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Café da manhã especial para os noivos',
+            120.00,
+            PIX_PRESENTE_01
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 2 -->
+
+<div
+    class="presente"
+    data-preco="300.00"
+    data-nome="Lua de Mel"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/d3/15/7c/d3157c9f5eeccfeef2702e2fc3d74b69.jpg"
+        alt="Lua de mel"
+    >
+
+    <div class="categoria-presente">
+        🍷 Lua de mel
+    </div>
+
+    <div class="nome-presente">
+        Ajuda com a lua de mel
+    </div>
+
+    <div class="frase-presente">
+        Ajude os noivos a pagar a lua de mel para começar com o pé direito
+    </div>
+
+    <div class="preco">
+        R$ 300,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Jantar romântico',
+            300.00,
+            PIX_PRESENTE_02
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 3 -->
+
+<div
+    class="presente"
+    data-preco="59.90"
+    data-nome="Filme e pipoca"
+>
+
+    <img
+        class="imagem"
+        src="https://anacris.de/wp-content/uploads/2013/06/anacrying.jpg"
+        alt="Cinema com pipoca"
+    >
+
+    <div class="categoria-presente">
+        🎬 Noite de cinema
+    </div>
+
+    <div class="nome-presente">
+        Lenço para noiva não borrar a maquiagem
+    </div>
+
+    <div class="frase-presente">
+        ????
+    </div>
+
+    <div class="preco">
+        R$ 95,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Cinema com pipoca',
+            59.90,
+            PIX_PRESENTE_03
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 4 -->
+
+<div
+    class="presente"
+    data-preco="169.90"
+    data-nome="Passeio de barco"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/5e/7e/ca/5e7eca14ae78cf507994a6a124493c12.jpg"
+        alt="Passeio de barco"
+    >
+
+    <div class="categoria-presente">
+        🥐 Passeio
+    </div>
+
+    <div class="nome-presente">
+        Passeio de barco para os noivos
+    </div>
+
+    <div class="frase-presente">
+        Para os noivos relaxarem na lua de mel
+    </div>
+
+    <div class="preco">
+        R$ 169,90
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Cesta de café da manhã',
+            169.90,
+            PIX_PRESENTE_04
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 5 -->
+
+<div
+    class="presente"
+    data-preco="00.00"
+    data-nome="Valor em aberto"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/18/f9/53/18f95302ab2bef4e712f8cdaecf5f139.jpg"
+        alt="Valor em aberto"
+    >
+
+    <div class="categoria-presente">
+        ✨ Valor em aberto
+    </div>
+
+    <div class="nome-presente">
+        Valor em aberto
+    </div>
+
+    <div class="frase-presente">
+        Deixamos esse valor em aberto para você demonstrar seu carinho com os noivos.
+    </div>
+
+    <div class="preco">
+        R$ Em aberto
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Jantar especial',
+            00.00,
+            PIX_PRESENTE_05
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 6 -->
+
+<div
+    class="presente"
+    data-preco="160.00"
+    data-nome="mudança de casa"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/ce/53/b5/ce53b5b5970f421cd443d26351212130.jpg"
+        alt="Hotel"
+    >
+
+    <div class="categoria-presente">
+        🛏️ Vida Nova
+    </div>
+
+    <div class="nome-presente">
+        Ajuda para os noivos fazer a mudança.
+    </div>
+
+    <div class="frase-presente">
+        ????
+    </div>
+
+    <div class="preco">
+        R$ 160,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Noite especial no hotel',
+            160.00,
+            PIX_PRESENTE_06
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 7 -->
+
+<div
+    class="presente"
+    data-preco="80.00"
+    data-nome="Só pra não dizer que não dei nada"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/1200x/45/2e/df/452edf938c0b0d3bbce9e127b4045543.jpg"
+        alt="Só pra não dizer que não dei nada"
+    >
+
+    <div class="categoria-presente">
+        ☕ Momentos a dois
+    </div>
+
+    <div class="nome-presente">
+        Só pra não dizer que não dei nada.
+    </div>
+
+    <div class="frase-presente">
+        Amo vocês, mas to apertado agora.
+    </div>
+
+    <div class="preco">
+        R$ 80,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Só pra não dizer que não dei nada',
+            80.00,
+            PIX_PRESENTE_07
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 8 -->
+
+<div
+    class="presente"
+    data-preco="180.00"
+    data-nome="Netflix"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/e7/fa/e3/e7fae3974461d4f52def30f2024141e3.jpg"
+        alt="Netflix"
+    >
+
+    <div class="categoria-presente">
+        🎬 Momentos a dois
+    </div>
+
+    <div class="nome-presente">
+        6 Meses de Netflix
+    </div>
+
+    <div class="frase-presente">
+        Para os noivos não terem filhos no começo.
+    </div>
+
+    <div class="preco">
+        R$ 180,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Jantar romântico',
+            180.00,
+            PIX_PRESENTE_08
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 9 -->
+
+<div
+    class="presente"
+    data-preco="250.00"
+    data-nome="Amigo rico"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/1200x/ae/7d/56/ae7d56a3c846d03139a11574122dcb3e.jpg"
+        alt="Amigo rico"
+    >
+
+    <div class="categoria-presente">
+        🎬 Amigo rico
+    </div>
+
+    <div class="nome-presente">
+        Você quer mostrar que é rico e a gente quer ver
+    </div>
+
+    <div class="frase-presente">
+        ???
+    </div>
+
+    <div class="preco">
+        R$ 250,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Cinema com pipoca',
+            250.00,
+            PIX_PRESENTE_09
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 10 -->
+
+<div
+    class="presente"
+    data-preco="500.00"
+    data-nome="Deus tocou seu coração"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/31/54/06/3154066260d4a36bf42921489456a843.jpg"
+        alt="Deus tocou seu coração"
+    >
+
+    <div class="categoria-presente">
+        🥐 Fé
+    </div>
+
+    <div class="nome-presente">
+        Deus tocou seu coração
+    </div>
+
+    <div class="frase-presente">
+        Deus está te usando para abençoar os noivos.
+    </div>
+
+    <div class="preco">
+        R$ 500,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            500.00,
+            PIX_PRESENTE_10
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 11 -->
+
+<div
+    class="presente"
+    data-preco="150.00"
+    data-nome="Jantar especial"
+>
+
+    <img
+        class="imagem"
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700"
+        alt="Jantar especial"
+    >
+
+    <div class="categoria-presente">
+        ✨ Celebração
+    </div>
+
+    <div class="nome-presente">
+        Jantar especial de comemoração
+    </div>
+
+    <div class="frase-presente">
+        Para brindar à nossa nova vida juntos.
+    </div>
+
+    <div class="preco">
+        R$ 150,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Jantar especial',
+            150.00,
+            PIX_PRESENTE_11
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+<!-- PRESENTE 12 -->
+
+<div
+    class="presente"
+    data-preco="140.00"
+    data-nome="Curso para noiva"
+>
+
+    <img
+        class="imagem"
+        src="https://i.pinimg.com/736x/87/4a/d1/874ad17d80abe5b814f1835b3b13e8aa.jpg"
+        alt="Hotel"
+    >
+
+    <div class="categoria-presente">
+        🛏️ Curso para noiva
+    </div>
+
+    <div class="nome-presente">
+        Um curso de culinária para noiva cozinhar para o noivo.
+    </div>
+
+    <div class="frase-presente">
+        Para evitar perrengues na cozinha.
+    </div>
+
+    <div class="preco">
+        R$ 140,00
+    </div>
+
+    <button
+        class="botao"
+        onclick="presentear(
+            this,
+            'Noite especial no hotel',
+            140.00,
+            PIX_PRESENTE_12
+        )"
+    >
+        Presentear
+    </button>
+
+</div>
+
+
+</main>
+
+
+<!-- =====================================================
+     CONFIRMAÇÃO DE PRESENÇA
+===================================================== -->
+
+<section
+    class="confirmacao-presenca"
+    id="confirmacaoPresenca"
+>
+
+    <div class="confirmacao-linha">
+
+        <span></span>
+
+        <i>♡</i>
+
+        <span></span>
+
     </div>
 
 
-        <!-- PRESENTE 2 -->
-
-          <div
-        class="presente"
-        data-preco="300.00"
-        data-nome="Lua de Mel">
-    
-        <img
-            class="imagem"
-            src="https://i.pinimg.com/736x/d3/15/7c/d3157c9f5eeccfeef2702e2fc3d74b69.jpg"
-            alt="Lua de mel">
-    
-        <div class="categoria-presente">
-            🍷 Lua de mel
-        </div>
-    
-        <div class="nome-presente">
-            Ajuda com a lua de mel
-        </div>
-    
-        <div class="frase-presente">
-            Ajude os noivos a pagar a lua de mel para começar com o pé direito
-        </div>
-    
-        <div class="preco">
-            R$ 300,00
-        </div>
-
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Jantar romântico',
-                300.00,
-                PIX_PRESENTE_02
-            )">
-        
-            Presentear
-        
-        </button>
-    
+    <div class="confirmacao-icone">
+        ♡
     </div>
 
 
-        <!-- PRESENTE 3 -->
+    <h2>
+        Esperamos você!
+    </h2>
 
-        <div
-                class="presente"
-                data-preco="59.90"
-                data-nome="Filme e pipoca">
-            
-                <img
-                    class="imagem"
-                    src="https://anacris.de/wp-content/uploads/2013/06/anacrying.jpg"
-                    alt="Cinema com pipoca">
-            
-                <div class="categoria-presente">
-                    🎬 Noite de cinema
-                </div>
-            
-                <div class="nome-presente">
-                    Lenço para noiva não borrar a maquiagem
-                </div>
-            
-                <div class="frase-presente">
-                    ????
-                </div>
-            
-                <div class="preco">
-                    R$ 95,00
-                </div>
-            
-            <button
-                class="botao"
-                onclick="presentear(
-                    this,
-                    'Cinema com pipoca',
-                    59.90,
-                    PIX_PRESENTE_03
-                )">
-            
-                Presentear
-            
-            </button>
-    
+
+    <p>
+        Sua presença é o presente mais importante para nós.
+        <br>
+        Para nos ajudar com os preparativos, confirme sua presença
+        dentro do prazo abaixo.
+    </p>
+
+
+    <!-- PRAZO -->
+
+    <div class="prazo-confirmacao">
+
+        <div class="prazo-label">
+            CONFIRME SUA PRESENÇA ATÉ
         </div>
 
-
-        <!-- PRESENTE 4 -->
-
-        <div
-            class="presente"
-            data-preco="169.90"
-            data-nome="Passeio de barco">
-        
-            <img
-                class="imagem"
-                src="https://i.pinimg.com/736x/5e/7e/ca/5e7eca14ae78cf507994a6a124493c12.jpg"
-                alt="Passeio de barco">
-        
-            <div class="categoria-presente">
-                🥐 Passeio
-            </div>
-        
-            <div class="nome-presente">
-              Passeio de barco para os noivos
-            </div>
-        
-            <div class="frase-presente">
-                Para os noivos relaxarem na lua de mel
-            </div>
-        
-            <div class="preco">
-                R$ 169,90
-            </div>
-        
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Cesta de café da manhã',
-               169.90,
-                PIX_PRESENTE_04
-            )">
-        
-            Presentear
-        
-        </button>
-        
-        </div>        
-
-
-        <!-- PRESENTE 5 -->
-
-        <div
-            class="presente"
-            data-preco="00.00"
-            data-nome="Valor em aberto">
-        
-            <img
-                class="imagem"
-                src="https://i.pinimg.com/736x/18/f9/53/18f95302ab2bef4e712f8cdaecf5f139.jpg"
-                alt="Valor em aberto">
-        
-            <div class="categoria-presente">
-                ✨ Valor em aberto
-            </div>
-        
-            <div class="nome-presente">
-                Valor em aberto
-            </div>
-        
-            <div class="frase-presente">
-                Deixamos esse valor em aberto para você demonstrar seu carinho com os noivos.
-            </div>
-        
-            <div class="preco">
-                R$ Em aberto
-            </div>
-        
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Jantar especial',
-                00.00,
-                PIX_PRESENTE_05
-            )">
-        
-            Presentear
-        
-        </button>
-        
+        <div class="prazo-data">
+            23 · 10 · 2026
         </div>
 
-
-        <!-- PRESENTE 6 -->
-
-        <div
-            class="presente"
-            data-preco="160.00"
-            data-nome="mudança de casa">
-        
-            <img
-                class="imagem"
-                src="https://i.pinimg.com/736x/ce/53/b5/ce53b5b5970f421cd443d26351212130.jpg"
-                alt="Hotel">
-        
-            <div class="categoria-presente">
-                🛏️ Vida Nova
-            </div>
-        
-            <div class="nome-presente">
-                Ajuda para os noivos fazer a mudança.
-            </div>
-        
-            <div class="frase-presente">
-               ????
-            </div>
-        
-            <div class="preco">
-                R$ 160,00
-            </div>
-        
-            <button
-                class="botao"
-                onclick="presentear(
-                    this,
-                    'Noite especial no hotel',
-                    160.00,
-                    PIX_PRESENTE_06
-                )">
-            
-                Presentear
-            
-            </button>
-        
+        <div class="prazo-legenda">
+            15 dias antes do nosso grande dia
         </div>
 
-          <!-- PRESENTE 07 -->
-
-          <div
-        class="presente"
-        data-preco="80.00"
-        data-nome="Só pra não dizer que não dei nada">
-    
-        <img
-            class="imagem"
-            src="https://i.pinimg.com/1200x/45/2e/df/452edf938c0b0d3bbce9e127b4045543.jpg"
-            alt="Só pra não dizer que não dei nada">
-    
-        <div class="categoria-presente">
-            ☕ Momentos a dois
-        </div>
-    
-        <div class="nome-presente">
-           Só pra não dizer que não dei nada.
-        </div>
-    
-        <div class="frase-presente">
-            Amo vocês, mas to apertado agora.
-        </div>
-    
-        <div class="preco">
-            R$ 80,00
-        </div>
-
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Só pra não dizer que não dei nada',
-                80.00,
-                PIX_PRESENTE_07
-            )">
-        
-            Presentear
-        
-        </button>
-    
     </div>
 
 
-        <!-- PRESENTE 08 -->
+    <!-- BOTÃO -->
 
-          <div
-        class="presente"
-        data-preco="180.00"
-        data-nome="Netflix">
-    
-        <img
-            class="imagem"
-            src="https://i.pinimg.com/736x/e7/fa/e3/e7fae3974461d4f52def30f2024141e3.jpg"
-            alt="Netflix">
-    
-        <div class="categoria-presente">
-            🎬 Momentos a dois
-        </div>
-    
-        <div class="nome-presente">
-            6 Meses de Netflix 
-        </div>
-    
-        <div class="frase-presente">
-            Para os noivos não terem filhos no começo.
-        </div>
-    
-        <div class="preco">
-            R$ 180,00
-        </div>
-    
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Jantar romântico',
-                180.00,
-                PIX_PRESENTE_08
-            )">
-        
-            Presentear
-        
-        </button>
-    
+    <a
+        id="botaoConfirmacao"
+        class="botao-confirmacao"
+        href="https://wa.me/5517997056873?text=Ol%C3%A1%20Gabi%20e%20Tom!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20voc%C3%AAs.%20%F0%9F%92%9A"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <span>♡</span>
+
+        Confirmar presença
+
+    </a>
+
+
+    <div
+        id="mensagemPrazo"
+        class="mensagem-prazo"
+    >
+        Sua confirmação nos ajudará a preparar tudo com muito carinho. ♡
     </div>
 
 
-        <!-- PRESENTE 09 -->
+    <div
+        class="confirmacao-linha"
+        style="margin-top:28px;margin-bottom:0"
+    >
 
-        <div
-                class="presente"
-                data-preco="250.00"
-                data-nome="Amigo rico">
-            
-                <img
-                    class="imagem"
-                    src="https://i.pinimg.com/1200x/ae/7d/56/ae7d56a3c846d03139a11574122dcb3e.jpg"
-                    alt="Amigo rico">
-            
-                <div class="categoria-presente">
-                    🎬 Amigo rico
-                </div>
-            
-                <div class="nome-presente">
-                    Você quer mostrar que é rico e a gente quer ver
-                </div>
-            
-                <div class="frase-presente">
-                    ???
-                </div>
-            
-                <div class="preco">
-                    R$ 250,00
-                </div>
-            
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Cinema com pipoca',
-                250.00,
-                PIX_PRESENTE_09
-            )">
-        
-            Presentear
-        
-        </button>
-    
+        <span></span>
+
+        <i>♡</i>
+
+        <span></span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RODAPÉ
+===================================================== -->
+
+<footer class="rodape">
+
+    <span class="coracao">
+        ♡
+    </span>
+
+    Com carinho,
+
+    <strong>
+        Gabi & Tom
+    </strong>
+
+    <div class="data">
+        07 · 11 · 2026
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     BOTÃO TOPO
+===================================================== -->
+
+<button
+    class="topo-btn"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    aria-label="Voltar ao topo"
+>
+    ↑
+</button>
+
+
+<!-- =====================================================
+     POPUP PIX
+===================================================== -->
+
+<div
+    id="popupPix"
+    class="popup-overlay"
+>
+
+    <div class="popup">
+
+        <div class="popup-icone">
+            ♡
         </div>
 
-
-        <!-- PRESENTE 10 -->
-
-        <div
-            class="presente"
-            data-preco="500.00"
-            data-nome="Deus tocou seu coração">
-        
-            <img
-                class="imagem"
-                src="https://i.pinimg.com/736x/31/54/06/3154066260d4a36bf42921489456a843.jpg"
-                alt="Deus tocou seu coração">
-        
-            <div class="categoria-presente">
-                🥐 Fé
-            </div>
-        
-            <div class="nome-presente">
-               Deus tocou seu coração
-            </div>
-        
-            <div class="frase-presente">
-                Deus está te usando para abençoar os noivos.
-            </div>
-        
-            <div class="preco">
-                R$ 500,00
-            </div>
-        
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-               500.00,
-                PIX_PRESENTE_10
-            )">
-        
-            Presentear
-        
-        </button>
-        
-        </div>        
-
-
-        <!-- PRESENTE 11 -->
-
-        <div
-            class="presente"
-            data-preco="150.00"
-            data-nome="Jantar especial">
-        
-            <img
-                class="imagem"
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700"
-                alt="Jantar especial">
-        
-            <div class="categoria-presente">
-                ✨ Celebração
-            </div>
-        
-            <div class="nome-presente">
-                Jantar especial de comemoração
-            </div>
-        
-            <div class="frase-presente">
-                Para brindar à nossa nova vida juntos.
-            </div>
-        
-            <div class="preco">
-                R$ 150,00
-            </div>
-        
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Jantar especial',
-                150.00,
-                PIX_PRESENTE_11
-            )">
-        
-            Presentear
-        
-        </button>
-        
+        <div class="popup-titulo">
+            Presente escolhido!
         </div>
 
+        <div class="popup-detalhe"></div>
 
-        <!-- PRESENTE 12 -->
+        <div class="popup-mensagem">
 
-        <div
-            class="presente"
-            data-preco="140.00"
-            data-nome="Curso para noiva">
-        
-            <img
-                class="imagem"
-                src="https://i.pinimg.com/736x/87/4a/d1/874ad17d80abe5b814f1835b3b13e8aa.jpg"
-                alt="Hotel">
-        
-            <div class="categoria-presente">
-                🛏️ Curso para noiva
-            </div>
-        
-            <div class="nome-presente">
-                Um curso de culinária para noiva cozinhar para o noivo.
-            </div>
-        
-            <div class="frase-presente">
-                Para evitar perrengues na cozinha.
-            </div>
-        
-            <div class="preco">
-                R$ 140,00
-            </div>
-        
-        <button
-            class="botao"
-            onclick="presentear(
-                this,
-                'Noite especial no hotel',
-                140.00,
-                PIX_PRESENTE_12
-            )">
-        
-            Presentear
-        
-        </button>
-        
+            A chave PIX foi copiada para sua área de transferência.
+
+            <br><br>
+
+            Basta abrir o aplicativo do seu banco,
+            escolher a opção PIX e colar a chave
+            para realizar a transferência.
+
+            <br><br>
+
+            <strong>
+                Destinatário:
+            </strong>
+
+            Erivelton Oliveira Matos
+
+            <br><br>
+
+            <strong>
+                Muito obrigado por fazer parte desse momento! ♡
+            </strong>
+
         </div>
 
-    </main>
-<section class="confirmacao-presenca"><div class="confirmacao-linha"><span></span><i>♡</i><span></span></div><div class="confirmacao-icone">♡</div><h2>Esperamos você!</h2><p>Sua presença é o presente mais importante para nós.</p><a class="botao-confirmacao" href="https://wa.me/5517997056873?text=Ol%C3%A1%20Gabi%20e%20Tom!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20voc%C3%AAs.%20%F0%9F%92%9A" target="_blank" rel="noopener noreferrer"><span>♡</span> Confirmar presença</a><div class="confirmacao-linha" style="margin-top:28px;margin-bottom:0"><span></span><i>♡</i><span></span></div></section>
-<footer class="rodape"><span class="coracao">♡</span>Com carinho,<strong>Gabi & Tom</strong><div class="data">07 · 11 · 2026</div></footer>
-<button class="topo-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
-<div id="popupPix" class="popup-overlay"><div class="popup"><div class="popup-icone">♡</div><div class="popup-titulo">Presente escolhido!</div><div class="popup-detalhe"></div><div class="popup-mensagem">A chave PIX foi copiada para sua área de transferência.<br><br>Basta abrir o aplicativo do seu banco, escolher a opção PIX e colar a chave para realizar a transferência.<br><br><strong>Destinatário:</strong> Erivelton Oliveira Matos<br><br><strong>Muito obrigado por fazer parte desse momento! ♡</strong></div><button class="popup-fechar" onclick="fecharPopup()">Entendi</button></div></div>
-<audio id="musicaCasamento" loop><source src="musica.mp3" type="audio/mpeg"></audio>
-<div class="player-musica" id="playerMusica"><span class="icone-musica">♪</span><span class="texto-musica">Nossa música</span><button class="controle-musica" id="botaoMusica" onclick="alternarMusica()" aria-label="Reproduzir música">▶</button><input class="volume-musica" id="volumeMusica" type="range" min="0" max="1" step="0.01" value="0.45" aria-label="Volume"></div>
-    <script>
+        <button
+            class="popup-fechar"
+            onclick="fecharPopup()"
+        >
+            Entendi
+        </button>
+
+    </div>
+
+</div>
 
 
-        /* =====================================================
-           POPUP
-        ===================================================== */
+<!-- =====================================================
+     MÚSICA
+===================================================== -->
 
-        function abrirPopup() {
+<audio
+    id="musicaCasamento"
+    loop
+>
 
-            document
-                .getElementById("popupPix")
-                .classList.add("ativo");
+    <source
+        src="musica.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<div
+    class="player-musica"
+    id="playerMusica"
+>
+
+    <span class="icone-musica">
+        ♪
+    </span>
+
+    <span class="texto-musica">
+        Nossa música
+    </span>
+
+    <button
+        class="controle-musica"
+        id="botaoMusica"
+        onclick="alternarMusica()"
+        aria-label="Reproduzir música"
+    >
+        ▶
+    </button>
+
+    <input
+        class="volume-musica"
+        id="volumeMusica"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.45"
+        aria-label="Volume"
+    >
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   POPUP
+===================================================== */
+
+function abrirPopup(){
+
+    document
+        .getElementById("popupPix")
+        .classList.add("ativo");
+
+}
+
+
+function fecharPopup(){
+
+    document
+        .getElementById("popupPix")
+        .classList.remove("ativo");
+
+}
+
+
+document
+    .getElementById("popupPix")
+    .addEventListener("click",function(event){
+
+        if(event.target === this){
+
+            fecharPopup();
+
+        }
+
+    });
+
+
+/* =====================================================
+   CHAVES PIX
+===================================================== */
+
+const PIX_PRESENTE_01 = "Chave 01";
+const PIX_PRESENTE_02 = "Chave 02";
+const PIX_PRESENTE_03 = "Chave 03";
+const PIX_PRESENTE_04 = "Chave 04";
+const PIX_PRESENTE_05 = "Chave 05";
+const PIX_PRESENTE_06 = "Chave 06";
+const PIX_PRESENTE_07 = "Chave 07";
+const PIX_PRESENTE_08 = "Chave 08";
+const PIX_PRESENTE_09 = "Chave 09";
+const PIX_PRESENTE_10 = "Chave 10";
+const PIX_PRESENTE_11 = "Chave 11";
+const PIX_PRESENTE_12 = "Chave 12";
+
+
+/* =====================================================
+   PRESENTEAR
+===================================================== */
+
+function presentear(
+    botao,
+    nome,
+    preco,
+    chavePix
+){
+
+    const card =
+        botao.closest(".presente");
+
+    const jaEscolhido =
+        card.classList.contains("escolhido");
+
+
+    if(jaEscolhido){
+
+        card.classList.remove("escolhido");
+
+        botao.innerText =
+            "Presentear";
+
+        return;
+
+    }
+
+
+    card.classList.add("escolhido");
+
+    botao.innerText =
+        "✓ Escolhido";
+
+
+    navigator.clipboard
+        .writeText(chavePix)
+
+        .then(function(){
+
+            abrirPopup();
+
+        })
+
+        .catch(function(){
+
+            abrirPopup();
+
+        });
+
+}
+
+
+/* =====================================================
+   ORDENAÇÃO
+===================================================== */
+
+function ordenarLista(){
+
+    const lista =
+        document.getElementById("lista");
+
+
+    const cards =
+        Array.from(
+            lista.querySelectorAll(".presente")
+        );
+
+
+    const ordem =
+        document.getElementById("ordenacao").value;
+
+
+    cards.sort(function(a,b){
+
+        if(ordem === "menor"){
+
+            return (
+                parseFloat(a.dataset.preco) -
+                parseFloat(b.dataset.preco)
+            );
 
         }
 
 
-        function fecharPopup() {
+        if(ordem === "maior"){
 
-            document
-                .getElementById("popupPix")
-                .classList.remove("ativo");
+            return (
+                parseFloat(b.dataset.preco) -
+                parseFloat(a.dataset.preco)
+            );
 
         }
 
 
-        /* Fecha clicando fora do popup */
+        if(ordem === "nome"){
+
+            return a.dataset.nome.localeCompare(
+                b.dataset.nome
+            );
+
+        }
+
+    });
+
+
+    cards.forEach(function(card){
+
+        lista.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   CONTAGEM REGRESSIVA
+===================================================== */
+
+const dataCasamento =
+    new Date(
+        "2026-11-07T00:00:00-03:00"
+    ).getTime();
+
+
+function atualizarContagem(){
+
+    const agora =
+        new Date().getTime();
+
+
+    const diferenca =
+        dataCasamento - agora;
+
+
+    if(diferenca <= 0){
 
         document
-            .getElementById("popupPix")
-            .addEventListener("click", function(event) {
+            .getElementById("contagem-regressiva")
+            .innerHTML = `
 
-                if (event.target === this) {
+                <div style="
+                    font-family:'Cormorant Garamond',Georgia,serif;
+                    font-size:26px;
+                    color:#536b57;
+                    font-weight:500;
+                    width:100%;
+                ">
+                    ♡ Chegou o grande dia! ♡
+                </div>
 
-                    fecharPopup();
+            `;
 
-                }
+        return;
 
-            });
+    }
 
 
-        /* =====================================================
-           CHAVES PIX DOS PRESENTES
-           Substitua os valores quando tiver as chaves.
-        ===================================================== */
-        
-        const PIX_PRESENTE_01 = "Chave 01";
-        const PIX_PRESENTE_02 = "Chave 02";
-        const PIX_PRESENTE_03 = "Chave 03";
-        const PIX_PRESENTE_04 = "Chave 04";
-        const PIX_PRESENTE_05 = "Chave 05";
-        const PIX_PRESENTE_06 = "Chave 06";
-        const PIX_PRESENTE_07 = "Chave 07";
-        const PIX_PRESENTE_08 = "Chave 08";
-        const PIX_PRESENTE_09 = "Chave 09";
-        const PIX_PRESENTE_10 = "Chave 10";
-        const PIX_PRESENTE_11 = "Chave 11";
-        const PIX_PRESENTE_12 = "Chave 12";
-                
-        /* =====================================================
-           PRESENTEAR
-        ===================================================== */
+    const dias =
+        Math.floor(
+            diferenca /
+            (1000 * 60 * 60 * 24)
+        );
 
-        /* =====================================================
-           PRESENTEAR
-        ===================================================== */
-        
-        function presentear(botao, nome, preco, chavePix) {
-        
-            const card = botao.closest(".presente");
-        
-            const jaEscolhido =
-                card.classList.contains("escolhido");
-        
-            if (jaEscolhido) {
-        
-                card.classList.remove("escolhido");
-        
-                botao.innerText = "Presentear";
-        
-                return;
-            }
-        
-            card.classList.add("escolhido");
-        
-            botao.innerText = "✓ Escolhido";
-        
-            /* =================================================
-               COPIAR PIX DO PRESENTE
-            ================================================= */
-        
-            navigator.clipboard.writeText(chavePix)
-        
-                .then(() => {
-        
-                    abrirPopup();
-        
-                })
-        
-                .catch(() => {
-        
-                    abrirPopup();
-        
-                });
-        }
 
+    const horas =
+        Math.floor(
+            (diferenca %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
 
-        /* =====================================================
-           ORDENAÇÃO
-        ===================================================== */
 
-        function ordenarLista() {
+    const minutos =
+        Math.floor(
+            (diferenca %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
 
-            const lista =
-                document.getElementById("lista");
 
-
-            const cards =
-                Array.from(
-                    lista.querySelectorAll(".presente")
-                );
-
-
-            const ordem =
-                document.getElementById("ordenacao").value;
-
-
-            cards.sort((a, b) => {
-
-
-                if (ordem === "menor") {
-
-                    return (
-                        parseFloat(a.dataset.preco) -
-                        parseFloat(b.dataset.preco)
-                    );
-
-                }
-
-
-                if (ordem === "maior") {
-
-                    return (
-                        parseFloat(b.dataset.preco) -
-                        parseFloat(a.dataset.preco)
-                    );
-
-                }
-
-
-                if (ordem === "nome") {
-
-                    return a.dataset.nome.localeCompare(
-                        b.dataset.nome
-                    );
-
-                }
-
-
-            });
-
-
-            cards.forEach(card => {
-
-                lista.appendChild(card);
-
-            });
-
-        }
-
-
-        /* =====================================================
-           CONTAGEM REGRESSIVA
-        ===================================================== */
-
-        const dataCasamento =
-            new Date(
-                "2026-11-07T00:00:00-03:00"
-            ).getTime();
-
-
-        function atualizarContagem() {
-
-            const agora =
-                new Date().getTime();
-
-
-            const diferenca =
-                dataCasamento - agora;
-
-
-            /* CHEGOU O GRANDE DIA */
-
-            if (diferenca <= 0) {
-
-                document
-                    .getElementById("contagem-regressiva")
-                    .innerHTML = `
-
-                        <div style="
-                            font-family: 'Cormorant Garamond', Georgia, serif;
-                            font-size: 26px;
-                            color: #536b57;
-                            font-weight: 500;
-                            width: 100%;
-                        ">
-                            ♡ Chegou o grande dia! ♡
-                        </div>
-
-                    `;
-
-                return;
-
-            }
-
-
-            /* CÁLCULOS */
-
-            const dias =
-                Math.floor(
-                    diferenca /
-                    (1000 * 60 * 60 * 24)
-                );
-
-
-            const horas =
-                Math.floor(
-                    (diferenca %
-                    (1000 * 60 * 60 * 24)) /
-                    (1000 * 60 * 60)
-                );
-
-
-            const minutos =
-                Math.floor(
-                    (diferenca %
-                    (1000 * 60 * 60)) /
-                    (1000 * 60)
-                );
-
-
-            const segundos =
-                Math.floor(
-                    (diferenca %
-                    (1000 * 60)) /
-                    1000
-                );
-
-
-            /* MOSTRAR */
-
-            document.getElementById("dias")
-                .innerText =
-                String(dias).padStart(2, "0");
-
-
-            document.getElementById("horas")
-                .innerText =
-                String(horas).padStart(2, "0");
-
-
-            document.getElementById("minutos")
-                .innerText =
-                String(minutos).padStart(2, "0");
-
-
-            document.getElementById("segundos")
-                .innerText =
-                String(segundos).padStart(2, "0");
-
-        }
-
-
-        /* =====================================================
-           INICIAR CONTAGEM
-        ===================================================== */
-
-        atualizarContagem();
-
-        setInterval(
-            atualizarContagem,
+    const segundos =
+        Math.floor(
+            (diferenca %
+            (1000 * 60)) /
             1000
         );
 
 
-             /* =====================================================
-   MÚSICA DE FUNDO
-===================================================== */
+    document.getElementById("dias")
+        .innerText =
+        String(dias).padStart(2,"0");
+
+
+    document.getElementById("horas")
+        .innerText =
+        String(horas).padStart(2,"0");
+
+
+    document.getElementById("minutos")
+        .innerText =
+        String(minutos).padStart(2,"0");
+
+
+    document.getElementById("segundos")
+        .innerText =
+        String(segundos).padStart(2,"0");
+
+}
+
+
+atualizarContagem();
+
+setInterval(
+    atualizarContagem,
+    1000
+);
+
 
 /* =====================================================
-   ENTRAR NO SITE
+   PRAZO PARA CONFIRMAÇÃO
 ===================================================== */
 
-function entrarNoSite() {
+/*
+    Casamento:
+    07/11/2026
 
-    /* Tenta iniciar a música imediatamente
-       após o clique do usuário */
+    Prazo:
+    15 dias antes
+
+    Último dia para confirmar:
+    23/10/2026 até 23:59:59
+*/
+
+const dataLimiteConfirmacao =
+    new Date(
+        "2026-10-23T23:59:59-03:00"
+    ).getTime();
+
+
+function verificarPrazoConfirmacao(){
+
+    const agora =
+        new Date().getTime();
+
+
+    const botao =
+        document.getElementById(
+            "botaoConfirmacao"
+        );
+
+
+    const mensagem =
+        document.getElementById(
+            "mensagemPrazo"
+        );
+
+
+    if(!botao || !mensagem){
+
+        return;
+
+    }
+
+
+    /* =================================================
+       PRAZO AINDA ABERTO
+    ================================================= */
+
+    if(agora <= dataLimiteConfirmacao){
+
+        botao.classList.remove(
+            "encerrado"
+        );
+
+
+        botao.setAttribute(
+            "href",
+            "https://wa.me/5517997056873?text=Ol%C3%A1%20Gabi%20e%20Tom!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20voc%C3%AAs.%20%F0%9F%92%9A"
+        );
+
+
+        botao.setAttribute(
+            "target",
+            "_blank"
+        );
+
+
+        botao.innerHTML =
+            "<span>♡</span> Confirmar presença";
+
+
+        mensagem.classList.remove(
+            "prazo-expirado"
+        );
+
+
+        mensagem.innerHTML =
+            "Sua confirmação nos ajudará a preparar tudo com muito carinho. ♡";
+
+        return;
+
+    }
+
+
+    /* =================================================
+       PRAZO ENCERRADO
+    ================================================= */
+
+    botao.classList.add(
+        "encerrado"
+    );
+
+
+    botao.removeAttribute(
+        "href"
+    );
+
+
+    botao.removeAttribute(
+        "target"
+    );
+
+
+    botao.innerHTML =
+        "Confirmações encerradas";
+
+
+    mensagem.classList.add(
+        "prazo-expirado"
+    );
+
+
+    mensagem.innerHTML =
+        "O prazo para confirmação de presença foi encerrado. Agradecemos muito pelo carinho e por fazer parte desse momento. ♡";
+
+}
+
+
+/* Executar imediatamente */
+
+verificarPrazoConfirmacao();
+
+
+/* Verificar novamente a cada minuto */
+
+setInterval(
+    verificarPrazoConfirmacao,
+    60000
+);
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+function entrarNoSite(){
 
     musica.volume = 0.45;
 
+
     musica.play()
-        .then(function() {
+
+        .then(function(){
 
             musicaTocando();
 
         })
-        .catch(function(erro) {
+
+        .catch(function(erro){
 
             console.log(
                 "Não foi possível iniciar a música:",
@@ -923,34 +2717,52 @@ function entrarNoSite() {
         });
 
 
-    /* Fecha a tela de entrada */
-
     const telaEntrada =
-        document.getElementById("telaEntrada");
-
-    telaEntrada.classList.add("saindo");
-
-
-    /* Libera o scroll */
-
-    document.body.style.overflow = "";
+        document.getElementById(
+            "telaEntrada"
+        );
 
 
-    /* Remove a tela depois da animação */
+    telaEntrada.classList.add(
+        "saindo"
+    );
 
-    setTimeout(function() {
+
+    document.body.style.overflow =
+        "";
+
+
+    setTimeout(function(){
 
         telaEntrada.remove();
 
-    }, 850);
+    },850);
 
 }
-        
 
-const musica = document.getElementById("musicaCasamento");
-const botaoMusica = document.getElementById("botaoMusica");
-const playerMusica = document.getElementById("playerMusica");
-const volumeMusica = document.getElementById("volumeMusica");
+
+const musica =
+    document.getElementById(
+        "musicaCasamento"
+    );
+
+
+const botaoMusica =
+    document.getElementById(
+        "botaoMusica"
+    );
+
+
+const playerMusica =
+    document.getElementById(
+        "playerMusica"
+    );
+
+
+const volumeMusica =
+    document.getElementById(
+        "volumeMusica"
+    );
 
 
 /* =====================================================
@@ -961,27 +2773,33 @@ musica.volume = 0.45;
 
 
 /* =====================================================
-   ATUALIZAR VISUAL - TOCANDO
+   VISUAL TOCANDO
 ===================================================== */
 
-function musicaTocando() {
+function musicaTocando(){
 
-    botaoMusica.innerHTML = "❚❚";
+    botaoMusica.innerHTML =
+        "❚❚";
 
-    playerMusica.classList.add("tocando");
+    playerMusica.classList.add(
+        "tocando"
+    );
 
 }
 
 
 /* =====================================================
-   ATUALIZAR VISUAL - PAUSADA
+   VISUAL PAUSADA
 ===================================================== */
 
-function musicaPausada() {
+function musicaPausada(){
 
-    botaoMusica.innerHTML = "▶";
+    botaoMusica.innerHTML =
+        "▶";
 
-    playerMusica.classList.remove("tocando");
+    playerMusica.classList.remove(
+        "tocando"
+    );
 
 }
 
@@ -990,17 +2808,19 @@ function musicaPausada() {
    PLAY / PAUSE
 ===================================================== */
 
-function alternarMusica() {
+function alternarMusica(){
 
-    if (musica.paused) {
+    if(musica.paused){
 
         musica.play()
-            .then(function() {
+
+            .then(function(){
 
                 musicaTocando();
 
             })
-            .catch(function(erro) {
+
+            .catch(function(erro){
 
                 console.log(
                     "Não foi possível reproduzir a música:",
@@ -1009,7 +2829,7 @@ function alternarMusica() {
 
             });
 
-    } else {
+    }else{
 
         musica.pause();
 
@@ -1024,78 +2844,90 @@ function alternarMusica() {
    CONTROLE DE VOLUME
 ===================================================== */
 
-volumeMusica.addEventListener("input", function() {
+volumeMusica.addEventListener(
+    "input",
+    function(){
 
-    musica.volume = this.value;
+        musica.volume =
+            this.value;
 
-});
+    }
+);
 
 
 /* =====================================================
-   QUANDO A MÚSICA TERMINAR
+   EVENTOS DA MÚSICA
 ===================================================== */
 
-musica.addEventListener("pause", function() {
+musica.addEventListener(
+    "pause",
+    function(){
 
-    musicaPausada();
+        musicaPausada();
 
-});
+    }
+);
 
 
-musica.addEventListener("play", function() {
+musica.addEventListener(
+    "play",
+    function(){
 
-    musicaTocando();
+        musicaTocando();
 
-});
+    }
+);
 
-        /* =====================================================
-   PARAR MÚSICA AO SAIR DA PÁGINA / SEGUNDO PLANO
+
+/* =====================================================
+   PARAR MÚSICA AO SAIR / SEGUNDO PLANO
 ===================================================== */
 
-/* Quando o usuário troca de aba, aplicativo,
-   bloqueia a tela ou deixa o navegador em segundo plano */
+document.addEventListener(
+    "visibilitychange",
+    function(){
 
-document.addEventListener("visibilitychange", function() {
+        if(document.hidden){
 
-    if (document.hidden) {
+            if(!musica.paused){
 
-        if (!musica.paused) {
+                musica.pause();
 
-            musica.pause();
+                musicaPausada();
 
-            musicaPausada();
+            }
 
         }
 
     }
-
-});
-
-
-/* Quando a página é ocultada/descarregada */
-
-window.addEventListener("pagehide", function() {
-
-    musica.pause();
-
-    musica.currentTime = 0;
-
-    musicaPausada();
-
-});
+);
 
 
-/* Também tenta interromper ao sair da página */
+window.addEventListener(
+    "pagehide",
+    function(){
 
-window.addEventListener("beforeunload", function() {
+        musica.pause();
 
-    musica.pause();
+        musica.currentTime = 0;
 
-});
+        musicaPausada();
+
+    }
+);
 
 
-    </script>
-    
+window.addEventListener(
+    "beforeunload",
+    function(){
+
+        musica.pause();
+
+    }
+);
+
+
+</script>
+
 </body>
 </html>
-
