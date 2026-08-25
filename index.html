@@ -301,6 +301,1070 @@ body:before{
 
 
 /* =====================================================
+   ÁLBUM — ESTRUTURA
+===================================================== */
+
+.memorias-album{
+
+    max-width:650px;
+
+    margin:5px auto 65px;
+
+    padding:0 25px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.album-titulo{
+
+    width:100%;
+
+    text-align:center;
+
+    margin-bottom:13px;
+}
+
+.album-titulo-pequeno{
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--marrom-claro);
+
+    margin-bottom:4px;
+}
+
+.album-titulo-principal{
+
+    font:
+        500 31px/1
+        'Cormorant Garamond',
+        serif;
+
+    color:var(--marrom);
+}
+
+.album-linha{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:9px;
+}
+
+.album-linha span{
+
+    width:38px;
+
+    height:1px;
+
+    background:var(--dourado);
+}
+
+.album-linha i{
+
+    font-style:normal;
+
+    color:var(--dourado);
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   ÁLBUM
+===================================================== */
+
+.album{
+
+    width:min(100%,430px);
+
+    position:relative;
+
+    padding:10px;
+
+    background:var(--creme-2);
+
+    border:1px solid var(--areia);
+
+    box-shadow:
+        0 20px 50px rgba(80,60,45,.14),
+        0 4px 10px rgba(80,60,45,.07);
+
+    transform:rotate(-1deg);
+
+    perspective:1800px;
+
+    isolation:isolate;
+
+    touch-action:pan-y;
+
+    user-select:none;
+
+    -webkit-user-select:none;
+
+    cursor:grab;
+}
+
+.album:active{
+
+    cursor:grabbing;
+}
+
+
+/* Moldura interna */
+
+.album:before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:6px;
+
+    border:1px solid
+        rgba(185,155,104,.30);
+
+    pointer-events:none;
+
+    z-index:100;
+}
+
+
+/* Pequeno detalhe */
+
+.album:after{
+
+    content:"♡";
+
+    position:absolute;
+
+    right:-17px;
+
+    top:-19px;
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--creme);
+
+    border:1px solid var(--dourado-claro);
+
+    border-radius:50%;
+
+    color:var(--dourado);
+
+    font:
+        22px
+        'Cormorant Garamond',
+        serif;
+
+    z-index:110;
+}
+
+
+/* =====================================================
+   FOLHA
+===================================================== */
+
+.album-folha{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:4 / 5;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf8f3,
+            #eee7dc
+        );
+
+    perspective:1800px;
+
+    transform-style:preserve-3d;
+
+    isolation:isolate;
+}
+
+
+/* Lombada */
+
+.album-folha:before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    width:8px;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(70,50,40,.25),
+            rgba(255,255,255,.15),
+            transparent
+        );
+
+    z-index:80;
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   FOTO
+===================================================== */
+
+.album-foto{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    z-index:20;
+
+    pointer-events:none;
+
+    transform-origin:left center;
+
+    transform:
+        translateZ(2px)
+        rotateY(0deg);
+
+    transform-style:preserve-3d;
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+    will-change:transform;
+
+    transition:none;
+}
+
+
+/* =====================================================
+   VERSO DA PÁGINA
+===================================================== */
+
+.album-pagina-verso{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    z-index:10;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8f4ed,
+            #e8dfd2
+        );
+
+    transform-origin:left center;
+
+    transform:
+        translateZ(0)
+        rotateY(180deg);
+
+    transform-style:preserve-3d;
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+    box-shadow:
+        inset 0 0 35px
+        rgba(80,60,45,.12);
+}
+
+
+/* =====================================================
+   SOMBRA DA FOLHA
+===================================================== */
+
+.album-sombra-virada{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:70;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(40,30,25,.28),
+            rgba(40,30,25,.10),
+            transparent 70%
+        );
+
+    transition:
+        opacity .15s ease;
+}
+
+.album.folha-virando
+.album-sombra-virada{
+
+    opacity:1;
+}
+
+
+/* =====================================================
+   VIRADA — PRÓXIMA FOTO
+===================================================== */
+
+.album-foto.virando-esquerda{
+
+    animation:
+        virarPaginaEsquerda
+        .82s
+        cubic-bezier(.55,.08,.25,1)
+        forwards;
+}
+
+@keyframes virarPaginaEsquerda{
+
+    0%{
+
+        transform:
+            translateZ(3px)
+            rotateY(0deg);
+
+        filter:brightness(1);
+    }
+
+    18%{
+
+        transform:
+            translateZ(18px)
+            rotateY(-25deg);
+
+        filter:brightness(.98);
+    }
+
+    45%{
+
+        transform:
+            translateZ(30px)
+            rotateY(-82deg);
+
+        filter:brightness(.94);
+    }
+
+    55%{
+
+        transform:
+            translateZ(32px)
+            rotateY(-100deg);
+
+        filter:brightness(.90);
+    }
+
+    78%{
+
+        transform:
+            translateZ(18px)
+            rotateY(-150deg);
+
+        filter:brightness(.86);
+    }
+
+    100%{
+
+        transform:
+            translateZ(2px)
+            rotateY(-180deg);
+
+        filter:brightness(.90);
+    }
+}
+
+
+/* =====================================================
+   VIRADA — FOTO ANTERIOR
+===================================================== */
+
+.album-foto.virando-direita{
+
+    transform-origin:right center;
+
+    animation:
+        virarPaginaDireita
+        .82s
+        cubic-bezier(.55,.08,.25,1)
+        forwards;
+}
+
+@keyframes virarPaginaDireita{
+
+    0%{
+
+        transform:
+            translateZ(3px)
+            rotateY(0deg);
+
+        filter:brightness(1);
+    }
+
+    18%{
+
+        transform:
+            translateZ(18px)
+            rotateY(25deg);
+
+        filter:brightness(.98);
+    }
+
+    45%{
+
+        transform:
+            translateZ(30px)
+            rotateY(82deg);
+
+        filter:brightness(.94);
+    }
+
+    55%{
+
+        transform:
+            translateZ(32px)
+            rotateY(100deg);
+
+        filter:brightness(.90);
+    }
+
+    78%{
+
+        transform:
+            translateZ(18px)
+            rotateY(150deg);
+
+        filter:brightness(.86);
+    }
+
+    100%{
+
+        transform:
+            translateZ(2px)
+            rotateY(180deg);
+
+        filter:brightness(.90);
+    }
+}
+
+
+/* =====================================================
+   NOVA PÁGINA — ENTRANDO PELA ESQUERDA
+===================================================== */
+
+.album-foto.nova-folha-esquerda{
+
+    animation:
+        novaPaginaEsquerda
+        .82s
+        cubic-bezier(.55,.08,.25,1)
+        forwards;
+}
+
+@keyframes novaPaginaEsquerda{
+
+    0%{
+
+        transform:
+            translateZ(2px)
+            rotateY(180deg);
+
+        filter:brightness(.88);
+    }
+
+    20%{
+
+        transform:
+            translateZ(20px)
+            rotateY(145deg);
+
+        filter:brightness(.91);
+    }
+
+    50%{
+
+        transform:
+            translateZ(30px)
+            rotateY(88deg);
+
+        filter:brightness(.95);
+    }
+
+    75%{
+
+        transform:
+            translateZ(18px)
+            rotateY(32deg);
+
+        filter:brightness(.98);
+    }
+
+    100%{
+
+        transform:
+            translateZ(2px)
+            rotateY(0deg);
+
+        filter:brightness(1);
+    }
+}
+
+
+/* =====================================================
+   NOVA PÁGINA — ENTRANDO PELA DIREITA
+===================================================== */
+
+.album-foto.nova-folha-direita{
+
+    transform-origin:right center;
+
+    animation:
+        novaPaginaDireita
+        .82s
+        cubic-bezier(.55,.08,.25,1)
+        forwards;
+}
+
+@keyframes novaPaginaDireita{
+
+    0%{
+
+        transform:
+            translateZ(2px)
+            rotateY(-180deg);
+
+        filter:brightness(.88);
+    }
+
+    20%{
+
+        transform:
+            translateZ(20px)
+            rotateY(-145deg);
+
+        filter:brightness(.91);
+    }
+
+    50%{
+
+        transform:
+            translateZ(30px)
+            rotateY(-88deg);
+
+        filter:brightness(.95);
+    }
+
+    75%{
+
+        transform:
+            translateZ(18px)
+            rotateY(-32deg);
+
+        filter:brightness(.98);
+    }
+
+    100%{
+
+        transform:
+            translateZ(2px)
+            rotateY(0deg);
+
+        filter:brightness(1);
+    }
+}
+
+
+/* =====================================================
+   LEGENDA
+===================================================== */
+
+.album-legenda{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    padding:
+        55px
+        20px
+        17px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(50,38,30,.68),
+            rgba(50,38,30,0)
+        );
+
+    color:white;
+
+    text-align:center;
+
+    font:
+        italic 18px
+        'Cormorant Garamond',
+        serif;
+
+    z-index:50;
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   CONTROLES
+===================================================== */
+
+.album-controles{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:18px;
+
+    width:100%;
+
+    margin-top:15px;
+}
+
+.album-seta{
+
+    width:34px;
+
+    height:34px;
+
+    border:
+        1px solid
+        var(--areia);
+
+    background:transparent;
+
+    color:var(--marrom);
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    font:
+        23px
+        'Cormorant Garamond',
+        serif;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+.album-seta:hover{
+
+    background:var(--marrom);
+
+    color:var(--creme);
+
+    transform:scale(1.07);
+}
+
+.album-pagina{
+
+    min-width:60px;
+
+    text-align:center;
+
+    font:
+        500 11px
+        'Montserrat',
+        sans-serif;
+
+    letter-spacing:2px;
+
+    color:var(--texto-claro);
+}
+
+.album-instrucao{
+
+    margin-top:8px;
+
+    font:
+        italic 13px
+        'Cormorant Garamond',
+        serif;
+
+    color:var(--texto-claro);
+
+    transition:opacity .5s ease;
+}
+
+.album-instrucao.escondida{
+
+    opacity:.3;
+}
+
+
+/* =====================================================
+   NOSSO GRANDE DIA
+===================================================== */
+
+.introducao{
+
+    max-width:430px;
+
+    width:calc(100% - 40px);
+
+    margin:
+        0 auto
+        80px;
+
+    padding:
+        30px 38px;
+
+    border-left:
+        3px solid
+        var(--verde);
+
+    background:var(--branco);
+
+    box-shadow:
+        0 18px 50px
+        rgba(80,60,45,.06);
+
+    position:relative;
+}
+
+.introducao:after{
+
+    content:"G + T";
+
+    position:absolute;
+
+    right:22px;
+
+    top:15px;
+
+    font:
+        22px
+        'Cormorant Garamond',
+        serif;
+
+    color:var(--areia);
+}
+
+.introducao h2{
+
+    font:
+        500 34px/1
+        'Cormorant Garamond',
+        serif;
+
+    color:var(--marrom);
+
+    margin-bottom:12px;
+}
+
+.introducao p{
+
+    font-size:12px;
+
+    line-height:22px;
+
+    color:var(--texto-claro);
+}
+
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+@media(min-width:851px){
+
+    .memorias-album{
+
+        /*
+           O álbum fica logo depois do Hero.
+           O espaço é pequeno para não parecer
+           uma seção solta.
+        */
+
+        margin-top:-18px;
+
+        margin-bottom:42px;
+    }
+
+    .introducao{
+
+        margin-top:0;
+    }
+}
+
+
+/* =====================================================
+   TABLET / CELULAR
+===================================================== */
+
+@media(max-width:850px){
+
+    .memorias-album{
+
+        margin:
+            0 auto
+            32px;
+
+        padding:
+            0 20px;
+    }
+
+    .album{
+
+        width:min(100%,370px);
+
+        transform:rotate(-.7deg);
+
+        perspective:1500px;
+    }
+
+    .album-titulo-principal{
+
+        font-size:29px;
+    }
+
+    .introducao{
+
+        margin-top:0;
+
+        margin-bottom:65px;
+    }
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media(max-width:600px){
+
+    .memorias-album{
+
+        /*
+           Fica diretamente entre o Hero
+           e "Nosso grande dia".
+        */
+
+        margin-top:-5px;
+
+        margin-bottom:25px;
+
+        padding:0 18px;
+    }
+
+    .album-titulo{
+
+        margin-bottom:10px;
+    }
+
+    .album-titulo-pequeno{
+
+        font-size:8px;
+
+        letter-spacing:2.5px;
+    }
+
+    .album-titulo-principal{
+
+        font-size:28px;
+    }
+
+    .album{
+
+        width:min(100%,370px);
+
+        padding:8px;
+    }
+
+    .album-legenda{
+
+        font-size:16px;
+
+        padding:
+            45px
+            14px
+            14px;
+    }
+
+    .album-controles{
+
+        margin-top:13px;
+    }
+
+    .album-instrucao{
+
+        font-size:12px;
+    }
+
+    .introducao{
+
+        width:calc(100% - 36px);
+
+        padding:
+            28px
+            27px;
+
+        margin-bottom:65px;
+    }
+
+    .introducao h2{
+
+        font-size:32px;
+    }
+}
+
+
+/* =====================================================
+   CELULARES PEQUENOS
+===================================================== */
+
+@media(max-width:380px){
+
+    .memorias-album{
+
+        padding:0 15px;
+
+        margin-bottom:22px;
+    }
+
+    .album{
+
+        width:100%;
+
+        padding:7px;
+    }
+
+    .album-titulo-principal{
+
+        font-size:26px;
+    }
+
+    .album-legenda{
+
+        font-size:15px;
+
+        padding:
+            40px
+            12px
+            12px;
+    }
+
+    .introducao{
+
+        width:calc(100% - 30px);
+
+        padding:
+            25px
+            23px;
+    }
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    .album-foto,
+    .album-foto.virando-esquerda,
+    .album-foto.virando-direita,
+    .album-foto.nova-folha-esquerda,
+    .album-foto.nova-folha-direita{
+
+        animation:none !important;
+
+        transition:none !important;
+    }
+}
+
+        
+
+
+/* =====================================================
    INTRODUÇÃO
 ===================================================== */
 
@@ -1300,6 +2364,124 @@ body:before{
     </div>
 
 </header>
+
+<!-- =====================================================
+     ÁLBUM DE FOTOS
+     Desktop: abaixo do Hero
+     Celular: acima de "Nosso grande dia"
+===================================================== -->
+
+<section class="memorias-album">
+
+    <div class="album-titulo">
+
+        <div class="album-titulo-pequeno">
+            Nossa história
+        </div>
+
+        <div class="album-titulo-principal">
+            Momentos que guardamos
+        </div>
+
+        <div class="album-linha">
+            <span></span>
+            <i>♡</i>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <div
+        class="album"
+        id="album"
+        aria-label="Álbum de fotos de Gabi e Tom"
+    >
+
+        <div
+            class="album-folha"
+            id="albumFolha"
+        >
+
+            <img
+                id="albumFoto"
+                class="album-foto"
+                src="foto1.JPG"
+                alt="Gabi e Tom"
+                draggable="false"
+            >
+
+            <div
+                class="album-legenda"
+                id="albumLegenda"
+            >
+                Um momento para guardar no coração.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="album-controles">
+
+        <button
+            type="button"
+            class="album-seta"
+            id="albumAnterior"
+            aria-label="Foto anterior"
+        >
+            ‹
+        </button>
+
+        <div
+            class="album-pagina"
+            id="albumPagina"
+        >
+            01 / 05
+        </div>
+
+        <button
+            type="button"
+            class="album-seta"
+            id="albumProximo"
+            aria-label="Próxima foto"
+        >
+            ›
+        </button>
+
+    </div>
+
+
+    <div
+        class="album-instrucao"
+        id="albumInstrucao"
+    >
+        Toque nas setas ou deslize para ver as fotos
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NOSSO GRANDE DIA
+===================================================== -->
+
+<section class="introducao">
+
+    <h2>
+        Nosso grande dia
+    </h2>
+
+    <p>
+        Depois de tantos momentos compartilhados,
+        chegou a hora de celebrar o nosso amor ao lado
+        das pessoas que fazem parte da nossa história.
+        A presença de vocês já é o nosso maior presente.
+    </p>
+
+</section>
+    
 
 
 <!-- =====================================================
@@ -2317,6 +3499,663 @@ document
         }
 
     });
+
+
+    /* =====================================================
+   ÁLBUM DE FOTOS
+===================================================== */
+
+const albumFotos = [
+
+    {
+        src:"foto1.JPG",
+        legenda:"Um momento para guardar no coração."
+    },
+
+    {
+        src:"foto2.JPG",
+        legenda:"Colecionando momentos juntos."
+    },
+
+    {
+        src:"foto3.JPG",
+        legenda:"Nossa história, um capítulo de cada vez."
+    },
+
+    {
+        src:"foto4.JPG",
+        legenda:"Dois corações, muitos momentos."
+    },
+
+    {
+        src:"foto5.jpeg",
+        legenda:"E que venham muitos capítulos."
+    }
+
+];
+
+
+let albumIndice = 0;
+
+let albumOcupado = false;
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const album =
+    document.getElementById("album");
+
+const albumFolha =
+    document.getElementById("albumFolha");
+
+const albumFoto =
+    document.getElementById("albumFoto");
+
+const albumLegenda =
+    document.getElementById("albumLegenda");
+
+const albumPagina =
+    document.getElementById("albumPagina");
+
+const albumAnterior =
+    document.getElementById("albumAnterior");
+
+const albumProximo =
+    document.getElementById("albumProximo");
+
+const albumInstrucao =
+    document.getElementById("albumInstrucao");
+
+
+/* =====================================================
+   VERSO DA FOLHA
+===================================================== */
+
+let albumVerso = null;
+
+let albumSombra = null;
+
+
+function criarElementos3D(){
+
+    if(!albumFolha || !albumFoto){
+
+        return;
+
+    }
+
+
+    /*
+       Cria o verso físico da página.
+       Ele recebe a próxima fotografia
+       antes da animação começar.
+    */
+
+    albumVerso =
+        document.createElement("img");
+
+    albumVerso.className =
+        "album-pagina-verso";
+
+    albumVerso.alt = "";
+
+    albumVerso.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    albumVerso.src =
+        albumFoto.src;
+
+
+    albumFolha.insertBefore(
+        albumVerso,
+        albumFoto
+    );
+
+
+    /*
+       Camada de sombra que acompanha
+       a folha durante a virada.
+    */
+
+    albumSombra =
+        document.createElement("div");
+
+    albumSombra.className =
+        "album-sombra-virada";
+
+    albumFolha.appendChild(
+        albumSombra
+    );
+
+}
+
+
+criarElementos3D();
+
+
+/* =====================================================
+   CONTROLES
+===================================================== */
+
+function atualizarControlesAlbum(){
+
+    if(!albumPagina){
+
+        return;
+
+    }
+
+
+    albumPagina.textContent =
+        String(albumIndice + 1).padStart(2,"0")
+        +
+        " / "
+        +
+        String(albumFotos.length).padStart(2,"0");
+
+
+    if(albumAnterior){
+
+        albumAnterior.style.opacity =
+            albumIndice === 0
+                ? ".40"
+                : "1";
+
+        albumAnterior.disabled =
+            albumIndice === 0;
+
+    }
+
+
+    if(albumProximo){
+
+        albumProximo.style.opacity =
+            albumIndice === albumFotos.length - 1
+                ? ".40"
+                : "1";
+
+        albumProximo.disabled =
+            albumIndice === albumFotos.length - 1;
+
+    }
+
+}
+
+
+/* =====================================================
+   TROCAR FOTO
+===================================================== */
+
+function atualizarAlbum(
+    novoIndice,
+    direcao
+){
+
+    if(
+        !album ||
+        !albumFoto ||
+        !albumVerso
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        novoIndice < 0 ||
+        novoIndice >= albumFotos.length
+    ){
+
+        return;
+
+    }
+
+
+    if(albumOcupado){
+
+        return;
+
+    }
+
+
+    if(novoIndice === albumIndice){
+
+        return;
+
+    }
+
+
+    albumOcupado = true;
+
+
+    album.classList.add(
+        "folha-virando"
+    );
+
+
+    const proximaFoto =
+        albumFotos[novoIndice];
+
+
+    /*
+       Coloca a próxima imagem no verso.
+    */
+
+    albumVerso.src =
+        proximaFoto.src;
+
+
+    /*
+       Remove animações anteriores.
+    */
+
+    albumFoto.classList.remove(
+        "virando-esquerda",
+        "virando-direita",
+        "nova-folha-esquerda",
+        "nova-folha-direita"
+    );
+
+
+    void albumFoto.offsetWidth;
+
+
+    /*
+       A página atual começa a virar.
+    */
+
+    if(direcao === "esquerda"){
+
+        albumFoto.classList.add(
+            "virando-esquerda"
+        );
+
+    }else{
+
+        albumFoto.classList.add(
+            "virando-direita"
+        );
+
+    }
+
+
+    /*
+       Aproximadamente no meio da virada,
+       trocamos a imagem.
+    */
+
+    setTimeout(function(){
+
+        albumIndice =
+            novoIndice;
+
+
+        albumFoto.src =
+            proximaFoto.src;
+
+        albumFoto.alt =
+            "Gabi e Tom";
+
+
+        if(albumLegenda){
+
+            albumLegenda.textContent =
+                proximaFoto.legenda;
+
+        }
+
+
+        /*
+           Retira a animação de ida.
+        */
+
+        albumFoto.classList.remove(
+            "virando-esquerda",
+            "virando-direita"
+        );
+
+
+        void albumFoto.offsetWidth;
+
+
+        /*
+           Agora a nova folha aparece
+           vindo do outro lado.
+        */
+
+        if(direcao === "esquerda"){
+
+            albumFoto.classList.add(
+                "nova-folha-esquerda"
+            );
+
+        }else{
+
+            albumFoto.classList.add(
+                "nova-folha-direita"
+            );
+
+        }
+
+
+        atualizarControlesAlbum();
+
+
+        if(albumInstrucao){
+
+            albumInstrucao.classList.add(
+                "escondida"
+            );
+
+        }
+
+    },410);
+
+
+    /*
+       Final da animação.
+    */
+
+    setTimeout(function(){
+
+        albumFoto.classList.remove(
+            "nova-folha-esquerda",
+            "nova-folha-direita",
+            "virando-esquerda",
+            "virando-direita"
+        );
+
+
+        albumVerso.src =
+            albumFotos[albumIndice].src;
+
+
+        album.classList.remove(
+            "folha-virando"
+        );
+
+
+        albumOcupado = false;
+
+    },840);
+
+}
+
+
+/* =====================================================
+   PRÓXIMA
+===================================================== */
+
+function albumProxima(){
+
+    if(
+        albumIndice <
+        albumFotos.length - 1
+    ){
+
+        atualizarAlbum(
+            albumIndice + 1,
+            "esquerda"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ANTERIOR
+===================================================== */
+
+function albumFotoAnterior(){
+
+    if(albumIndice > 0){
+
+        atualizarAlbum(
+            albumIndice - 1,
+            "direita"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+if(albumProximo){
+
+    albumProximo.addEventListener(
+        "click",
+        function(event){
+
+            event.stopPropagation();
+
+            albumProxima();
+
+        }
+    );
+
+}
+
+
+if(albumAnterior){
+
+    albumAnterior.addEventListener(
+        "click",
+        function(event){
+
+            event.stopPropagation();
+
+            albumFotoAnterior();
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SWIPE
+===================================================== */
+
+let albumInicioX = 0;
+
+let albumInicioY = 0;
+
+let albumArrastando = false;
+
+let albumMovimentoX = 0;
+
+
+if(album){
+
+    album.addEventListener(
+        "pointerdown",
+        function(event){
+
+            if(albumOcupado){
+
+                return;
+
+            }
+
+
+            /*
+               Não inicia swipe quando
+               o usuário clicar nas setas.
+            */
+
+            if(
+                event.target.closest(
+                    ".album-seta"
+                )
+            ){
+
+                return;
+
+            }
+
+
+            albumInicioX =
+                event.clientX;
+
+            albumInicioY =
+                event.clientY;
+
+            albumMovimentoX = 0;
+
+            albumArrastando = true;
+
+
+            try{
+
+                album.setPointerCapture(
+                    event.pointerId
+                );
+
+            }catch(error){}
+
+        }
+    );
+
+
+    album.addEventListener(
+        "pointermove",
+        function(event){
+
+            if(!albumArrastando){
+
+                return;
+
+            }
+
+
+            albumMovimentoX =
+                event.clientX -
+                albumInicioX;
+
+        }
+    );
+
+
+    album.addEventListener(
+        "pointerup",
+        function(event){
+
+            if(!albumArrastando){
+
+                return;
+
+            }
+
+
+            albumArrastando = false;
+
+
+            const movimentoY =
+                event.clientY -
+                albumInicioY;
+
+
+            const distancia =
+                Math.abs(
+                    albumMovimentoX
+                );
+
+
+            /*
+               Só considera swipe horizontal.
+            */
+
+            if(
+                distancia > 45 &&
+                distancia >
+                Math.abs(movimentoY)
+            ){
+
+                if(albumMovimentoX < 0){
+
+                    albumProxima();
+
+                }else{
+
+                    albumFotoAnterior();
+
+                }
+
+            }
+
+        }
+    );
+
+
+    album.addEventListener(
+        "pointercancel",
+        function(){
+
+            albumArrastando = false;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   TECLADO
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        const tag =
+            document.activeElement
+                ? document.activeElement.tagName
+                : "";
+
+
+        if(
+            tag === "INPUT" ||
+            tag === "TEXTAREA" ||
+            tag === "SELECT"
+        ){
+
+            return;
+
+        }
+
+
+        if(event.key === "ArrowRight"){
+
+            albumProxima();
+
+        }
+
+
+        if(event.key === "ArrowLeft"){
+
+            albumFotoAnterior();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESTADO INICIAL
+===================================================== */
+
+atualizarControlesAlbum();
 
 
 /* =====================================================
