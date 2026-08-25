@@ -704,43 +704,24 @@ function atualizarControlesAlbum(){
    ATUALIZA ALBUM
 ===================================================== */
 
-function atualizarAlbum(
-    novoIndice,
-    direcao
-){
+function atualizarAlbum(novoIndice,direcao){
 
-    if(
-        !album ||
-        !albumFoto ||
-        !albumVerso
-    ){
-
+    if(!album || !albumFoto || !albumVerso){
         return;
-
     }
-
 
     if(
         novoIndice < 0 ||
         novoIndice >= albumFotos.length
     ){
-
         return;
-
     }
 
-
-    if(albumOcupado){
-
+    if(
+        albumOcupado ||
+        novoIndice === albumIndice
+    ){
         return;
-
-    }
-
-
-    if(novoIndice === albumIndice){
-
-        return;
-
     }
 
 
@@ -751,18 +732,13 @@ function atualizarAlbum(
     );
 
 
-    /*
-       Fotografia que será mostrada.
-    */
-
     const proximaFoto =
         albumFotos[novoIndice];
 
 
     /*
-       O verso recebe a próxima foto.
-       Isso cria a sensação de que existe
-       uma fotografia no outro lado da folha.
+       O verso recebe a próxima fotografia
+       antes da folha começar a virar.
     */
 
     albumVerso.src =
@@ -770,7 +746,7 @@ function atualizarAlbum(
 
 
     /*
-       Limpa qualquer animação anterior.
+       Limpa animações anteriores.
     */
 
     albumFoto.classList.remove(
@@ -785,30 +761,23 @@ function atualizarAlbum(
 
 
     /*
-       =================================================
-       PRÓXIMA FOTO
-       =================================================
+       A folha atual começa a virar.
     */
 
-    if(direcao === "esquerda"){
+    albumFoto.classList.add(
 
-        albumFoto.classList.add(
-            "virando-esquerda"
-        );
+        direcao === "esquerda"
 
-    }else{
+            ? "virando-esquerda"
 
-        albumFoto.classList.add(
-            "virando-direita"
-        );
+            : "virando-direita"
 
-    }
+    );
 
 
     /*
-       Depois que a folha estiver
-       praticamente de costas,
-       trocamos a imagem principal.
+       Quando a folha chega aproximadamente
+       à metade da virada, trocamos a foto.
     */
 
     setTimeout(function(){
@@ -834,8 +803,7 @@ function atualizarAlbum(
 
 
         /*
-           A foto principal agora começa
-           o movimento de retorno.
+           Remove a primeira parte da animação.
         */
 
         albumFoto.classList.remove(
@@ -847,31 +815,24 @@ function atualizarAlbum(
         void albumFoto.offsetWidth;
 
 
-        if(direcao === "esquerda"){
-
-            albumFoto.classList.add(
-                "nova-folha-esquerda"
-            );
-
-        }else{
-
-            albumFoto.classList.add(
-                "nova-folha-direita"
-            );
-
-        }
-
-
         /*
-           Atualiza o contador.
+           Agora a nova folha aparece
+           voltando para a posição frontal.
         */
+
+        albumFoto.classList.add(
+
+            direcao === "esquerda"
+
+                ? "nova-folha-esquerda"
+
+                : "nova-folha-direita"
+
+        );
+
 
         atualizarControlesAlbum();
 
-
-        /*
-           Esconde a instrução.
-        */
 
         if(albumInstrucao){
 
@@ -881,13 +842,11 @@ function atualizarAlbum(
 
         }
 
-
-    },410);
+    },440);
 
 
     /*
-       Finaliza completamente
-       a animação.
+       Finaliza a animação.
     */
 
     setTimeout(function(){
@@ -900,11 +859,6 @@ function atualizarAlbum(
         );
 
 
-        /*
-           O verso passa a representar
-           a fotografia atual.
-        */
-
         albumVerso.src =
             albumFotos[albumIndice].src;
 
@@ -916,8 +870,7 @@ function atualizarAlbum(
 
         albumOcupado = false;
 
-
-    },840);
+    },900);
 
 }
 
