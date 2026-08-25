@@ -2292,3 +2292,249 @@ body:before{
         animation:none !important;
     }
 }
+
+/* AJUSTES ALBUM + NOSSO GRANDE DIA — cole no final do CSS atual */
+
+@media (min-width:851px){
+  .memorias-layout{
+    max-width:1080px;
+    margin:-18px auto 82px;
+    padding:0 28px;
+    grid-template-columns:minmax(390px,1.05fr) minmax(340px,430px);
+    gap:22px;
+    align-items:center;
+  }
+
+  .album-area{
+    transform:translateX(-8px);
+  }
+
+  .introducao{
+    max-width:430px;
+    padding:34px 40px;
+    border-left-width:4px;
+    transform:translateY(-2px);
+    box-shadow:0 20px 55px rgba(80,60,45,.085);
+  }
+
+  .introducao h2{
+    font-size:38px;
+    margin-bottom:14px;
+  }
+
+  .introducao p{
+    font-size:12.5px;
+    line-height:23px;
+  }
+}
+
+.album-folha{
+  overflow:hidden;
+  transform-style:preserve-3d;
+  perspective:1800px;
+}
+
+.album-foto,
+.album-pagina-verso{
+  transform-style:preserve-3d;
+  transform-origin:left center;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+.album-pagina-verso{
+  z-index:4;
+}
+
+.album-sombra-virada{
+  mix-blend-mode:multiply;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(45,32,25,.34),
+      rgba(45,32,25,.16) 18%,
+      rgba(45,32,25,.05) 42%,
+      transparent 72%
+    );
+  filter:blur(.2px);
+}
+
+.album-foto.virando-esquerda{
+  animation:
+    virarFolhaEsquerda
+    .88s
+    cubic-bezier(.42,.08,.18,1)
+    forwards;
+}
+
+@keyframes virarFolhaEsquerda{
+
+  0%{
+    transform:translateZ(3px) rotateY(0deg);
+    filter:brightness(1);
+  }
+
+  22%{
+    transform:translateZ(18px) rotateY(-35deg);
+    filter:brightness(.98);
+  }
+
+  50%{
+    transform:translateZ(30px) rotateY(-100deg);
+    filter:brightness(.88);
+  }
+
+  72%{
+    transform:translateZ(18px) rotateY(-145deg);
+    filter:brightness(.84);
+  }
+
+  100%{
+    transform:translateZ(2px) rotateY(-180deg);
+    filter:brightness(.90);
+  }
+}
+
+.album-foto.virando-direita{
+  transform-origin:right center;
+
+  animation:
+    virarFolhaDireita
+    .88s
+    cubic-bezier(.42,.08,.18,1)
+    forwards;
+}
+
+@keyframes virarFolhaDireita{
+
+  0%{
+    transform:translateZ(3px) rotateY(0deg);
+    filter:brightness(1);
+  }
+
+  22%{
+    transform:translateZ(18px) rotateY(35deg);
+    filter:brightness(.98);
+  }
+
+  50%{
+    transform:translateZ(30px) rotateY(100deg);
+    filter:brightness(.88);
+  }
+
+  72%{
+    transform:translateZ(18px) rotateY(145deg);
+    filter:brightness(.84);
+  }
+
+  100%{
+    transform:translateZ(2px) rotateY(180deg);
+    filter:brightness(.90);
+  }
+}
+
+.album-foto.nova-folha-esquerda{
+  animation:
+    novaFolhaEsquerda
+    .88s
+    cubic-bezier(.42,.08,.18,1)
+    forwards;
+}
+
+@keyframes novaFolhaEsquerda{
+
+  0%{
+    transform:translateZ(2px) rotateY(180deg);
+    filter:brightness(.90);
+  }
+
+  25%{
+    transform:translateZ(22px) rotateY(145deg);
+    filter:brightness(.92);
+  }
+
+  55%{
+    transform:translateZ(28px) rotateY(78deg);
+    filter:brightness(.97);
+  }
+
+  82%{
+    transform:translateZ(14px) rotateY(25deg);
+    filter:brightness(.99);
+  }
+
+  100%{
+    transform:translateZ(2px) rotateY(0deg);
+    filter:brightness(1);
+  }
+}
+
+.album-foto.nova-folha-direita{
+  transform-origin:right center;
+
+  animation:
+    novaFolhaDireita
+    .88s
+    cubic-bezier(.42,.08,.18,1)
+    forwards;
+}
+
+@keyframes novaFolhaDireita{
+
+  0%{
+    transform:translateZ(2px) rotateY(-180deg);
+    filter:brightness(.90);
+  }
+
+  25%{
+    transform:translateZ(22px) rotateY(-145deg);
+    filter:brightness(.92);
+  }
+
+  55%{
+    transform:translateZ(28px) rotateY(-78deg);
+    filter:brightness(.97);
+  }
+
+  82%{
+    transform:translateZ(14px) rotateY(-25deg);
+    filter:brightness(.99);
+  }
+
+  100%{
+    transform:translateZ(2px) rotateY(0deg);
+    filter:brightness(1);
+  }
+}
+
+@media(max-width:850px){
+
+  .memorias-layout{
+    margin-top:-8px;
+    gap:24px;
+  }
+
+  .introducao{
+    max-width:430px;
+  }
+}
+
+@media(max-width:600px){
+
+  .memorias-layout{
+    margin-top:-5px;
+    gap:22px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .album-foto,
+  .album-foto.virando-esquerda,
+  .album-foto.virando-direita,
+  .album-foto.nova-folha-esquerda,
+  .album-foto.nova-folha-direita{
+    animation:none !important;
+    transition:none !important;
+  }
+}
