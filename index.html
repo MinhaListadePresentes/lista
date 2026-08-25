@@ -11,33 +11,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
+    <style>
 
 :root{
-    --verde:#718676;
-    --verde-profundo:#4f6254;
-    --verde-claro:#e4ebe4;
-    --marrom:#6b5145;
-    --marrom-claro:#9a7d6c;
-    --creme:#f7f3ec;
-    --creme-2:#eee7dc;
-    --areia:#dfd2c2;
-    --dourado:#b99b68;
-    --dourado-claro:#d8c39a;
-    --texto:#5d5851;
-    --texto-claro:#8b8379;
-    --branco:#fffdfa;
-    --borda:#ded5c9;
+  --verde:#718676;
+  --verde-profundo:#4f6254;
+  --verde-claro:#e4ebe4;
+  --marrom:#6b5145;
+  --marrom-claro:#9a7d6c;
+  --creme:#f7f3ec;
+  --creme-2:#eee7dc;
+  --areia:#dfd2c2;
+  --dourado:#b99b68;
+  --dourado-claro:#d8c39a;
+  --texto:#5d5851;
+  --texto-claro:#8b8379;
+  --branco:#fffdfa;
+  --borda:#ded5c9;
 }
 
 *{
     box-sizing:border-box;
     margin:0;
-    padding:0;
+    padding:0
 }
 
 html{
-    scroll-behavior:smooth;
+    scroll-behavior:smooth
 }
 
 body{
@@ -45,7 +45,7 @@ body{
     background:var(--creme);
     color:var(--texto);
     min-height:100vh;
-    overflow-x:hidden;
+    overflow-x:hidden
 }
 
 body:before{
@@ -65,7 +65,7 @@ body:before{
             rgba(113,134,118,.07),
             transparent 28%
         );
-    z-index:-1;
+    z-index:-1
 }
 
 
@@ -76,7 +76,6 @@ body:before{
 .tela-entrada{
     position:fixed;
     inset:0;
-
     background:
         linear-gradient(
             135deg,
@@ -84,78 +83,58 @@ body:before{
             #EEE7DC 52%,
             #E3E9E2 100%
         );
-
     z-index:9999;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     color:var(--marrom);
-
-    transition:
-        opacity .8s,
-        transform .8s;
+    transition:opacity .8s,transform .8s
 }
 
 .tela-entrada.saindo{
     opacity:0;
     transform:scale(1.03);
-    pointer-events:none;
+    pointer-events:none
 }
 
 .entrada-conteudo{
     width:min(600px,88%);
     text-align:center;
-
     padding:64px 40px;
-
     border:1px solid rgba(107,81,69,.18);
-
     position:relative;
-
     background:rgba(255,255,255,.58);
-
-    box-shadow:
-        0 25px 70px
-        rgba(80,60,45,.10);
-
-    border-radius:2px;
+    box-shadow:0 25px 70px rgba(80,60,45,.10);
+    border-radius:2px
 }
 
 .entrada-conteudo:before,
 .entrada-conteudo:after{
     content:"";
-
     position:absolute;
-
     width:48px;
     height:48px;
-
     border-color:var(--marrom-claro);
     border-style:solid;
-
-    opacity:.65;
+    opacity:.65
 }
 
 .entrada-conteudo:before{
     top:16px;
     left:16px;
-
-    border-width:1px 0 0 1px;
+    border-width:1px 0 0 1px
 }
 
 .entrada-conteudo:after{
     right:16px;
     bottom:16px;
-
-    border-width:0 1px 1px 0;
+    border-width:0 1px 1px 0
 }
 
 .entrada-detalhe{
     font:28px 'Cormorant Garamond',serif;
     color:var(--dourado);
-    margin-bottom:18px;
+    margin-bottom:18px
 }
 
 .entrada-pequeno{
@@ -163,81 +142,65 @@ body:before{
     letter-spacing:4px;
     text-transform:uppercase;
     color:var(--verde-profundo);
-    margin-bottom:22px;
+    margin-bottom:22px
 }
 
 .entrada-nomes{
-    font:
-        500 clamp(55px,12vw,88px)/.82
-        'Cormorant Garamond',serif;
-
+    font:500 clamp(55px,12vw,88px)/.82 'Cormorant Garamond',serif;
     color:var(--marrom);
-    letter-spacing:-2px;
+    letter-spacing:-2px
 }
 
 .entrada-data{
     font:18px 'Cormorant Garamond',serif;
     letter-spacing:4px;
     color:var(--verde-profundo);
-    margin:24px 0;
+    margin:24px 0
 }
 
 .entrada-frase{
     max-width:340px;
     margin:auto;
-
     font-size:12px;
     line-height:22px;
-
-    color:var(--texto-claro);
+    color:var(--texto-claro)
 }
 
 .entrada-linha{
     display:flex;
     align-items:center;
     justify-content:center;
-
     gap:12px;
-
-    margin:28px 0;
+    margin:28px 0
 }
 
 .entrada-linha span{
     width:55px;
     height:1px;
-
-    background:var(--dourado);
+    background:var(--dourado)
 }
 
 .entrada-linha i{
     font-style:normal;
-    color:var(--dourado);
+    color:var(--dourado)
 }
 
 .botao-entrar{
     border:1px solid var(--marrom);
-
     background:var(--marrom);
     color:var(--creme);
-
     padding:13px 46px;
-
-    font:
-        600 10px
-        'Montserrat',sans-serif;
-
+    font:600 10px 'Montserrat',sans-serif;
     letter-spacing:2px;
     text-transform:uppercase;
-
     cursor:pointer;
-
-    transition:.3s;
+    transition:.3s
 }
 
 .botao-entrar:hover{
     background:var(--verde-profundo);
     border-color:var(--verde-profundo);
-    color:var(--creme);
+    color:var(--creme)
 }
 
 
@@ -248,133 +211,92 @@ body:before{
 .hero{
     max-width:1120px;
     margin:auto;
-
     min-height:650px;
-
     padding:55px 7%;
-
     display:grid;
-
     grid-template-columns:1fr 1.15fr;
-
     align-items:center;
-
     gap:50px;
-
-    position:relative;
+    position:relative
 }
 
 .hero:before{
     content:"";
-
     position:absolute;
-
     left:5%;
     top:15%;
     bottom:15%;
-
     width:1px;
-
-    background:var(--areia);
+    background:var(--areia)
 }
 
 .hero:after{
     content:"♡";
-
     position:absolute;
-
     right:4%;
     top:12%;
-
-    font:
-        90px
-        'Cormorant Garamond',serif;
-
+    font:90px 'Cormorant Garamond',serif;
     color:var(--dourado-claro);
-
-    opacity:.35;
+    opacity:.35
 }
 
 .hero .pequeno-texto{
     font-size:10px;
     letter-spacing:4px;
     text-transform:uppercase;
-
     color:var(--marrom-claro);
-
-    margin-bottom:18px;
+    margin-bottom:18px
 }
 
 .hero .nomes{
-    font:
-        500 clamp(65px,9vw,120px)/.76
-        'Cormorant Garamond',serif;
-
+    font:500 clamp(65px,9vw,120px)/.76 'Cormorant Garamond',serif;
     color:var(--marrom);
-
     letter-spacing:-4px;
-
-    max-width:600px;
+    max-width:600px
 }
 
 .hero .data-casamento{
     margin-top:30px;
-
-    font:
-        20px
-        'Cormorant Garamond',serif;
-
+    font:20px 'Cormorant Garamond',serif;
     letter-spacing:5px;
-
-    color:var(--verde-profundo);
+    color:var(--verde-profundo)
 }
 
 .hero .linha-decorativa{
     display:flex;
     align-items:center;
-
     gap:12px;
-
-    margin:22px 0;
+    margin:22px 0
 }
 
 .hero .linha-decorativa span{
     width:65px;
     height:1px;
-
-    background:var(--dourado);
+    background:var(--dourado)
 }
 
 .hero .linha-decorativa i{
     font-style:normal;
     color:var(--dourado);
-    font-size:15px;
+    font-size:15px
 }
 
 .hero .subtitulo{
     max-width:420px;
-
-    font:
-        italic 17px/1.65
-        'Cormorant Garamond',serif;
-
-    color:var(--texto-claro);
+    font:italic 17px/1.65 'Cormorant Garamond',serif;
+    color:var(--texto-claro)
 }
 
 .hero .subtitulo:before{
     content:'“';
-
     color:var(--dourado);
-
     font-size:34px;
-
     vertical-align:-10px;
-
-    margin-right:4px;
+    margin-right:4px
 }
 
 .hero:has(.nomes):after{
-    pointer-events:none;
+    pointer-events:none
 }
 
 
@@ -386,6 +308,7 @@ body:before{
 .memorias-layout{
     max-width:1080px;
 
+    /* aproxima o álbum do Gabi & Tom */
     margin:20px auto 90px;
 
     padding:0 35px;
@@ -398,6 +321,7 @@ body:before{
 
     align-items:center;
 
+    /* antes estava 65px */
     gap:35px;
 
     position:relative;
@@ -417,6 +341,9 @@ body:before{
 
     position:relative;
 }
+
+
+/* título */
 
 .album-titulo{
     width:100%;
@@ -438,10 +365,14 @@ body:before{
 .album-titulo-principal{
     font:
         500 31px/1
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--marrom);
 }
+
+
+/* decoração */
 
 .album-linha{
     display:flex;
@@ -462,7 +393,6 @@ body:before{
 
 .album-linha i{
     font-style:normal;
-
     color:var(--dourado);
 
     font-size:12px;
@@ -491,7 +421,6 @@ body:before{
     transform:rotate(-1deg);
 
     touch-action:pan-y;
-
     user-select:none;
     -webkit-user-select:none;
 
@@ -504,6 +433,9 @@ body:before{
     cursor:grabbing;
 }
 
+
+/* detalhe interno */
+
 .album:before{
     content:"";
 
@@ -511,14 +443,16 @@ body:before{
 
     inset:6px;
 
-    border:
-        1px solid
+    border:1px solid
         rgba(185,155,104,.28);
 
     pointer-events:none;
 
     z-index:20;
 }
+
+
+/* coração */
 
 .album:after{
     content:"♡";
@@ -545,7 +479,8 @@ body:before{
 
     font:
         22px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     z-index:30;
 }
@@ -556,6 +491,7 @@ body:before{
 ===================================================== */
 
 .album-folha{
+
     position:relative;
 
     width:100%;
@@ -580,7 +516,13 @@ body:before{
     transform-style:preserve-3d;
 }
 
+
+/*
+   Linha central da encadernação
+*/
+
 .album-folha:before{
+
     content:"";
 
     position:absolute;
@@ -606,7 +548,15 @@ body:before{
     opacity:.7;
 }
 
+
+/*
+   Verso da folha.
+   Quando a página gira, aparece rapidamente
+   como o verso de uma folha real.
+*/
+
 .album-folha:after{
+
     content:"";
 
     position:absolute;
@@ -620,8 +570,7 @@ body:before{
             #e9e1d5
         );
 
-    border:
-        1px solid
+    border:1px solid
         rgba(107,81,69,.08);
 
     transform:translateZ(-1px);
@@ -639,6 +588,7 @@ body:before{
 ===================================================== */
 
 .album-foto{
+
     position:absolute;
 
     inset:0;
@@ -653,6 +603,12 @@ body:before{
     z-index:2;
 
     pointer-events:none;
+
+    /*
+       Muito importante:
+       o eixo da rotação fica na lateral,
+       simulando uma página sendo virada.
+    */
 
     transform-origin:left center;
 
@@ -672,9 +628,11 @@ body:before{
 
 /* =====================================================
    FOLHA VIRANDO PARA A ESQUERDA
+   Próxima foto
 ===================================================== */
 
 .album-foto.virando-esquerda{
+
     animation:
         folhaVirandoEsquerda
         .72s
@@ -682,31 +640,41 @@ body:before{
         forwards;
 }
 
+
 @keyframes folhaVirandoEsquerda{
 
     0%{
+
         transform:
             perspective(1400px)
             rotateY(0deg);
+
     }
 
     35%{
+
         transform:
             perspective(1400px)
             rotateY(-72deg);
+
     }
 
     70%{
+
         transform:
             perspective(1400px)
             rotateY(-155deg);
+
     }
 
     100%{
+
         transform:
             perspective(1400px)
             rotateY(-180deg);
+
     }
+
 }
 
 
@@ -715,38 +683,50 @@ body:before{
 ===================================================== */
 
 .album-foto.nova-folha-esquerda{
+
     animation:
         novaFolhaEsquerda
         .72s
         cubic-bezier(.65,.05,.36,1)
         forwards;
+
 }
+
 
 @keyframes novaFolhaEsquerda{
 
     0%{
+
         transform:
             perspective(1400px)
             rotateY(180deg);
+
     }
 
     35%{
+
         transform:
             perspective(1400px)
             rotateY(155deg);
+
     }
 
     70%{
+
         transform:
             perspective(1400px)
             rotateY(72deg);
+
     }
 
     100%{
+
         transform:
             perspective(1400px)
             rotateY(0deg);
+
     }
+
 }
 
 
@@ -755,6 +735,7 @@ body:before{
 ===================================================== */
 
 .album-foto.virando-direita{
+
     transform-origin:right center;
 
     animation:
@@ -762,33 +743,44 @@ body:before{
         .72s
         cubic-bezier(.65,.05,.36,1)
         forwards;
+
 }
+
 
 @keyframes folhaVirandoDireita{
 
     0%{
+
         transform:
             perspective(1400px)
             rotateY(0deg);
+
     }
 
     35%{
+
         transform:
             perspective(1400px)
             rotateY(72deg);
+
     }
 
     70%{
+
         transform:
             perspective(1400px)
             rotateY(155deg);
+
     }
 
     100%{
+
         transform:
             perspective(1400px)
             rotateY(180deg);
+
     }
+
 }
 
 
@@ -797,6 +789,7 @@ body:before{
 ===================================================== */
 
 .album-foto.nova-folha-direita{
+
     transform-origin:right center;
 
     animation:
@@ -804,33 +797,44 @@ body:before{
         .72s
         cubic-bezier(.65,.05,.36,1)
         forwards;
+
 }
+
 
 @keyframes novaFolhaDireita{
 
     0%{
+
         transform:
             perspective(1400px)
             rotateY(-180deg);
+
     }
 
     35%{
+
         transform:
             perspective(1400px)
             rotateY(-155deg);
+
     }
 
     70%{
+
         transform:
             perspective(1400px)
             rotateY(-72deg);
+
     }
 
     100%{
+
         transform:
             perspective(1400px)
             rotateY(0deg);
+
     }
+
 }
 
 
@@ -839,9 +843,11 @@ body:before{
 ===================================================== */
 
 .album.folha-virando:after{
+
     box-shadow:
         -18px 0 30px
         rgba(60,45,38,.18);
+
 }
 
 
@@ -850,6 +856,7 @@ body:before{
 ===================================================== */
 
 .album-legenda{
+
     position:absolute;
 
     left:0;
@@ -874,7 +881,8 @@ body:before{
 
     font:
         italic 18px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     letter-spacing:.2px;
 
@@ -889,6 +897,7 @@ body:before{
 ===================================================== */
 
 .album-controles{
+
     display:flex;
 
     align-items:center;
@@ -902,6 +911,7 @@ body:before{
 }
 
 .album-seta{
+
     width:32px;
     height:32px;
 
@@ -921,7 +931,8 @@ body:before{
 
     font:
         22px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     transition:
         background .25s ease,
@@ -930,6 +941,7 @@ body:before{
 }
 
 .album-seta:hover{
+
     background:var(--marrom);
 
     color:var(--creme);
@@ -938,13 +950,15 @@ body:before{
 }
 
 .album-pagina{
+
     min-width:60px;
 
     text-align:center;
 
     font:
         500 11px
-        'Montserrat',sans-serif;
+        'Montserrat',
+        sans-serif;
 
     letter-spacing:2px;
 
@@ -957,11 +971,13 @@ body:before{
 ===================================================== */
 
 .album-instrucao{
+
     margin-top:9px;
 
     font:
         italic 13px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--texto-claro);
 
@@ -978,6 +994,7 @@ body:before{
 ===================================================== */
 
 .introducao{
+
     margin:0;
 
     max-width:430px;
@@ -998,6 +1015,7 @@ body:before{
 }
 
 .introducao:after{
+
     content:"G + T";
 
     position:absolute;
@@ -1007,15 +1025,18 @@ body:before{
 
     font:
         22px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--areia);
 }
 
 .introducao h2{
+
     font:
         500 34px/1
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--marrom);
 
@@ -1023,6 +1044,7 @@ body:before{
 }
 
 .introducao p{
+
     font-size:12px;
 
     line-height:22px;
@@ -1037,26 +1059,23 @@ body:before{
 
 .contagem-container{
     max-width:980px;
-
     margin:90px auto;
-
     padding:0 35px;
 
     display:grid;
-
     grid-template-columns:280px 1fr;
 
     align-items:center;
-
-    gap:55px;
+    gap:55px
 }
 
 .contagem-titulo{
     font:
         500 36px/1.05
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--marrom);
+    color:var(--marrom)
 }
 
 .contagem-titulo:after{
@@ -1069,16 +1088,15 @@ body:before{
 
     background:var(--dourado);
 
-    margin-top:18px;
+    margin-top:18px
 }
 
 .contagem{
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
 
     border-top:1px solid var(--areia);
-    border-bottom:1px solid var(--areia);
+    border-bottom:1px solid var(--areia)
 }
 
 .tempo{
@@ -1086,11 +1104,11 @@ body:before{
 
     text-align:center;
 
-    border-right:1px solid var(--areia);
+    border-right:1px solid var(--areia)
 }
 
 .tempo:last-child{
-    border-right:0;
+    border-right:0
 }
 
 .tempo span{
@@ -1098,9 +1116,10 @@ body:before{
 
     font:
         500 clamp(36px,5vw,54px)/1
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--verde-profundo);
+    color:var(--verde-profundo)
 }
 
 .tempo small{
@@ -1114,7 +1133,7 @@ body:before{
 
     text-transform:uppercase;
 
-    color:var(--texto-claro);
+    color:var(--texto-claro)
 }
 
 
@@ -1131,7 +1150,7 @@ body:before{
 
     position:relative;
 
-    overflow:hidden;
+    overflow:hidden
 }
 
 .evento:before{
@@ -1149,12 +1168,11 @@ body:before{
     border-radius:50%;
 
     right:-160px;
-    top:-190px;
+    top:-190px
 }
 
 .evento-card{
     max-width:1000px;
-
     margin:auto;
 
     display:grid;
@@ -1163,27 +1181,28 @@ body:before{
 
     gap:60px;
 
-    align-items:center;
+    align-items:center
 }
 
 .evento-titulo{
     font:
         500 clamp(42px,6vw,65px)/.9
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--creme);
+    color:var(--creme)
 }
 
 .evento-data{
     margin-top:22px;
 
     font:
-        19px
-        'Cormorant Garamond',serif;
+        19px 'Cormorant Garamond',
+        serif;
 
     letter-spacing:4px;
 
-    color:var(--dourado-claro);
+    color:var(--dourado-claro)
 }
 
 .evento-info{
@@ -1191,7 +1210,7 @@ body:before{
 
     grid-template-columns:1fr 1fr;
 
-    gap:25px;
+    gap:25px
 }
 
 .evento-item{
@@ -1199,11 +1218,11 @@ body:before{
 
     border-top:
         1px solid
-        rgba(216,195,154,.35);
+        rgba(216,195,154,.35)
 }
 
 .evento-divisor{
-    display:none;
+    display:none
 }
 
 .evento-icone{
@@ -1211,7 +1230,7 @@ body:before{
 
     color:var(--dourado-claro);
 
-    margin-bottom:12px;
+    margin-bottom:12px
 }
 
 .evento-label{
@@ -1223,16 +1242,17 @@ body:before{
 
     color:#c9d0c9;
 
-    margin-bottom:7px;
+    margin-bottom:7px
 }
 
 .evento-valor,
 .evento-endereco{
     font:
         22px/1.2
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--creme);
+    color:var(--creme)
 }
 
 .botao-mapa{
@@ -1258,13 +1278,13 @@ body:before{
 
     text-transform:uppercase;
 
-    transition:.3s;
+    transition:.3s
 }
 
 .botao-mapa:hover{
     background:var(--dourado-claro);
 
-    color:var(--marrom);
+    color:var(--marrom)
 }
 
 
@@ -1285,15 +1305,16 @@ body:before{
 
     justify-content:space-between;
 
-    gap:30px;
+    gap:30px
 }
 
 .titulo-lista h1{
     font:
         500 clamp(44px,6vw,68px)/.9
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--marrom);
+    color:var(--marrom)
 }
 
 .titulo-lista p{
@@ -1307,7 +1328,7 @@ body:before{
 
     color:var(--texto-claro);
 
-    text-align:right;
+    text-align:right
 }
 
 .ordenacao{
@@ -1331,7 +1352,7 @@ body:before{
 
     text-transform:uppercase;
 
-    color:var(--texto-claro);
+    color:var(--texto-claro)
 }
 
 .ordenacao select{
@@ -1349,9 +1370,10 @@ body:before{
 
     font:
         500 10px
-        'Montserrat',sans-serif;
+        'Montserrat',
+        sans-serif;
 
-    outline:none;
+    outline:none
 }
 
 .lista{
@@ -1365,7 +1387,7 @@ body:before{
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:28px;
+    gap:28px
 }
 
 .presente{
@@ -1389,7 +1411,7 @@ body:before{
 
     transition:.3s;
 
-    position:relative;
+    position:relative
 }
 
 .presente:hover{
@@ -1397,7 +1419,7 @@ body:before{
 
     box-shadow:
         0 24px 55px
-        rgba(80,60,45,.12);
+        rgba(80,60,45,.12)
 }
 
 .imagem{
@@ -1409,11 +1431,11 @@ body:before{
 
     display:block;
 
-    transition:.4s;
+    transition:.4s
 }
 
 .presente:hover .imagem{
-    filter:saturate(.88);
+    filter:saturate(.88)
 }
 
 .categoria-presente{
@@ -1427,7 +1449,7 @@ body:before{
 
     text-transform:uppercase;
 
-    color:var(--verde);
+    color:var(--verde)
 }
 
 .nome-presente{
@@ -1437,13 +1459,14 @@ body:before{
 
     font:
         500 25px/1
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--marrom);
 
     display:flex;
 
-    align-items:center;
+    align-items:center
 }
 
 .frase-presente{
@@ -1453,9 +1476,10 @@ body:before{
 
     font:
         italic 15px/1.35
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--texto-claro);
+    color:var(--texto-claro)
 }
 
 .frase-presente:before{
@@ -1463,7 +1487,7 @@ body:before{
 
     color:var(--dourado);
 
-    font-size:24px;
+    font-size:24px
 }
 
 .frase-presente:after{
@@ -1471,7 +1495,7 @@ body:before{
 
     color:var(--dourado);
 
-    font-size:24px;
+    font-size:24px
 }
 
 .preco{
@@ -1479,9 +1503,10 @@ body:before{
 
     font:
         500 18px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--verde-profundo);
+    color:var(--verde-profundo)
 }
 
 .botao{
@@ -1501,7 +1526,8 @@ body:before{
 
     font:
         600 9px
-        'Montserrat',sans-serif;
+        'Montserrat',
+        sans-serif;
 
     letter-spacing:1.8px;
 
@@ -1509,23 +1535,23 @@ body:before{
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:.3s
 }
 
 .botao:hover{
     background:var(--marrom);
 
-    border-color:var(--marrom);
+    border-color:var(--marrom)
 }
 
 .presente.escolhido{
-    opacity:.72;
+    opacity:.72
 }
 
 .presente.escolhido .botao{
     background:var(--marrom);
 
-    border-color:var(--marrom);
+    border-color:var(--marrom)
 }
 
 
@@ -1556,7 +1582,7 @@ body:before{
 
     border-bottom:
         1px solid
-        var(--areia);
+        var(--areia)
 }
 
 .confirmacao-presenca:before{
@@ -1569,10 +1595,11 @@ body:before{
 
     font:
         100px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:
-        rgba(107,81,69,.07);
+        rgba(107,81,69,.07)
 }
 
 .confirmacao-presenca:after{
@@ -1585,21 +1612,23 @@ body:before{
 
     font:
         100px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:
-        rgba(113,134,118,.08);
+        rgba(113,134,118,.08)
 }
 
 .confirmacao-linha{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     gap:12px;
 
-    margin-bottom:25px;
+    margin-bottom:25px
 }
 
 .confirmacao-linha span{
@@ -1607,33 +1636,35 @@ body:before{
 
     height:1px;
 
-    background:var(--dourado);
+    background:var(--dourado)
 }
 
 .confirmacao-linha i{
     font-style:normal;
 
-    color:var(--dourado-claro);
+    color:var(--dourado-claro)
 }
 
 .confirmacao-icone{
     font:
         28px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--dourado-claro);
 
-    margin-bottom:10px;
+    margin-bottom:10px
 }
 
 .confirmacao-presenca h2{
     font:
         500 clamp(42px,6vw,62px)/.95
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     margin-bottom:14px;
 
-    color:var(--marrom);
+    color:var(--marrom)
 }
 
 .confirmacao-presenca p{
@@ -1643,7 +1674,7 @@ body:before{
 
     color:var(--texto-claro);
 
-    margin-bottom:28px;
+    margin-bottom:28px
 }
 
 .botao-confirmacao{
@@ -1676,7 +1707,7 @@ body:before{
 
     animation:
         confirmarPulso
-        2.8s ease-in-out infinite;
+        2.8s ease-in-out infinite
 }
 
 .botao-confirmacao:hover{
@@ -1688,11 +1719,11 @@ body:before{
         0 10px 28px
         rgba(79,98,84,.18);
 
-    animation-play-state:paused;
+    animation-play-state:paused
 }
 
 .botao-confirmacao span{
-    font-size:15px;
+    font-size:15px
 }
 
 @keyframes confirmarPulso{
@@ -1702,7 +1733,7 @@ body:before{
 
         box-shadow:
             0 4px 14px
-            rgba(107,81,69,.10);
+            rgba(107,81,69,.10)
     }
 
     50%{
@@ -1710,8 +1741,9 @@ body:before{
 
         box-shadow:
             0 8px 22px
-            rgba(107,81,69,.16);
+            rgba(107,81,69,.16)
     }
+
 }
 
 
@@ -1738,7 +1770,7 @@ body:before{
 
     position:relative;
 
-    z-index:2;
+    z-index:2
 }
 
 .prazo-label{
@@ -1750,17 +1782,18 @@ body:before{
 
     color:var(--texto-claro);
 
-    margin-bottom:6px;
+    margin-bottom:6px
 }
 
 .prazo-data{
     font:
         500 30px/1
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     letter-spacing:4px;
 
-    color:var(--verde-profundo);
+    color:var(--verde-profundo)
 }
 
 .prazo-legenda{
@@ -1768,9 +1801,10 @@ body:before{
 
     font:
         italic 13px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--texto-claro);
+    color:var(--texto-claro)
 }
 
 .mensagem-prazo{
@@ -1778,13 +1812,14 @@ body:before{
 
     font:
         italic 14px/1.4
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--texto-claro);
 
     position:relative;
 
-    z-index:2;
+    z-index:2
 }
 
 .botao-confirmacao.encerrado{
@@ -1798,13 +1833,13 @@ body:before{
 
     pointer-events:none;
 
-    opacity:.75;
+    opacity:.75
 }
 
 .prazo-expirado{
     color:var(--marrom);
 
-    font-weight:500;
+    font-weight:500
 }
 
 
@@ -1821,7 +1856,8 @@ body:before{
 
     font:
         italic 17px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif
 }
 
 .rodape .coracao{
@@ -1831,7 +1867,7 @@ body:before{
 
     font-size:25px;
 
-    margin-bottom:12px;
+    margin-bottom:12px
 }
 
 .rodape strong{
@@ -1843,7 +1879,7 @@ body:before{
 
     font-weight:500;
 
-    color:var(--marrom);
+    color:var(--marrom)
 }
 
 .rodape .data{
@@ -1853,7 +1889,7 @@ body:before{
 
     letter-spacing:4px;
 
-    color:var(--verde-profundo);
+    color:var(--verde-profundo)
 }
 
 
@@ -1888,7 +1924,7 @@ body:before{
         0 8px 25px
         rgba(80,60,45,.12);
 
-    z-index:100;
+    z-index:100
 }
 
 
@@ -1918,13 +1954,13 @@ body:before{
 
     transition:.3s;
 
-    z-index:9998;
+    z-index:9998
 }
 
 .popup-overlay.ativo{
     opacity:1;
 
-    visibility:visible;
+    visibility:visible
 }
 
 .popup{
@@ -1942,25 +1978,27 @@ body:before{
 
     box-shadow:
         0 25px 80px
-        rgba(0,0,0,.22);
+        rgba(0,0,0,.22)
 }
 
 .popup-icone{
     font:
         30px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
     color:var(--dourado);
 
-    margin-bottom:10px;
+    margin-bottom:10px
 }
 
 .popup-titulo{
     font:
         500 34px
-        'Cormorant Garamond',serif;
+        'Cormorant Garamond',
+        serif;
 
-    color:var(--marrom);
+    color:var(--marrom)
 }
 
 .popup-detalhe{
@@ -1970,7 +2008,7 @@ body:before{
 
     background:var(--dourado);
 
-    margin:15px auto;
+    margin:15px auto
 }
 
 .popup-mensagem{
@@ -1978,7 +2016,7 @@ body:before{
 
     line-height:21px;
 
-    color:var(--texto);
+    color:var(--texto)
 }
 
 .popup-fechar{
@@ -1994,13 +2032,14 @@ body:before{
 
     font:
         600 9px
-        'Montserrat',sans-serif;
+        'Montserrat',
+        sans-serif;
 
     letter-spacing:1.5px;
 
     text-transform:uppercase;
 
-    cursor:pointer;
+    cursor:pointer
 }
 
 
@@ -2032,7 +2071,7 @@ body:before{
         0 10px 30px
         rgba(80,60,45,.12);
 
-    z-index:500;
+    z-index:500
 }
 
 .controle-musica{
@@ -2047,13 +2086,13 @@ body:before{
 
     color:white;
 
-    cursor:pointer;
+    cursor:pointer
 }
 
 .icone-musica{
     color:var(--dourado);
 
-    font-size:17px;
+    font-size:17px
 }
 
 .texto-musica{
@@ -2063,7 +2102,7 @@ body:before{
 
     color:var(--texto-claro);
 
-    white-space:nowrap;
+    white-space:nowrap
 }
 
 .volume-musica{
@@ -2071,30 +2110,32 @@ body:before{
 
     accent-color:var(--marrom);
 
-    cursor:pointer;
+    cursor:pointer
 }
 
 .player-musica.tocando .icone-musica{
     animation:
         musicPulse
-        1.6s infinite;
+        1.6s infinite
 }
 
 @keyframes musicPulse{
 
     50%{
-        transform:scale(1.18);
+        transform:scale(1.18)
     }
+
 }
 
 
 /* =====================================================
-   RESPONSIVO
+   RESPONSIVO — TABLET
 ===================================================== */
 
 @media(max-width:850px){
 
     .hero{
+
         grid-template-columns:1fr;
 
         min-height:600px;
@@ -2105,6 +2146,7 @@ body:before{
     }
 
     .hero:before{
+
         left:8%;
         top:10%;
         bottom:10%;
@@ -2118,6 +2160,8 @@ body:before{
         justify-content:center;
     }
 
+
+    /* ÁLBUM */
 
     .memorias-layout{
 
@@ -2137,6 +2181,7 @@ body:before{
     }
 
     .introducao{
+
         order:2;
 
         max-width:430px;
@@ -2146,6 +2191,7 @@ body:before{
 
 
     .contagem-container{
+
         grid-template-columns:1fr;
 
         margin:70px auto;
@@ -2164,7 +2210,6 @@ body:before{
 
     .evento-card{
         grid-template-columns:1fr;
-
         gap:30px;
     }
 
@@ -2183,26 +2228,27 @@ body:before{
 
     .titulo-lista p{
         text-align:left;
-
         margin-top:18px;
     }
 
 
     .lista{
         grid-template-columns:repeat(2,1fr);
-
         padding:0 20px 80px;
     }
 
 
     .confirmacao-presenca{
         margin-left:20px;
-
         margin-right:20px;
     }
 
 }
 
+
+/* =====================================================
+   RESPONSIVO — CELULAR
+===================================================== */
 
 @media(max-width:600px){
 
@@ -2216,10 +2262,14 @@ body:before{
 
     .hero .nomes{
         font-size:72px;
-
         letter-spacing:-2px;
     }
 
+
+    /*
+       No celular:
+       álbum continua acima do Nosso grande dia.
+    */
 
     .memorias-layout{
 
@@ -2248,6 +2298,7 @@ body:before{
     }
 
     .album-legenda{
+
         font-size:17px;
 
         padding:
@@ -2274,9 +2325,7 @@ body:before{
     }
 
     .tempo:nth-child(-n+2){
-        border-bottom:
-            1px solid
-            var(--areia);
+        border-bottom:1px solid var(--areia);
     }
 
 
@@ -2286,20 +2335,17 @@ body:before{
 
     .evento-info{
         grid-template-columns:1fr 1fr;
-
         gap:10px;
     }
 
 
     .lista{
         grid-template-columns:1fr;
-
         padding:0 18px 70px;
     }
 
     .titulo-lista{
         margin-top:75px;
-
         padding:0 20px;
     }
 
@@ -2314,26 +2360,22 @@ body:before{
 
     .confirmacao-presenca{
         padding:65px 25px;
-
         margin-bottom:70px;
     }
 
     .prazo-confirmacao{
         max-width:100%;
-
         padding:17px 15px;
     }
 
     .prazo-data{
         font-size:27px;
-
         letter-spacing:3px;
     }
 
 
     .player-musica{
         right:12px;
-
         bottom:15px;
     }
 
@@ -2347,12 +2389,15 @@ body:before{
 
     .topo-btn{
         right:15px;
-
         bottom:70px;
     }
 
 }
 
+
+/* =====================================================
+   CELULARES PEQUENOS
+===================================================== */
 
 @media(max-width:380px){
 
@@ -2374,7 +2419,6 @@ body:before{
 
     .album{
         width:100%;
-
         padding:8px;
     }
 
@@ -2404,6 +2448,7 @@ body:before{
         animation:none !important;
 
         transition:none !important;
+
     }
 
     .botao-confirmacao{
@@ -2412,7 +2457,7 @@ body:before{
 
 }
 
-</style>
+    </style>
 </head>
 
 <body>
@@ -2514,6 +2559,10 @@ body:before{
 <section class="memorias-layout">
 
 
+    <!-- =================================================
+         ÁLBUM
+    ================================================== -->
+
     <div class="album-area">
 
         <div class="album-titulo">
@@ -2540,6 +2589,37 @@ body:before{
         </div>
 
 
+        <!--
+        ==================================================
+        ÁLBUM
+
+        AS 5 FOTOS DEVEM FICAR NA RAIZ DO GITHUB.
+
+        FOTO 1:
+        foto1.jpg
+
+        FOTO 2:
+        foto2.jpg
+
+        FOTO 3:
+        foto3.jpg
+
+        FOTO 4:
+        foto4.jpg
+
+        FOTO 5:
+        foto5.jpg
+
+        Você pode substituir os nomes acima
+        pelos nomes reais dos seus arquivos.
+
+        Exemplo:
+
+        <img src="casal1.jpg">
+
+        ==================================================
+        -->
+
         <div
             class="album"
             id="album"
@@ -2550,6 +2630,7 @@ body:before{
                 id="albumFolha"
             >
 
+                <!-- FOTO 1 -->
                 <img
                     id="albumFoto"
                     class="album-foto"
@@ -2570,6 +2651,8 @@ body:before{
         </div>
 
 
+        <!-- CONTROLES -->
+
         <div class="album-controles">
 
             <button
@@ -2581,12 +2664,14 @@ body:before{
                 ‹
             </button>
 
+
             <div
                 class="album-pagina"
                 id="albumPagina"
             >
                 01 / 05
             </div>
+
 
             <button
                 class="album-seta"
@@ -2609,6 +2694,10 @@ body:before{
 
     </div>
 
+
+    <!-- =================================================
+         NOSSO GRANDE DIA
+    ================================================== -->
 
     <section class="introducao">
 
@@ -2803,7 +2892,9 @@ body:before{
 >
 
 
-<!-- PRESENTE 1 -->
+<!-- =====================================================
+     PRESENTE 1
+===================================================== -->
 
 <div
     class="presente"
@@ -2848,12 +2939,14 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 2 -->
+<!-- =====================================================
+     PRESENTE 2
+===================================================== -->
 
 <div
     class="presente"
     data-preco="300.00"
-    data-nome="Ajuda com a lua de mel"
+    data-nome="Lua de Mel"
 >
 
     <img
@@ -2871,7 +2964,7 @@ body:before{
     </div>
 
     <div class="frase-presente">
-        Ajude os noivos a pagar a lua de mel para começar com o pé direito.
+        Ajude os noivos a pagar a lua de mel para começar com o pé direito
     </div>
 
     <div class="preco">
@@ -2882,7 +2975,7 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Ajuda com a lua de mel',
+            'Jantar romântico',
             300.00,
             PIX_PRESENTE_02
         )"
@@ -2893,30 +2986,32 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 3 -->
+<!-- =====================================================
+     PRESENTE 3
+===================================================== -->
 
 <div
     class="presente"
-    data-preco="95.00"
-    data-nome="Lenço para a noiva"
+    data-preco="59.90"
+    data-nome="Filme e pipoca"
 >
 
     <img
         class="imagem"
         src="https://anacris.de/wp-content/uploads/2013/06/anacrying.jpg"
-        alt="Lenço para a noiva"
+        alt="Cinema com pipoca"
     >
 
     <div class="categoria-presente">
-        🎬 Emoção
+        🎬 Noite de cinema
     </div>
 
     <div class="nome-presente">
-        Lenço para a noiva não borrar a maquiagem
+        Lenço para noiva não borrar a maquiagem
     </div>
 
     <div class="frase-presente">
-        Porque algumas lágrimas vão ser inevitáveis nesse grande dia.
+        ????
     </div>
 
     <div class="preco">
@@ -2927,8 +3022,8 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Lenço para a noiva',
-            95.00,
+            'Cinema com pipoca',
+            59.90,
             PIX_PRESENTE_03
         )"
     >
@@ -2938,7 +3033,9 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 4 -->
+<!-- =====================================================
+     PRESENTE 4
+===================================================== -->
 
 <div
     class="presente"
@@ -2961,7 +3058,7 @@ body:before{
     </div>
 
     <div class="frase-presente">
-        Para os noivos relaxarem na lua de mel.
+        Para os noivos relaxarem na lua de mel
     </div>
 
     <div class="preco">
@@ -2972,7 +3069,7 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Passeio de barco',
+            'Cesta de café da manhã',
             169.90,
             PIX_PRESENTE_04
         )"
@@ -2983,11 +3080,13 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 5 -->
+<!-- =====================================================
+     PRESENTE 5
+===================================================== -->
 
 <div
     class="presente"
-    data-preco="0.00"
+    data-preco="00.00"
     data-nome="Valor em aberto"
 >
 
@@ -3017,8 +3116,8 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Valor em aberto',
-            0.00,
+            'Jantar especial',
+            00.00,
             PIX_PRESENTE_05
         )"
     >
@@ -3028,18 +3127,20 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 6 -->
+<!-- =====================================================
+     PRESENTE 6
+===================================================== -->
 
 <div
     class="presente"
     data-preco="160.00"
-    data-nome="Ajuda para a mudança"
+    data-nome="mudança de casa"
 >
 
     <img
         class="imagem"
         src="https://i.pinimg.com/736x/ce/53/b5/ce53b5b5970f421cd443d26351212130.jpg"
-        alt="Ajuda para a mudança"
+        alt="Hotel"
     >
 
     <div class="categoria-presente">
@@ -3047,11 +3148,11 @@ body:before{
     </div>
 
     <div class="nome-presente">
-        Ajuda para os noivos fazerem a mudança
+        Ajuda para os noivos fazer a mudança.
     </div>
 
     <div class="frase-presente">
-        Para começar a vida nova com um empurrãozinho especial.
+        ????
     </div>
 
     <div class="preco">
@@ -3062,7 +3163,7 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Ajuda para a mudança',
+            'Noite especial no hotel',
             160.00,
             PIX_PRESENTE_06
         )"
@@ -3073,7 +3174,9 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 7 -->
+<!-- =====================================================
+     PRESENTE 07
+===================================================== -->
 
 <div
     class="presente"
@@ -3096,7 +3199,7 @@ body:before{
     </div>
 
     <div class="frase-presente">
-        Amo vocês, mas tô apertado agora.
+        Amo vocês, mas to apertado agora.
     </div>
 
     <div class="preco">
@@ -3118,12 +3221,14 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 8 -->
+<!-- =====================================================
+     PRESENTE 08
+===================================================== -->
 
 <div
     class="presente"
     data-preco="180.00"
-    data-nome="6 meses de Netflix"
+    data-nome="Netflix"
 >
 
     <img
@@ -3152,7 +3257,7 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            '6 meses de Netflix',
+            'Jantar romântico',
             180.00,
             PIX_PRESENTE_08
         )"
@@ -3163,7 +3268,9 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 9 -->
+<!-- =====================================================
+     PRESENTE 09
+===================================================== -->
 
 <div
     class="presente"
@@ -3186,7 +3293,7 @@ body:before{
     </div>
 
     <div class="frase-presente">
-        Agora é a sua chance de provar que amizade vale ouro.
+        ???
     </div>
 
     <div class="preco">
@@ -3197,7 +3304,7 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Amigo rico',
+            'Cinema com pipoca',
             250.00,
             PIX_PRESENTE_09
         )"
@@ -3208,7 +3315,9 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 10 -->
+<!-- =====================================================
+     PRESENTE 10
+===================================================== -->
 
 <div
     class="presente"
@@ -3242,7 +3351,6 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Deus tocou seu coração',
             500.00,
             PIX_PRESENTE_10
         )"
@@ -3253,7 +3361,9 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 11 -->
+<!-- =====================================================
+     PRESENTE 11
+===================================================== -->
 
 <div
     class="presente"
@@ -3298,7 +3408,9 @@ body:before{
 </div>
 
 
-<!-- PRESENTE 12 -->
+<!-- =====================================================
+     PRESENTE 12
+===================================================== -->
 
 <div
     class="presente"
@@ -3317,7 +3429,7 @@ body:before{
     </div>
 
     <div class="nome-presente">
-        Um curso de culinária para a noiva cozinhar para o noivo.
+        Um curso de culinária para noiva cozinhar para o noivo.
     </div>
 
     <div class="frase-presente">
@@ -3332,7 +3444,7 @@ body:before{
         class="botao"
         onclick="presentear(
             this,
-            'Curso para noiva',
+            'Noite especial no hotel',
             140.00,
             PIX_PRESENTE_12
         )"
@@ -3347,7 +3459,7 @@ body:before{
 
 
 <!-- =====================================================
-     CONFIRMAÇÃO
+     CONFIRMAÇÃO DE PRESENÇA
 ===================================================== -->
 
 <section class="confirmacao-presenca">
@@ -3362,17 +3474,23 @@ body:before{
 
     </div>
 
+
     <div class="confirmacao-icone">
         ♡
     </div>
+
 
     <h2>
         Esperamos você!
     </h2>
 
+
     <p>
         Sua presença é o presente mais importante para nós.
     </p>
+
+
+    <!-- PRAZO -->
 
     <div class="prazo-confirmacao">
 
@@ -3390,6 +3508,9 @@ body:before{
 
     </div>
 
+
+    <!-- BOTÃO -->
+
     <a
         id="botaoConfirmacao"
         class="botao-confirmacao"
@@ -3406,12 +3527,14 @@ body:before{
 
     </a>
 
+
     <div
         id="mensagemPrazo"
         class="mensagem-prazo"
     >
         Sua confirmação nos ajudará a preparar tudo com muito carinho. ♡
     </div>
+
 
     <div
         class="confirmacao-linha"
@@ -3703,12 +3826,14 @@ function ordenarLista(){
             "lista"
         );
 
+
     const cards =
         Array.from(
             lista.querySelectorAll(
                 ".presente"
             )
         );
+
 
     const ordem =
         document.getElementById(
@@ -3756,8 +3881,6 @@ function ordenarLista(){
 
         }
 
-        return 0;
-
     });
 
 
@@ -3784,6 +3907,7 @@ function atualizarContagem(){
 
     const agora =
         new Date().getTime();
+
 
     const diferenca =
         dataCasamento - agora;
@@ -3938,6 +4062,8 @@ function verificarPrazoConfirmacao(){
     }
 
 
+    /* PRAZO ABERTO */
+
     if(agora <= dataLimiteConfirmacao){
 
         botao.classList.remove(
@@ -3974,6 +4100,8 @@ function verificarPrazoConfirmacao(){
 
     }
 
+
+    /* PRAZO ENCERRADO */
 
     botao.classList.add(
         "encerrado"
@@ -4017,6 +4145,18 @@ setInterval(
 /* =====================================================
    ÁLBUM DE FOTOS
 ===================================================== */
+
+/*
+
+    COLOQUE NA RAIZ DO GITHUB:
+
+    foto1.jpg
+    foto2.jpg
+    foto3.jpg
+    foto4.jpg
+    foto5.jpg
+
+*/
 
 const albumFotos = [
 
@@ -4093,10 +4233,6 @@ const albumInstrucao =
     );
 
 
-/* =====================================================
-   NOVA FUNÇÃO — FOLHA VIRANDO
-===================================================== */
-
 function atualizarAlbum(
     novoIndice,
     direcao
@@ -4148,7 +4284,9 @@ function atualizarAlbum(
 
     /*
         PRIMEIRA PARTE:
-        A folha atual gira como uma página física.
+
+        A folha atual gira como uma
+        página física.
     */
 
     if(direcao === "esquerda"){
@@ -4459,6 +4597,12 @@ album.addEventListener(
             );
 
 
+        /*
+            Evita trocar a foto quando
+            o movimento for predominantemente
+            vertical.
+        */
+
         if(
             distancia > 45 &&
             distancia > Math.abs(movimentoY)
@@ -4493,7 +4637,7 @@ album.addEventListener(
 
 
 /* =====================================================
-   TECLADO
+   TECLADO NO COMPUTADOR
 ===================================================== */
 
 document.addEventListener(
@@ -4518,7 +4662,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   ESTADO INICIAL
+   ESTADO INICIAL DOS BOTÕES
 ===================================================== */
 
 albumAnterior.style.opacity =
