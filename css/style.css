@@ -18,11 +18,11 @@
 *{
     box-sizing:border-box;
     margin:0;
-    padding:0
+    padding:0;
 }
 
 html{
-    scroll-behavior:smooth
+    scroll-behavior:smooth;
 }
 
 body{
@@ -30,7 +30,7 @@ body{
     background:var(--creme);
     color:var(--texto);
     min-height:100vh;
-    overflow-x:hidden
+    overflow-x:hidden;
 }
 
 body:before{
@@ -50,7 +50,7 @@ body:before{
             rgba(113,134,118,.07),
             transparent 28%
         );
-    z-index:-1
+    z-index:-1;
 }
 
 
@@ -73,13 +73,13 @@ body:before{
     align-items:center;
     justify-content:center;
     color:var(--marrom);
-    transition:opacity .8s,transform .8s
+    transition:opacity .8s,transform .8s;
 }
 
 .tela-entrada.saindo{
     opacity:0;
     transform:scale(1.03);
-    pointer-events:none
+    pointer-events:none;
 }
 
 .entrada-conteudo{
@@ -90,7 +90,7 @@ body:before{
     position:relative;
     background:rgba(255,255,255,.58);
     box-shadow:0 25px 70px rgba(80,60,45,.10);
-    border-radius:2px
+    border-radius:2px;
 }
 
 .entrada-conteudo:before,
@@ -101,25 +101,25 @@ body:before{
     height:48px;
     border-color:var(--marrom-claro);
     border-style:solid;
-    opacity:.65
+    opacity:.65;
 }
 
 .entrada-conteudo:before{
     top:16px;
     left:16px;
-    border-width:1px 0 0 1px
+    border-width:1px 0 0 1px;
 }
 
 .entrada-conteudo:after{
     right:16px;
     bottom:16px;
-    border-width:0 1px 1px 0
+    border-width:0 1px 1px 0;
 }
 
 .entrada-detalhe{
     font:28px 'Cormorant Garamond',serif;
     color:var(--dourado);
-    margin-bottom:18px
+    margin-bottom:18px;
 }
 
 .entrada-pequeno{
@@ -127,20 +127,20 @@ body:before{
     letter-spacing:4px;
     text-transform:uppercase;
     color:var(--verde-profundo);
-    margin-bottom:22px
+    margin-bottom:22px;
 }
 
 .entrada-nomes{
     font:500 clamp(55px,12vw,88px)/.82 'Cormorant Garamond',serif;
     color:var(--marrom);
-    letter-spacing:-2px
+    letter-spacing:-2px;
 }
 
 .entrada-data{
     font:18px 'Cormorant Garamond',serif;
     letter-spacing:4px;
     color:var(--verde-profundo);
-    margin:24px 0
+    margin:24px 0;
 }
 
 .entrada-frase{
@@ -148,7 +148,7 @@ body:before{
     margin:auto;
     font-size:12px;
     line-height:22px;
-    color:var(--texto-claro)
+    color:var(--texto-claro);
 }
 
 .entrada-linha{
@@ -156,18 +156,18 @@ body:before{
     align-items:center;
     justify-content:center;
     gap:12px;
-    margin:28px 0
+    margin:28px 0;
 }
 
 .entrada-linha span{
     width:55px;
     height:1px;
-    background:var(--dourado)
+    background:var(--dourado);
 }
 
 .entrada-linha i{
     font-style:normal;
-    color:var(--dourado)
+    color:var(--dourado);
 }
 
 .botao-entrar{
@@ -179,13 +179,13 @@ body:before{
     letter-spacing:2px;
     text-transform:uppercase;
     cursor:pointer;
-    transition:.3s
+    transition:.3s;
 }
 
 .botao-entrar:hover{
     background:var(--verde-profundo);
     border-color:var(--verde-profundo);
-    color:var(--creme)
+    color:var(--creme);
 }
 
 
@@ -202,7 +202,7 @@ body:before{
     grid-template-columns:1fr 1.15fr;
     align-items:center;
     gap:50px;
-    position:relative
+    position:relative;
 }
 
 .hero:before{
@@ -212,7 +212,7 @@ body:before{
     top:15%;
     bottom:15%;
     width:1px;
-    background:var(--areia)
+    background:var(--areia);
 }
 
 .hero:after{
@@ -222,7 +222,7 @@ body:before{
     top:12%;
     font:90px 'Cormorant Garamond',serif;
     color:var(--dourado-claro);
-    opacity:.35
+    opacity:.35;
 }
 
 .hero .pequeno-texto{
@@ -230,46 +230,46 @@ body:before{
     letter-spacing:4px;
     text-transform:uppercase;
     color:var(--marrom-claro);
-    margin-bottom:18px
+    margin-bottom:18px;
 }
 
 .hero .nomes{
     font:500 clamp(65px,9vw,120px)/.76 'Cormorant Garamond',serif;
     color:var(--marrom);
     letter-spacing:-4px;
-    max-width:600px
+    max-width:600px;
 }
 
 .hero .data-casamento{
     margin-top:30px;
     font:20px 'Cormorant Garamond',serif;
     letter-spacing:5px;
-    color:var(--verde-profundo)
+    color:var(--verde-profundo);
 }
 
 .hero .linha-decorativa{
     display:flex;
     align-items:center;
     gap:12px;
-    margin:22px 0
+    margin:22px 0;
 }
 
 .hero .linha-decorativa span{
     width:65px;
     height:1px;
-    background:var(--dourado)
+    background:var(--dourado);
 }
 
 .hero .linha-decorativa i{
     font-style:normal;
     color:var(--dourado);
-    font-size:15px
+    font-size:15px;
 }
 
 .hero .subtitulo{
     max-width:420px;
     font:italic 17px/1.65 'Cormorant Garamond',serif;
-    color:var(--texto-claro)
+    color:var(--texto-claro);
 }
 
 .hero .subtitulo:before{
@@ -277,24 +277,23 @@ body:before{
     color:var(--dourado);
     font-size:34px;
     vertical-align:-10px;
-    margin-right:4px
-}
-
-.hero:has(.nomes):after{
-    pointer-events:none
+    margin-right:4px;
 }
 
 
 /* =====================================================
    ÁLBUM + NOSSO GRANDE DIA
-   VERSÃO — FOLHA VIRANDO
 ===================================================== */
 
 .memorias-layout{
     max-width:1080px;
 
-    /* aproxima o álbum do Gabi & Tom */
-    margin:20px auto 90px;
+    /*
+       Aproximado do Hero.
+       O valor menor reduz o espaço entre
+       Gabi & Tom e o bloco abaixo.
+    */
+    margin:0 auto 82px;
 
     padding:0 35px;
 
@@ -306,45 +305,36 @@ body:before{
 
     align-items:center;
 
-    /* antes estava 65px */
-    gap:35px;
+    gap:28px;
 
     position:relative;
 }
 
 
 /* =====================================================
-   ÁLBUM
+   ÁREA DO ÁLBUM
 ===================================================== */
 
 .album-area{
     width:100%;
-
     display:flex;
     flex-direction:column;
     align-items:center;
-
     position:relative;
 }
-
-
-/* título */
 
 .album-titulo{
     width:100%;
     text-align:center;
-
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .album-titulo-pequeno{
     font-size:9px;
     letter-spacing:3px;
     text-transform:uppercase;
-
     color:var(--marrom-claro);
-
-    margin-bottom:5px;
+    margin-bottom:4px;
 }
 
 .album-titulo-principal{
@@ -352,47 +342,37 @@ body:before{
         500 31px/1
         'Cormorant Garamond',
         serif;
-
     color:var(--marrom);
 }
-
-
-/* decoração */
 
 .album-linha{
     display:flex;
     align-items:center;
     justify-content:center;
-
     gap:10px;
-
-    margin-bottom:15px;
+    margin-bottom:14px;
 }
 
 .album-linha span{
     width:38px;
     height:1px;
-
     background:var(--dourado);
 }
 
 .album-linha i{
     font-style:normal;
     color:var(--dourado);
-
     font-size:12px;
 }
 
 
 /* =====================================================
-   ESTRUTURA FÍSICA DO ÁLBUM
+   ÁLBUM 3D
 ===================================================== */
 
 .album{
     width:min(100%,430px);
-
     position:relative;
-
     padding:12px;
 
     background:var(--creme-2);
@@ -400,8 +380,8 @@ body:before{
     border:1px solid var(--areia);
 
     box-shadow:
-        0 18px 45px rgba(80,60,45,.12),
-        0 3px 8px rgba(80,60,45,.06);
+        0 20px 50px rgba(80,60,45,.14),
+        0 4px 10px rgba(80,60,45,.07);
 
     transform:rotate(-1deg);
 
@@ -411,76 +391,53 @@ body:before{
 
     cursor:grab;
 
-    perspective:1400px;
+    /*
+       Perspectiva do objeto inteiro.
+    */
+    perspective:1800px;
+
+    isolation:isolate;
 }
 
 .album:active{
     cursor:grabbing;
 }
 
-
-/* detalhe interno */
-
 .album:before{
     content:"";
-
     position:absolute;
-
     inset:6px;
-
-    border:1px solid
-        rgba(185,155,104,.28);
-
+    border:1px solid rgba(185,155,104,.28);
     pointer-events:none;
-
-    z-index:20;
+    z-index:50;
 }
-
-
-/* coração */
 
 .album:after{
     content:"♡";
-
     position:absolute;
-
     right:-17px;
     top:-19px;
-
     width:42px;
     height:42px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     background:var(--creme);
-
     border:1px solid var(--dourado-claro);
-
     border-radius:50%;
-
     color:var(--dourado);
-
-    font:
-        22px
-        'Cormorant Garamond',
-        serif;
-
-    z-index:30;
+    font:22px 'Cormorant Garamond',serif;
+    z-index:60;
 }
 
 
 /* =====================================================
-   FOLHA DO ÁLBUM
+   ÁREA DA PÁGINA
 ===================================================== */
 
 .album-folha{
-
     position:relative;
-
     width:100%;
-
     aspect-ratio:4 / 5;
 
     overflow:hidden;
@@ -493,59 +450,48 @@ body:before{
         );
 
     box-shadow:
-        inset 0 0 0 1px
-        rgba(107,81,69,.08);
+        inset 0 0 0 1px rgba(107,81,69,.08);
 
-    perspective:1400px;
+    perspective:1800px;
 
     transform-style:preserve-3d;
+
+    isolation:isolate;
 }
 
 
 /*
-   Linha central da encadernação
+   Lombada.
 */
 
 .album-folha:before{
-
     content:"";
-
     position:absolute;
-
     top:0;
     bottom:0;
     left:0;
-
-    width:5px;
+    width:7px;
 
     background:
         linear-gradient(
             to right,
-            rgba(80,60,45,.14),
-            rgba(255,255,255,.08),
+            rgba(70,50,40,.20),
+            rgba(255,255,255,.12),
             transparent
         );
 
-    z-index:12;
-
+    z-index:35;
     pointer-events:none;
-
-    opacity:.7;
 }
 
 
 /*
-   Verso da folha.
-   Quando a página gira, aparece rapidamente
-   como o verso de uma folha real.
+   Fundo da página.
 */
 
 .album-folha:after{
-
     content:"";
-
     position:absolute;
-
     inset:0;
 
     background:
@@ -555,54 +501,38 @@ body:before{
             #e9e1d5
         );
 
-    border:1px solid
-        rgba(107,81,69,.08);
-
-    transform:translateZ(-1px);
-
-    backface-visibility:hidden;
-
     pointer-events:none;
-
     z-index:0;
 }
 
 
 /* =====================================================
-   FOTO
+   FOTO PRINCIPAL
 ===================================================== */
 
 .album-foto{
-
     position:absolute;
-
     inset:0;
 
     width:100%;
     height:100%;
 
     object-fit:cover;
-
     display:block;
 
-    z-index:2;
+    z-index:5;
 
     pointer-events:none;
-
-    /*
-       Muito importante:
-       o eixo da rotação fica na lateral,
-       simulando uma página sendo virada.
-    */
 
     transform-origin:left center;
 
     transform:
-        perspective(1400px)
+        translateZ(2px)
         rotateY(0deg);
 
-    backface-visibility:hidden;
+    transform-style:preserve-3d;
 
+    backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
 
     will-change:transform;
@@ -611,228 +541,285 @@ body:before{
 }
 
 
+/*
+   Essa camada é criada pelo JavaScript.
+   Ela representa o verso físico da folha.
+*/
+
+.album-pagina-verso{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:4;
+
+    display:block;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8f4ed,
+            #e8dfd2
+        );
+
+    transform:
+        translateZ(0)
+        rotateY(180deg);
+
+    transform-origin:left center;
+
+    transform-style:preserve-3d;
+
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+
+    box-shadow:
+        inset 0 0 35px rgba(80,60,45,.10);
+}
+
+
 /* =====================================================
-   FOLHA VIRANDO PARA A ESQUERDA
-   Próxima foto
+   SOMBRA 3D
+===================================================== */
+
+.album-sombra-virada{
+    position:absolute;
+    inset:0;
+
+    z-index:25;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(50,38,30,.20),
+            rgba(50,38,30,.05),
+            transparent 65%
+        );
+
+    transition:opacity .15s ease;
+}
+
+.album.folha-virando .album-sombra-virada{
+    opacity:1;
+}
+
+
+/* =====================================================
+   ANIMAÇÃO — PRÓXIMA FOTO
+   A página gira para a esquerda.
 ===================================================== */
 
 .album-foto.virando-esquerda{
-
     animation:
-        folhaVirandoEsquerda
-        .72s
-        cubic-bezier(.65,.05,.36,1)
+        virarPaginaEsquerda
+        .82s
+        cubic-bezier(.55,.08,.25,1)
         forwards;
 }
 
-
-@keyframes folhaVirandoEsquerda{
+@keyframes virarPaginaEsquerda{
 
     0%{
-
         transform:
-            perspective(1400px)
+            translateZ(3px)
             rotateY(0deg);
-
+        filter:brightness(1);
     }
 
-    35%{
-
+    18%{
         transform:
-            perspective(1400px)
-            rotateY(-72deg);
-
+            translateZ(15px)
+            rotateY(-28deg);
+        filter:brightness(.98);
     }
 
-    70%{
-
+    50%{
         transform:
-            perspective(1400px)
-            rotateY(-155deg);
+            translateZ(25px)
+            rotateY(-95deg);
+        filter:brightness(.92);
+    }
 
+    78%{
+        transform:
+            translateZ(15px)
+            rotateY(-150deg);
+        filter:brightness(.88);
     }
 
     100%{
-
         transform:
-            perspective(1400px)
+            translateZ(2px)
             rotateY(-180deg);
-
+        filter:brightness(.92);
     }
-
 }
 
 
 /* =====================================================
-   NOVA FOLHA ENTRANDO PELA DIREITA
-===================================================== */
-
-.album-foto.nova-folha-esquerda{
-
-    animation:
-        novaFolhaEsquerda
-        .72s
-        cubic-bezier(.65,.05,.36,1)
-        forwards;
-
-}
-
-
-@keyframes novaFolhaEsquerda{
-
-    0%{
-
-        transform:
-            perspective(1400px)
-            rotateY(180deg);
-
-    }
-
-    35%{
-
-        transform:
-            perspective(1400px)
-            rotateY(155deg);
-
-    }
-
-    70%{
-
-        transform:
-            perspective(1400px)
-            rotateY(72deg);
-
-    }
-
-    100%{
-
-        transform:
-            perspective(1400px)
-            rotateY(0deg);
-
-    }
-
-}
-
-
-/* =====================================================
-   FOLHA VIRANDO PARA A DIREITA
+   ANIMAÇÃO — FOTO ANTERIOR
 ===================================================== */
 
 .album-foto.virando-direita{
-
     transform-origin:right center;
 
     animation:
-        folhaVirandoDireita
-        .72s
-        cubic-bezier(.65,.05,.36,1)
+        virarPaginaDireita
+        .82s
+        cubic-bezier(.55,.08,.25,1)
         forwards;
-
 }
 
-
-@keyframes folhaVirandoDireita{
+@keyframes virarPaginaDireita{
 
     0%{
-
         transform:
-            perspective(1400px)
+            translateZ(3px)
             rotateY(0deg);
-
+        filter:brightness(1);
     }
 
-    35%{
-
+    18%{
         transform:
-            perspective(1400px)
-            rotateY(72deg);
-
+            translateZ(15px)
+            rotateY(28deg);
+        filter:brightness(.98);
     }
 
-    70%{
-
+    50%{
         transform:
-            perspective(1400px)
-            rotateY(155deg);
+            translateZ(25px)
+            rotateY(95deg);
+        filter:brightness(.92);
+    }
 
+    78%{
+        transform:
+            translateZ(15px)
+            rotateY(150deg);
+        filter:brightness(.88);
     }
 
     100%{
-
         transform:
-            perspective(1400px)
+            translateZ(2px)
             rotateY(180deg);
-
+        filter:brightness(.92);
     }
-
 }
 
 
 /* =====================================================
-   NOVA FOLHA ENTRANDO PELA ESQUERDA
+   NOVA PÁGINA APARECENDO — ESQUERDA
+===================================================== */
+
+.album-foto.nova-folha-esquerda{
+    animation:
+        novaPaginaEsquerda
+        .82s
+        cubic-bezier(.55,.08,.25,1)
+        forwards;
+}
+
+@keyframes novaPaginaEsquerda{
+
+    0%{
+        transform:
+            translateZ(2px)
+            rotateY(180deg);
+        filter:brightness(.90);
+    }
+
+    25%{
+        transform:
+            translateZ(18px)
+            rotateY(145deg);
+        filter:brightness(.92);
+    }
+
+    55%{
+        transform:
+            translateZ(24px)
+            rotateY(82deg);
+        filter:brightness(.97);
+    }
+
+    82%{
+        transform:
+            translateZ(12px)
+            rotateY(28deg);
+        filter:brightness(.99);
+    }
+
+    100%{
+        transform:
+            translateZ(2px)
+            rotateY(0deg);
+        filter:brightness(1);
+    }
+}
+
+
+/* =====================================================
+   NOVA PÁGINA APARECENDO — DIREITA
 ===================================================== */
 
 .album-foto.nova-folha-direita{
-
     transform-origin:right center;
 
     animation:
-        novaFolhaDireita
-        .72s
-        cubic-bezier(.65,.05,.36,1)
+        novaPaginaDireita
+        .82s
+        cubic-bezier(.55,.08,.25,1)
         forwards;
-
 }
 
-
-@keyframes novaFolhaDireita{
+@keyframes novaPaginaDireita{
 
     0%{
-
         transform:
-            perspective(1400px)
+            translateZ(2px)
             rotateY(-180deg);
-
+        filter:brightness(.90);
     }
 
-    35%{
-
+    25%{
         transform:
-            perspective(1400px)
-            rotateY(-155deg);
-
+            translateZ(18px)
+            rotateY(-145deg);
+        filter:brightness(.92);
     }
 
-    70%{
-
+    55%{
         transform:
-            perspective(1400px)
-            rotateY(-72deg);
+            translateZ(24px)
+            rotateY(-82deg);
+        filter:brightness(.97);
+    }
 
+    82%{
+        transform:
+            translateZ(12px)
+            rotateY(-28deg);
+        filter:brightness(.99);
     }
 
     100%{
-
         transform:
-            perspective(1400px)
+            translateZ(2px)
             rotateY(0deg);
-
+        filter:brightness(1);
     }
-
-}
-
-
-/* =====================================================
-   SOMBRA DURANTE A VIRADA
-===================================================== */
-
-.album.folha-virando:after{
-
-    box-shadow:
-        -18px 0 30px
-        rgba(60,45,38,.18);
-
 }
 
 
@@ -841,22 +828,17 @@ body:before{
 ===================================================== */
 
 .album-legenda{
-
     position:absolute;
-
     left:0;
     right:0;
     bottom:0;
 
-    padding:
-        45px
-        22px
-        18px;
+    padding:45px 22px 18px;
 
     background:
         linear-gradient(
             to top,
-            rgba(65,48,40,.62),
+            rgba(65,48,40,.64),
             rgba(65,48,40,0)
         );
 
@@ -871,7 +853,7 @@ body:before{
 
     letter-spacing:.2px;
 
-    z-index:10;
+    z-index:20;
 
     pointer-events:none;
 }
@@ -882,26 +864,19 @@ body:before{
 ===================================================== */
 
 .album-controles{
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     gap:18px;
-
     margin-top:16px;
-
     width:100%;
 }
 
 .album-seta{
-
     width:32px;
     height:32px;
 
     border:1px solid var(--areia);
-
     background:transparent;
 
     color:var(--marrom);
@@ -926,18 +901,13 @@ body:before{
 }
 
 .album-seta:hover{
-
     background:var(--marrom);
-
     color:var(--creme);
-
     transform:scale(1.06);
 }
 
 .album-pagina{
-
     min-width:60px;
-
     text-align:center;
 
     font:
@@ -946,17 +916,10 @@ body:before{
         sans-serif;
 
     letter-spacing:2px;
-
     color:var(--texto-claro);
 }
 
-
-/* =====================================================
-   INSTRUÇÃO
-===================================================== */
-
 .album-instrucao{
-
     margin-top:9px;
 
     font:
@@ -979,32 +942,33 @@ body:before{
 ===================================================== */
 
 .introducao{
-
     margin:0;
 
     max-width:430px;
-
     width:100%;
 
-    padding:34px 40px;
+    padding:30px 38px;
 
     border-left:3px solid var(--verde);
 
     background:var(--branco);
 
     box-shadow:
-        0 18px 50px
-        rgba(80,60,45,.06);
+        0 18px 50px rgba(80,60,45,.06);
 
     position:relative;
+
+    /*
+       Mantém o bloco visualmente mais próximo
+       da parte superior.
+    */
+    transform:translateY(-5px);
 }
 
 .introducao:after{
-
     content:"G + T";
 
     position:absolute;
-
     right:22px;
     top:15px;
 
@@ -1017,7 +981,6 @@ body:before{
 }
 
 .introducao h2{
-
     font:
         500 34px/1
         'Cormorant Garamond',
@@ -1025,15 +988,12 @@ body:before{
 
     color:var(--marrom);
 
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .introducao p{
-
     font-size:12px;
-
     line-height:22px;
-
     color:var(--texto-claro);
 }
 
@@ -1051,7 +1011,7 @@ body:before{
     grid-template-columns:280px 1fr;
 
     align-items:center;
-    gap:55px
+    gap:55px;
 }
 
 .contagem-titulo{
@@ -1060,20 +1020,16 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--marrom)
+    color:var(--marrom);
 }
 
 .contagem-titulo:after{
     content:"";
-
     display:block;
-
     width:45px;
     height:2px;
-
     background:var(--dourado);
-
-    margin-top:18px
+    margin-top:18px;
 }
 
 .contagem{
@@ -1081,19 +1037,17 @@ body:before{
     grid-template-columns:repeat(4,1fr);
 
     border-top:1px solid var(--areia);
-    border-bottom:1px solid var(--areia)
+    border-bottom:1px solid var(--areia);
 }
 
 .tempo{
     padding:22px 10px;
-
     text-align:center;
-
-    border-right:1px solid var(--areia)
+    border-right:1px solid var(--areia);
 }
 
 .tempo:last-child{
-    border-right:0
+    border-right:0;
 }
 
 .tempo span{
@@ -1104,7 +1058,7 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--verde-profundo)
+    color:var(--verde-profundo);
 }
 
 .tempo small{
@@ -1118,7 +1072,7 @@ body:before{
 
     text-transform:uppercase;
 
-    color:var(--texto-claro)
+    color:var(--texto-claro);
 }
 
 
@@ -1128,14 +1082,10 @@ body:before{
 
 .evento{
     padding:85px 5%;
-
     background:var(--verde-profundo);
-
     color:var(--creme);
-
     position:relative;
-
-    overflow:hidden
+    overflow:hidden;
 }
 
 .evento:before{
@@ -1153,7 +1103,7 @@ body:before{
     border-radius:50%;
 
     right:-160px;
-    top:-190px
+    top:-190px;
 }
 
 .evento-card{
@@ -1166,7 +1116,7 @@ body:before{
 
     gap:60px;
 
-    align-items:center
+    align-items:center;
 }
 
 .evento-titulo{
@@ -1175,27 +1125,26 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--creme)
+    color:var(--creme);
 }
 
 .evento-data{
     margin-top:22px;
 
     font:
-        19px 'Cormorant Garamond',
+        19px
+        'Cormorant Garamond',
         serif;
 
     letter-spacing:4px;
 
-    color:var(--dourado-claro)
+    color:var(--dourado-claro);
 }
 
 .evento-info{
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
-    gap:25px
+    gap:25px;
 }
 
 .evento-item{
@@ -1203,31 +1152,25 @@ body:before{
 
     border-top:
         1px solid
-        rgba(216,195,154,.35)
+        rgba(216,195,154,.35);
 }
 
 .evento-divisor{
-    display:none
+    display:none;
 }
 
 .evento-icone{
     font-size:18px;
-
     color:var(--dourado-claro);
-
-    margin-bottom:12px
+    margin-bottom:12px;
 }
 
 .evento-label{
     font-size:9px;
-
     text-transform:uppercase;
-
     letter-spacing:2px;
-
     color:#c9d0c9;
-
-    margin-bottom:7px
+    margin-bottom:7px;
 }
 
 .evento-valor,
@@ -1237,14 +1180,12 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--creme)
+    color:var(--creme);
 }
 
 .botao-mapa{
     display:inline-flex;
-
     margin-top:25px;
-
     padding:12px 22px;
 
     border:
@@ -1256,20 +1197,16 @@ body:before{
     text-decoration:none;
 
     font-size:9px;
-
     font-weight:600;
-
     letter-spacing:1.7px;
-
     text-transform:uppercase;
 
-    transition:.3s
+    transition:.3s;
 }
 
 .botao-mapa:hover{
     background:var(--dourado-claro);
-
-    color:var(--marrom)
+    color:var(--marrom);
 }
 
 
@@ -1279,18 +1216,13 @@ body:before{
 
 .titulo-lista{
     max-width:1050px;
-
     margin:100px auto 35px;
-
     padding:0 30px;
 
     display:flex;
-
     align-items:end;
-
     justify-content:space-between;
-
-    gap:30px
+    gap:30px;
 }
 
 .titulo-lista h1{
@@ -1299,45 +1231,35 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--marrom)
+    color:var(--marrom);
 }
 
 .titulo-lista p{
     max-width:330px;
 
     font-size:9px;
-
     line-height:17px;
-
     letter-spacing:1.5px;
 
     color:var(--texto-claro);
 
-    text-align:right
+    text-align:right;
 }
 
 .ordenacao{
     max-width:1050px;
-
     margin:0 auto 25px;
-
     padding:0 30px;
 
     display:flex;
-
     justify-content:flex-end;
-
     align-items:center;
-
     gap:8px;
 
     font-size:9px;
-
     letter-spacing:1px;
-
     text-transform:uppercase;
-
-    color:var(--texto-claro)
+    color:var(--texto-claro);
 }
 
 .ordenacao select{
@@ -1358,7 +1280,7 @@ body:before{
         'Montserrat',
         sans-serif;
 
-    outline:none
+    outline:none;
 }
 
 .lista{
@@ -1372,7 +1294,7 @@ body:before{
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:28px
+    gap:28px;
 }
 
 .presente{
@@ -1391,12 +1313,11 @@ body:before{
         rgba(80,60,45,.07);
 
     display:flex;
-
     flex-direction:column;
 
     transition:.3s;
 
-    position:relative
+    position:relative;
 }
 
 .presente:hover{
@@ -1404,37 +1325,30 @@ body:before{
 
     box-shadow:
         0 24px 55px
-        rgba(80,60,45,.12)
+        rgba(80,60,45,.12);
 }
 
 .imagem{
     width:100%;
-
     aspect-ratio:4/3;
-
     object-fit:cover;
-
     display:block;
-
-    transition:.4s
+    transition:.4s;
 }
 
 .presente:hover .imagem{
-    filter:saturate(.88)
+    filter:saturate(.88);
 }
 
 .categoria-presente{
     margin:18px 22px 0;
 
     font-size:8px;
-
     font-weight:600;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
 
-    color:var(--verde)
+    color:var(--verde);
 }
 
 .nome-presente{
@@ -1450,8 +1364,7 @@ body:before{
     color:var(--marrom);
 
     display:flex;
-
-    align-items:center
+    align-items:center;
 }
 
 .frase-presente{
@@ -1464,23 +1377,19 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--texto-claro)
+    color:var(--texto-claro);
 }
 
 .frase-presente:before{
     content:'“';
-
     color:var(--dourado);
-
-    font-size:24px
+    font-size:24px;
 }
 
 .frase-presente:after{
     content:'”';
-
     color:var(--dourado);
-
-    font-size:24px
+    font-size:24px;
 }
 
 .preco{
@@ -1491,7 +1400,7 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--verde-profundo)
+    color:var(--verde-profundo);
 }
 
 .botao{
@@ -1515,28 +1424,25 @@ body:before{
         sans-serif;
 
     letter-spacing:1.8px;
-
     text-transform:uppercase;
 
     cursor:pointer;
 
-    transition:.3s
+    transition:.3s;
 }
 
 .botao:hover{
     background:var(--marrom);
-
-    border-color:var(--marrom)
+    border-color:var(--marrom);
 }
 
 .presente.escolhido{
-    opacity:.72
+    opacity:.72;
 }
 
 .presente.escolhido .botao{
     background:var(--marrom);
-
-    border-color:var(--marrom)
+    border-color:var(--marrom);
 }
 
 
@@ -1567,7 +1473,7 @@ body:before{
 
     border-bottom:
         1px solid
-        var(--areia)
+        var(--areia);
 }
 
 .confirmacao-presenca:before{
@@ -1584,7 +1490,7 @@ body:before{
         serif;
 
     color:
-        rgba(107,81,69,.07)
+        rgba(107,81,69,.07);
 }
 
 .confirmacao-presenca:after{
@@ -1601,33 +1507,26 @@ body:before{
         serif;
 
     color:
-        rgba(113,134,118,.08)
+        rgba(113,134,118,.08);
 }
 
 .confirmacao-linha{
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     gap:12px;
-
-    margin-bottom:25px
+    margin-bottom:25px;
 }
 
 .confirmacao-linha span{
     width:55px;
-
     height:1px;
-
-    background:var(--dourado)
+    background:var(--dourado);
 }
 
 .confirmacao-linha i{
     font-style:normal;
-
-    color:var(--dourado-claro)
+    color:var(--dourado-claro);
 }
 
 .confirmacao-icone{
@@ -1637,8 +1536,7 @@ body:before{
         serif;
 
     color:var(--dourado-claro);
-
-    margin-bottom:10px
+    margin-bottom:10px;
 }
 
 .confirmacao-presenca h2{
@@ -1648,25 +1546,20 @@ body:before{
         serif;
 
     margin-bottom:14px;
-
-    color:var(--marrom)
+    color:var(--marrom);
 }
 
 .confirmacao-presenca p{
     font-size:12px;
-
     line-height:20px;
-
     color:var(--texto-claro);
-
-    margin-bottom:28px
+    margin-bottom:28px;
 }
 
 .botao-confirmacao{
     display:inline-flex;
 
     align-items:center;
-
     gap:8px;
 
     padding:15px 30px;
@@ -1678,11 +1571,8 @@ body:before{
     text-decoration:none;
 
     font-size:9px;
-
     font-weight:600;
-
     letter-spacing:1.6px;
-
     text-transform:uppercase;
 
     transition:
@@ -1692,7 +1582,7 @@ body:before{
 
     animation:
         confirmarPulso
-        2.8s ease-in-out infinite
+        2.8s ease-in-out infinite;
 }
 
 .botao-confirmacao:hover{
@@ -1704,11 +1594,11 @@ body:before{
         0 10px 28px
         rgba(79,98,84,.18);
 
-    animation-play-state:paused
+    animation-play-state:paused;
 }
 
 .botao-confirmacao span{
-    font-size:15px
+    font-size:15px;
 }
 
 @keyframes confirmarPulso{
@@ -1718,7 +1608,7 @@ body:before{
 
         box-shadow:
             0 4px 14px
-            rgba(107,81,69,.10)
+            rgba(107,81,69,.10);
     }
 
     50%{
@@ -1726,9 +1616,8 @@ body:before{
 
         box-shadow:
             0 8px 22px
-            rgba(107,81,69,.16)
+            rgba(107,81,69,.16);
     }
-
 }
 
 
@@ -1755,19 +1644,15 @@ body:before{
 
     position:relative;
 
-    z-index:2
+    z-index:2;
 }
 
 .prazo-label{
     font-size:8px;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
-
     color:var(--texto-claro);
-
-    margin-bottom:6px
+    margin-bottom:6px;
 }
 
 .prazo-data{
@@ -1777,8 +1662,7 @@ body:before{
         serif;
 
     letter-spacing:4px;
-
-    color:var(--verde-profundo)
+    color:var(--verde-profundo);
 }
 
 .prazo-legenda{
@@ -1789,7 +1673,7 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--texto-claro)
+    color:var(--texto-claro);
 }
 
 .mensagem-prazo{
@@ -1803,28 +1687,21 @@ body:before{
     color:var(--texto-claro);
 
     position:relative;
-
-    z-index:2
+    z-index:2;
 }
 
 .botao-confirmacao.encerrado{
     background:var(--texto-claro);
-
     border-color:var(--texto-claro);
-
     cursor:not-allowed;
-
     animation:none;
-
     pointer-events:none;
-
-    opacity:.75
+    opacity:.75;
 }
 
 .prazo-expirado{
     color:var(--marrom);
-
-    font-weight:500
+    font-weight:500;
 }
 
 
@@ -1834,47 +1711,35 @@ body:before{
 
 .rodape{
     text-align:center;
-
     padding:40px 20px 100px;
-
     color:var(--texto-claro);
 
     font:
         italic 17px
         'Cormorant Garamond',
-        serif
+        serif;
 }
 
 .rodape .coracao{
     display:block;
-
     color:var(--dourado);
-
     font-size:25px;
-
-    margin-bottom:12px
+    margin-bottom:12px;
 }
 
 .rodape strong{
     display:block;
-
     margin-top:5px;
-
     font-size:34px;
-
     font-weight:500;
-
-    color:var(--marrom)
+    color:var(--marrom);
 }
 
 .rodape .data{
     margin-top:10px;
-
     font-size:13px;
-
     letter-spacing:4px;
-
-    color:var(--verde-profundo)
+    color:var(--verde-profundo);
 }
 
 
@@ -1909,7 +1774,7 @@ body:before{
         0 8px 25px
         rgba(80,60,45,.12);
 
-    z-index:100
+    z-index:100;
 }
 
 
@@ -1919,33 +1784,28 @@ body:before{
 
 .popup-overlay{
     position:fixed;
-
     inset:0;
 
     background:
         rgba(60,45,38,.62);
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.3s;
 
-    z-index:9998
+    z-index:9998;
 }
 
 .popup-overlay.ativo{
     opacity:1;
-
-    visibility:visible
+    visibility:visible;
 }
 
 .popup{
@@ -1963,7 +1823,7 @@ body:before{
 
     box-shadow:
         0 25px 80px
-        rgba(0,0,0,.22)
+        rgba(0,0,0,.22);
 }
 
 .popup-icone{
@@ -1973,8 +1833,7 @@ body:before{
         serif;
 
     color:var(--dourado);
-
-    margin-bottom:10px
+    margin-bottom:10px;
 }
 
 .popup-titulo{
@@ -1983,25 +1842,20 @@ body:before{
         'Cormorant Garamond',
         serif;
 
-    color:var(--marrom)
+    color:var(--marrom);
 }
 
 .popup-detalhe{
     width:45px;
-
     height:1px;
-
     background:var(--dourado);
-
-    margin:15px auto
+    margin:15px auto;
 }
 
 .popup-mensagem{
     font-size:11px;
-
     line-height:21px;
-
-    color:var(--texto)
+    color:var(--texto);
 }
 
 .popup-fechar{
@@ -2021,10 +1875,9 @@ body:before{
         sans-serif;
 
     letter-spacing:1.5px;
-
     text-transform:uppercase;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 
@@ -2039,9 +1892,7 @@ body:before{
     bottom:22px;
 
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     padding:8px 10px 8px 13px;
@@ -2056,7 +1907,7 @@ body:before{
         0 10px 30px
         rgba(80,60,45,.12);
 
-    z-index:500
+    z-index:500;
 }
 
 .controle-musica{
@@ -2064,74 +1915,61 @@ body:before{
     height:34px;
 
     border:0;
-
     border-radius:50%;
 
     background:var(--marrom);
 
     color:white;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 .icone-musica{
     color:var(--dourado);
-
-    font-size:17px
+    font-size:17px;
 }
 
 .texto-musica{
     font-size:9px;
-
     letter-spacing:.8px;
-
     color:var(--texto-claro);
-
-    white-space:nowrap
+    white-space:nowrap;
 }
 
 .volume-musica{
     width:65px;
-
     accent-color:var(--marrom);
-
-    cursor:pointer
+    cursor:pointer;
 }
 
 .player-musica.tocando .icone-musica{
     animation:
         musicPulse
-        1.6s infinite
+        1.6s infinite;
 }
 
 @keyframes musicPulse{
 
     50%{
-        transform:scale(1.18)
+        transform:scale(1.18);
     }
-
 }
 
 
 /* =====================================================
-   RESPONSIVO — TABLET
+   TABLET
 ===================================================== */
 
 @media(max-width:850px){
 
     .hero{
-
         grid-template-columns:1fr;
-
         min-height:600px;
-
         text-align:center;
-
         padding:65px 9%;
     }
 
     .hero:before{
-
         left:8%;
         top:10%;
         bottom:10%;
@@ -2146,17 +1984,18 @@ body:before{
     }
 
 
-    /* ÁLBUM */
-
     .memorias-layout{
 
         grid-template-columns:1fr;
 
-        gap:30px;
+        gap:24px;
 
-        margin-top:35px;
+        /*
+           Mantém o álbum mais próximo do Hero.
+        */
+        margin-top:0;
 
-        margin-bottom:75px;
+        margin-bottom:70px;
 
         padding:0 25px;
     }
@@ -2166,12 +2005,13 @@ body:before{
     }
 
     .introducao{
-
         order:2;
 
         max-width:430px;
 
         margin:0 auto;
+
+        transform:none;
     }
 
 
@@ -2227,12 +2067,11 @@ body:before{
         margin-left:20px;
         margin-right:20px;
     }
-
 }
 
 
 /* =====================================================
-   RESPONSIVO — CELULAR
+   CELULAR
 ===================================================== */
 
 @media(max-width:600px){
@@ -2251,18 +2090,15 @@ body:before{
     }
 
 
-    /*
-       No celular:
-       álbum continua acima do Nosso grande dia.
-    */
-
     .memorias-layout{
 
-        margin-top:25px;
+        margin-top:0;
 
         padding:0 20px;
 
-        gap:25px;
+        gap:22px;
+
+        margin-bottom:65px;
     }
 
     .album-area{
@@ -2276,6 +2112,8 @@ body:before{
         padding:9px;
 
         transform:rotate(-.7deg);
+
+        perspective:1500px;
     }
 
     .album-titulo-principal{
@@ -2298,6 +2136,18 @@ body:before{
 
     .album-instrucao{
         font-size:12px;
+    }
+
+
+    .introducao{
+
+        padding:28px 28px;
+
+        max-width:370px;
+    }
+
+    .introducao h2{
+        font-size:32px;
     }
 
 
@@ -2376,7 +2226,6 @@ body:before{
         right:15px;
         bottom:70px;
     }
-
 }
 
 
@@ -2415,6 +2264,10 @@ body:before{
         font-size:16px;
     }
 
+    .introducao{
+        padding:25px 24px;
+    }
+
 }
 
 
@@ -2433,12 +2286,9 @@ body:before{
         animation:none !important;
 
         transition:none !important;
-
     }
 
     .botao-confirmacao{
         animation:none !important;
     }
-
 }
-
