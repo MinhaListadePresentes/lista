@@ -4,25 +4,39 @@
 
 function abrirPopup(){
 
-    document
-        .getElementById("popupPix")
-        .classList.add("ativo");
+    const popup =
+        document.getElementById("popupPix");
+
+    if(popup){
+
+        popup.classList.add("ativo");
+
+    }
 
 }
 
 
 function fecharPopup(){
 
-    document
-        .getElementById("popupPix")
-        .classList.remove("ativo");
+    const popup =
+        document.getElementById("popupPix");
+
+    if(popup){
+
+        popup.classList.remove("ativo");
+
+    }
 
 }
 
 
-document
-    .getElementById("popupPix")
-    .addEventListener(
+const popupPix =
+    document.getElementById("popupPix");
+
+
+if(popupPix){
+
+    popupPix.addEventListener(
         "click",
         function(event){
 
@@ -34,6 +48,8 @@ document
 
         }
     );
+
+}
 
 
 /* =====================================================
@@ -68,6 +84,13 @@ function presentear(
     const card =
         botao.closest(".presente");
 
+    if(!card){
+
+        return;
+
+    }
+
+
     const jaEscolhido =
         card.classList.contains("escolhido");
 
@@ -82,6 +105,7 @@ function presentear(
             "Presentear";
 
         return;
+
     }
 
 
@@ -93,21 +117,31 @@ function presentear(
         "✓ Escolhido";
 
 
-    navigator
-        .clipboard
-        .writeText(chavePix)
+    if(
+        navigator.clipboard &&
+        typeof navigator.clipboard.writeText === "function"
+    ){
 
-        .then(function(){
+        navigator.clipboard
+            .writeText(chavePix)
 
-            abrirPopup();
+            .then(function(){
 
-        })
+                abrirPopup();
 
-        .catch(function(){
+            })
 
-            abrirPopup();
+            .catch(function(){
 
-        });
+                abrirPopup();
+
+            });
+
+    }else{
+
+        abrirPopup();
+
+    }
 
 }
 
@@ -119,23 +153,33 @@ function presentear(
 function ordenarLista(){
 
     const lista =
-        document.getElementById(
-            "lista"
-        );
+        document.getElementById("lista");
+
+    if(!lista){
+
+        return;
+
+    }
 
 
     const cards =
         Array.from(
-            lista.querySelectorAll(
-                ".presente"
-            )
+            lista.querySelectorAll(".presente")
         );
 
 
+    const campo =
+        document.getElementById("ordenacao");
+
+    if(!campo){
+
+        return;
+
+    }
+
+
     const ordem =
-        document.getElementById(
-            "ordenacao"
-        ).value;
+        campo.value;
 
 
     cards.sort(function(a,b){
@@ -143,13 +187,9 @@ function ordenarLista(){
         if(ordem === "menor"){
 
             return (
-                parseFloat(
-                    a.dataset.preco
-                )
+                parseFloat(a.dataset.preco || 0)
                 -
-                parseFloat(
-                    b.dataset.preco
-                )
+                parseFloat(b.dataset.preco || 0)
             );
 
         }
@@ -158,13 +198,9 @@ function ordenarLista(){
         if(ordem === "maior"){
 
             return (
-                parseFloat(
-                    b.dataset.preco
-                )
+                parseFloat(b.dataset.preco || 0)
                 -
-                parseFloat(
-                    a.dataset.preco
-                )
+                parseFloat(a.dataset.preco || 0)
             );
 
         }
@@ -172,11 +208,18 @@ function ordenarLista(){
 
         if(ordem === "nome"){
 
-            return a.dataset.nome.localeCompare(
-                b.dataset.nome
+            return (
+                (a.dataset.nome || "")
+                .localeCompare(
+                    b.dataset.nome || "",
+                    "pt-BR"
+                )
             );
 
         }
+
+
+        return 0;
 
     });
 
@@ -210,32 +253,41 @@ function atualizarContagem(){
         dataCasamento - agora;
 
 
+    const contador =
+        document.getElementById(
+            "contagem-regressiva"
+        );
+
+
+    if(!contador){
+
+        return;
+
+    }
+
+
     if(diferenca <= 0){
 
-        document
-            .getElementById(
-                "contagem-regressiva"
-            )
-            .innerHTML = `
+        contador.innerHTML = `
 
-                <div style="
-                    font-family:
-                        'Cormorant Garamond',
-                        Georgia,
-                        serif;
+            <div style="
+                font-family:
+                    'Cormorant Garamond',
+                    Georgia,
+                    serif;
 
-                    font-size:26px;
+                font-size:26px;
 
-                    color:#536b57;
+                color:#536b57;
 
-                    font-weight:500;
+                font-weight:500;
 
-                    width:100%;
-                ">
-                    ♡ Chegou o grande dia! ♡
-                </div>
+                width:100%;
+            ">
+                ♡ Chegou o grande dia! ♡
+            </div>
 
-            `;
+        `;
 
         return;
 
@@ -282,41 +334,55 @@ function atualizarContagem(){
         );
 
 
-    document.getElementById("dias")
-        .innerText =
-        String(dias).padStart(
-            2,
-            "0"
-        );
+    const elementoDias =
+        document.getElementById("dias");
+
+    const elementoHoras =
+        document.getElementById("horas");
+
+    const elementoMinutos =
+        document.getElementById("minutos");
+
+    const elementoSegundos =
+        document.getElementById("segundos");
 
 
-    document.getElementById("horas")
-        .innerText =
-        String(horas).padStart(
-            2,
-            "0"
-        );
+    if(elementoDias){
+
+        elementoDias.innerText =
+            String(dias).padStart(2,"0");
+
+    }
 
 
-    document.getElementById("minutos")
-        .innerText =
-        String(minutos).padStart(
-            2,
-            "0"
-        );
+    if(elementoHoras){
+
+        elementoHoras.innerText =
+            String(horas).padStart(2,"0");
+
+    }
 
 
-    document.getElementById("segundos")
-        .innerText =
-        String(segundos).padStart(
-            2,
-            "0"
-        );
+    if(elementoMinutos){
+
+        elementoMinutos.innerText =
+            String(minutos).padStart(2,"0");
+
+    }
+
+
+    if(elementoSegundos){
+
+        elementoSegundos.innerText =
+            String(segundos).padStart(2,"0");
+
+    }
 
 }
 
 
 atualizarContagem();
+
 
 setInterval(
     atualizarContagem,
@@ -359,8 +425,6 @@ function verificarPrazoConfirmacao(){
     }
 
 
-    /* PRAZO ABERTO */
-
     if(agora <= dataLimiteConfirmacao){
 
         botao.classList.remove(
@@ -397,8 +461,6 @@ function verificarPrazoConfirmacao(){
 
     }
 
-
-    /* PRAZO ENCERRADO */
 
     botao.classList.add(
         "encerrado"
@@ -443,18 +505,6 @@ setInterval(
    ÁLBUM DE FOTOS
 ===================================================== */
 
-/*
-
-    COLOQUE NA RAIZ DO GITHUB:
-
-    foto1.jpg
-    foto2.jpg
-    foto3.jpg
-    foto4.jpg
-    foto5.jpg
-
-*/
-
 const albumFotos = [
 
     {
@@ -487,53 +537,188 @@ const albumFotos = [
 
 let albumIndice = 0;
 
+let albumOcupado = false;
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
 
 const album =
-    document.getElementById(
-        "album"
-    );
+    document.getElementById("album");
 
 
 const albumFoto =
-    document.getElementById(
-        "albumFoto"
-    );
+    document.getElementById("albumFoto");
 
 
 const albumLegenda =
-    document.getElementById(
-        "albumLegenda"
-    );
+    document.getElementById("albumLegenda");
 
 
 const albumPagina =
-    document.getElementById(
-        "albumPagina"
-    );
+    document.getElementById("albumPagina");
 
 
 const albumAnterior =
-    document.getElementById(
-        "albumAnterior"
-    );
+    document.getElementById("albumAnterior");
 
 
 const albumProximo =
-    document.getElementById(
-        "albumProximo"
-    );
+    document.getElementById("albumProximo");
 
 
 const albumInstrucao =
-    document.getElementById(
-        "albumInstrucao"
+    document.getElementById("albumInstrucao");
+
+
+/* =====================================================
+   CRIA O VERSO DA FOLHA
+===================================================== */
+
+let albumVerso = null;
+
+let albumSombra = null;
+
+
+function criarElementos3D(){
+
+    if(!album || !albumFoto){
+
+        return;
+
+    }
+
+
+    const folha =
+        document.getElementById("albumFolha");
+
+
+    if(!folha){
+
+        return;
+
+    }
+
+
+    /*
+       Cria a fotografia que fica
+       atrás da página durante a virada.
+    */
+
+    albumVerso =
+        document.createElement("img");
+
+    albumVerso.className =
+        "album-pagina-verso";
+
+    albumVerso.alt =
+        "";
+
+    albumVerso.setAttribute(
+        "aria-hidden",
+        "true"
     );
 
+
+    /*
+       O verso inicialmente usa
+       a própria foto atual.
+    */
+
+    albumVerso.src =
+        albumFoto.src;
+
+
+    folha.insertBefore(
+        albumVerso,
+        albumFoto
+    );
+
+
+    /*
+       Camada de sombra que acompanha
+       visualmente a página.
+    */
+
+    albumSombra =
+        document.createElement("div");
+
+    albumSombra.className =
+        "album-sombra-virada";
+
+    folha.appendChild(
+        albumSombra
+    );
+
+}
+
+
+criarElementos3D();
+
+
+/* =====================================================
+   ATUALIZA CONTADOR
+===================================================== */
+
+function atualizarControlesAlbum(){
+
+    if(!albumPagina){
+
+        return;
+
+    }
+
+
+    albumPagina.textContent =
+        String(albumIndice + 1).padStart(2,"0")
+        +
+        " / "
+        +
+        String(albumFotos.length).padStart(2,"0");
+
+
+    if(albumAnterior){
+
+        albumAnterior.style.opacity =
+            albumIndice === 0
+                ? ".45"
+                : "1";
+
+    }
+
+
+    if(albumProximo){
+
+        albumProximo.style.opacity =
+            albumIndice === albumFotos.length - 1
+                ? ".45"
+                : "1";
+
+    }
+
+}
+
+
+/* =====================================================
+   ATUALIZA ALBUM
+===================================================== */
 
 function atualizarAlbum(
     novoIndice,
     direcao
 ){
+
+    if(
+        !album ||
+        !albumFoto ||
+        !albumVerso
+    ){
+
+        return;
+
+    }
+
 
     if(
         novoIndice < 0 ||
@@ -545,19 +730,21 @@ function atualizarAlbum(
     }
 
 
-    /*
-        Impede duas viradas acontecendo
-        ao mesmo tempo.
-    */
-
-    if(
-        album.classList.contains("folha-virando")
-    ){
+    if(albumOcupado){
 
         return;
 
     }
 
+
+    if(novoIndice === albumIndice){
+
+        return;
+
+    }
+
+
+    albumOcupado = true;
 
     album.classList.add(
         "folha-virando"
@@ -565,7 +752,25 @@ function atualizarAlbum(
 
 
     /*
-        Remove animações anteriores.
+       Fotografia que será mostrada.
+    */
+
+    const proximaFoto =
+        albumFotos[novoIndice];
+
+
+    /*
+       O verso recebe a próxima foto.
+       Isso cria a sensação de que existe
+       uma fotografia no outro lado da folha.
+    */
+
+    albumVerso.src =
+        proximaFoto.src;
+
+
+    /*
+       Limpa qualquer animação anterior.
     */
 
     albumFoto.classList.remove(
@@ -580,10 +785,9 @@ function atualizarAlbum(
 
 
     /*
-        PRIMEIRA PARTE:
-
-        A folha atual gira como uma
-        página física.
+       =================================================
+       PRÓXIMA FOTO
+       =================================================
     */
 
     if(direcao === "esquerda"){
@@ -602,36 +806,36 @@ function atualizarAlbum(
 
 
     /*
-        Espera a folha praticamente
-        terminar de virar antes de
-        trocar a fotografia.
+       Depois que a folha estiver
+       praticamente de costas,
+       trocamos a imagem principal.
     */
 
     setTimeout(function(){
 
-        const proximaFoto =
-            albumFotos[
-                novoIndice
-            ];
+        albumIndice =
+            novoIndice;
 
-
-        /*
-            Troca a foto enquanto a
-            folha está de costas.
-        */
 
         albumFoto.src =
             proximaFoto.src;
 
+
         albumFoto.alt =
             "Gabi e Tom";
 
-        albumLegenda.textContent =
-            proximaFoto.legenda;
+
+        if(albumLegenda){
+
+            albumLegenda.textContent =
+                proximaFoto.legenda;
+
+        }
 
 
         /*
-            Remove a animação anterior.
+           A foto principal agora começa
+           o movimento de retorno.
         */
 
         albumFoto.classList.remove(
@@ -640,10 +844,8 @@ function atualizarAlbum(
         );
 
 
-        /*
-            Prepara a nova fotografia
-            do outro lado do álbum.
-        */
+        void albumFoto.offsetWidth;
+
 
         if(direcao === "esquerda"){
 
@@ -661,74 +863,14 @@ function atualizarAlbum(
 
 
         /*
-            Atualiza o índice.
+           Atualiza o contador.
         */
 
-        albumIndice =
-            novoIndice;
+        atualizarControlesAlbum();
 
 
         /*
-            Atualiza contador.
-        */
-
-        albumPagina.textContent =
-
-            String(
-                albumIndice + 1
-            ).padStart(2,"0")
-
-            +
-
-            " / "
-
-            +
-
-            String(
-                albumFotos.length
-            ).padStart(2,"0");
-
-
-        /*
-            Botão anterior.
-        */
-
-        if(albumIndice === 0){
-
-            albumAnterior.style.opacity =
-                ".45";
-
-        }else{
-
-            albumAnterior.style.opacity =
-                "1";
-
-        }
-
-
-        /*
-            Botão próximo.
-        */
-
-        if(
-            albumIndice ===
-            albumFotos.length - 1
-        ){
-
-            albumProximo.style.opacity =
-                ".45";
-
-        }else{
-
-            albumProximo.style.opacity =
-                "1";
-
-        }
-
-
-        /*
-            Esconde a instrução depois
-            da primeira interação.
+           Esconde a instrução.
         */
 
         if(albumInstrucao){
@@ -740,26 +882,42 @@ function atualizarAlbum(
         }
 
 
+    },410);
+
+
+    /*
+       Finaliza completamente
+       a animação.
+    */
+
+    setTimeout(function(){
+
+        albumFoto.classList.remove(
+            "nova-folha-esquerda",
+            "nova-folha-direita",
+            "virando-esquerda",
+            "virando-direita"
+        );
+
+
         /*
-            Libera a próxima interação
-            depois da animação.
+           O verso passa a representar
+           a fotografia atual.
         */
 
-        setTimeout(function(){
-
-            albumFoto.classList.remove(
-                "nova-folha-esquerda",
-                "nova-folha-direita"
-            );
-
-            album.classList.remove(
-                "folha-virando"
-            );
-
-        },720);
+        albumVerso.src =
+            albumFotos[albumIndice].src;
 
 
-    },360);
+        album.classList.remove(
+            "folha-virando"
+        );
+
+
+        albumOcupado = false;
+
+
+    },840);
 
 }
 
@@ -803,16 +961,28 @@ function albumFotoAnterior(){
 }
 
 
-albumProximo.addEventListener(
-    "click",
-    albumProxima
-);
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+if(albumProximo){
+
+    albumProximo.addEventListener(
+        "click",
+        albumProxima
+    );
+
+}
 
 
-albumAnterior.addEventListener(
-    "click",
-    albumFotoAnterior
-);
+if(albumAnterior){
+
+    albumAnterior.addEventListener(
+        "click",
+        albumFotoAnterior
+    );
+
+}
 
 
 /* =====================================================
@@ -828,118 +998,156 @@ let albumArrastando = false;
 let albumMovimentoX = 0;
 
 
-album.addEventListener(
-    "pointerdown",
-    function(event){
+if(album){
 
-        albumInicioX =
-            event.clientX;
+    album.addEventListener(
+        "pointerdown",
+        function(event){
 
-        albumInicioY =
-            event.clientY;
+            if(albumOcupado){
 
-        albumMovimentoX = 0;
+                return;
 
-        albumArrastando = true;
-
-        album.setPointerCapture(
-            event.pointerId
-        );
-
-    }
-);
+            }
 
 
-album.addEventListener(
-    "pointermove",
-    function(event){
+            albumInicioX =
+                event.clientX;
 
-        if(!albumArrastando){
+            albumInicioY =
+                event.clientY;
 
-            return;
+            albumMovimentoX = 0;
 
-        }
-
-
-        albumMovimentoX =
-            event.clientX -
-            albumInicioX;
-
-    }
-);
+            albumArrastando = true;
 
 
-album.addEventListener(
-    "pointerup",
-    function(event){
+            try{
 
-        if(!albumArrastando){
+                album.setPointerCapture(
+                    event.pointerId
+                );
 
-            return;
+            }catch(error){
 
-        }
-
-
-        albumArrastando = false;
-
-
-        const movimentoY =
-            event.clientY -
-            albumInicioY;
-
-
-        const distancia =
-            Math.abs(
-                albumMovimentoX
-            );
-
-
-        /*
-            Evita trocar a foto quando
-            o movimento for predominantemente
-            vertical.
-        */
-
-        if(
-            distancia > 45 &&
-            distancia > Math.abs(movimentoY)
-        ){
-
-            if(
-                albumMovimentoX < 0
-            ){
-
-                albumProxima();
-
-            }else{
-
-                albumFotoAnterior();
+                console.log(error);
 
             }
 
         }
-
-    }
-);
+    );
 
 
-album.addEventListener(
-    "pointercancel",
-    function(){
+    album.addEventListener(
+        "pointermove",
+        function(event){
 
-        albumArrastando = false;
+            if(!albumArrastando){
 
-    }
-);
+                return;
+
+            }
+
+
+            albumMovimentoX =
+                event.clientX -
+                albumInicioX;
+
+        }
+    );
+
+
+    album.addEventListener(
+        "pointerup",
+        function(event){
+
+            if(!albumArrastando){
+
+                return;
+
+            }
+
+
+            albumArrastando = false;
+
+
+            const movimentoY =
+                event.clientY -
+                albumInicioY;
+
+
+            const distancia =
+                Math.abs(
+                    albumMovimentoX
+                );
+
+
+            /*
+               Só reconhece swipe horizontal.
+            */
+
+            if(
+                distancia > 45 &&
+                distancia > Math.abs(movimentoY)
+            ){
+
+                if(albumMovimentoX < 0){
+
+                    albumProxima();
+
+                }else{
+
+                    albumFotoAnterior();
+
+                }
+
+            }
+
+        }
+    );
+
+
+    album.addEventListener(
+        "pointercancel",
+        function(){
+
+            albumArrastando = false;
+
+        }
+    );
+
+}
 
 
 /* =====================================================
-   TECLADO NO COMPUTADOR
+   TECLADO
 ===================================================== */
 
 document.addEventListener(
     "keydown",
     function(event){
+
+        /*
+           Não interfere quando o usuário
+           estiver digitando em um campo.
+        */
+
+        const tag =
+            document.activeElement
+                ? document.activeElement.tagName
+                : "";
+
+
+        if(
+            tag === "INPUT" ||
+            tag === "TEXTAREA" ||
+            tag === "SELECT"
+        ){
+
+            return;
+
+        }
+
 
         if(event.key === "ArrowRight"){
 
@@ -959,67 +1167,15 @@ document.addEventListener(
 
 
 /* =====================================================
-   ESTADO INICIAL DOS BOTÕES
+   ESTADO INICIAL
 ===================================================== */
 
-albumAnterior.style.opacity =
-    ".45";
-
-albumProximo.style.opacity =
-    "1";
+atualizarControlesAlbum();
 
 
 /* =====================================================
    MÚSICA
 ===================================================== */
-
-function entrarNoSite(){
-
-    musica.volume =
-        0.45;
-
-
-    musica.play()
-
-        .then(function(){
-
-            musicaTocando();
-
-        })
-
-        .catch(function(erro){
-
-            console.log(
-                "Não foi possível iniciar a música:",
-                erro
-            );
-
-        });
-
-
-    const telaEntrada =
-        document.getElementById(
-            "telaEntrada"
-        );
-
-
-    telaEntrada.classList.add(
-        "saindo"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-
-    setTimeout(function(){
-
-        telaEntrada.remove();
-
-    },850);
-
-}
-
 
 const musica =
     document.getElementById(
@@ -1049,8 +1205,12 @@ const volumeMusica =
    VOLUME INICIAL
 ===================================================== */
 
-musica.volume =
-    0.45;
+if(musica){
+
+    musica.volume =
+        0.45;
+
+}
 
 
 /* =====================================================
@@ -1059,12 +1219,21 @@ musica.volume =
 
 function musicaTocando(){
 
-    botaoMusica.innerHTML =
-        "❚❚";
+    if(botaoMusica){
 
-    playerMusica.classList.add(
-        "tocando"
-    );
+        botaoMusica.innerHTML =
+            "❚❚";
+
+    }
+
+
+    if(playerMusica){
+
+        playerMusica.classList.add(
+            "tocando"
+        );
+
+    }
 
 }
 
@@ -1075,12 +1244,21 @@ function musicaTocando(){
 
 function musicaPausada(){
 
-    botaoMusica.innerHTML =
-        "▶";
+    if(botaoMusica){
 
-    playerMusica.classList.remove(
-        "tocando"
-    );
+        botaoMusica.innerHTML =
+            "▶";
+
+    }
+
+
+    if(playerMusica){
+
+        playerMusica.classList.remove(
+            "tocando"
+        );
+
+    }
 
 }
 
@@ -1090,6 +1268,13 @@ function musicaPausada(){
 ===================================================== */
 
 function alternarMusica(){
+
+    if(!musica){
+
+        return;
+
+    }
+
 
     if(musica.paused){
 
@@ -1125,43 +1310,47 @@ function alternarMusica(){
    VOLUME
 ===================================================== */
 
-volumeMusica.addEventListener(
-    "input",
-    function(){
+if(volumeMusica && musica){
 
-        musica.volume =
-            this.value;
+    volumeMusica.addEventListener(
+        "input",
+        function(){
 
-    }
-);
+            musica.volume =
+                parseFloat(this.value);
 
+        }
+    );
 
-/* =====================================================
-   PAUSE
-===================================================== */
-
-musica.addEventListener(
-    "pause",
-    function(){
-
-        musicaPausada();
-
-    }
-);
+}
 
 
 /* =====================================================
-   PLAY
+   EVENTO PAUSE
 ===================================================== */
 
-musica.addEventListener(
-    "play",
-    function(){
+if(musica){
 
-        musicaTocando();
+    musica.addEventListener(
+        "pause",
+        function(){
 
-    }
-);
+            musicaPausada();
+
+        }
+    );
+
+
+    musica.addEventListener(
+        "play",
+        function(){
+
+            musicaTocando();
+
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -1172,15 +1361,15 @@ document.addEventListener(
     "visibilitychange",
     function(){
 
-        if(document.hidden){
+        if(
+            document.hidden &&
+            musica &&
+            !musica.paused
+        ){
 
-            if(!musica.paused){
+            musica.pause();
 
-                musica.pause();
-
-                musicaPausada();
-
-            }
+            musicaPausada();
 
         }
 
@@ -1195,6 +1384,13 @@ document.addEventListener(
 window.addEventListener(
     "pagehide",
     function(){
+
+        if(!musica){
+
+            return;
+
+        }
+
 
         musica.pause();
 
@@ -1215,11 +1411,74 @@ window.addEventListener(
     "beforeunload",
     function(){
 
-        musica.pause();
+        if(musica){
+
+            musica.pause();
+
+        }
 
     }
 );
 
 
+/* =====================================================
+   ENTRADA NO SITE
+===================================================== */
+
+function entrarNoSite(){
+
+    if(musica){
+
+        musica.volume =
+            0.45;
 
 
+        musica.play()
+
+            .then(function(){
+
+                musicaTocando();
+
+            })
+
+            .catch(function(erro){
+
+                console.log(
+                    "Não foi possível iniciar a música:",
+                    erro
+                );
+
+            });
+
+    }
+
+
+    const telaEntrada =
+        document.getElementById(
+            "telaEntrada"
+        );
+
+
+    if(!telaEntrada){
+
+        return;
+
+    }
+
+
+    telaEntrada.classList.add(
+        "saindo"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    setTimeout(function(){
+
+        telaEntrada.remove();
+
+    },850);
+
+}
