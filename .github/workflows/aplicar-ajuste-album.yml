@@ -1,6 +1,7 @@
 name: Aplicar ajuste final do album
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/aplicar-ajuste-album.yml'
@@ -25,37 +26,29 @@ jobs:
               s += r'''
 
 /* AJUSTE FINAL ALBUM 3D GABI TOM */
-
-/* Aproxima o bloco do album da area anterior e reduz o espaco entre colunas. */
 .memorias-layout{
     margin-top:0 !important;
     gap:28px !important;
 }
-
-/* A folha vira pelo eixo lateral, criando profundidade real. */
 .album-folha{
     overflow:visible !important;
     perspective:1600px !important;
     transform-style:preserve-3d !important;
     transform-origin:left center !important;
 }
-
 .album-foto{
     transform-origin:left center !important;
     backface-visibility:hidden !important;
     -webkit-backface-visibility:hidden !important;
     will-change:transform;
 }
-
 .album-foto.virando-esquerda{
     animation:albumPaginaEsquerdaFinal .88s cubic-bezier(.55,.08,.35,1) forwards !important;
 }
-
 .album-foto.virando-direita{
     transform-origin:right center !important;
     animation:albumPaginaDireitaFinal .88s cubic-bezier(.55,.08,.35,1) forwards !important;
 }
-
 @keyframes albumPaginaEsquerdaFinal{
     0%{transform:perspective(1600px) rotateY(0deg) translateZ(0);filter:brightness(1)}
     18%{transform:perspective(1600px) rotateY(-32deg) translateZ(3px);filter:brightness(.98)}
@@ -63,7 +56,6 @@ jobs:
     78%{transform:perspective(1600px) rotateY(-158deg) translateZ(4px);filter:brightness(.96)}
     100%{transform:perspective(1600px) rotateY(-180deg) translateZ(0);filter:brightness(1)}
 }
-
 @keyframes albumPaginaDireitaFinal{
     0%{transform:perspective(1600px) rotateY(0deg) translateZ(0);filter:brightness(1)}
     18%{transform:perspective(1600px) rotateY(32deg) translateZ(3px);filter:brightness(.98)}
@@ -71,14 +63,8 @@ jobs:
     78%{transform:perspective(1600px) rotateY(158deg) translateZ(4px);filter:brightness(.96)}
     100%{transform:perspective(1600px) rotateY(180deg) translateZ(0);filter:brightness(1)}
 }
-
-@media (max-width:850px){
-    .memorias-layout{margin-top:12px !important;gap:24px !important;}
-}
-
-@media (max-width:600px){
-    .memorias-layout{margin-top:8px !important;gap:20px !important;}
-}
+@media (max-width:850px){.memorias-layout{margin-top:12px !important;gap:24px !important;}}
+@media (max-width:600px){.memorias-layout{margin-top:8px !important;gap:20px !important;}}
 '''
               p.write_text(s, encoding='utf-8')
 
